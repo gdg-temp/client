@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "\033[42;1;37m TEST \033[47;30m 단위 테스트를 진행합니다... \033[0m"
+# yarn test
