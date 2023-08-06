@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-echo PRE-COMMIT-GIT-HOOK
-yarn lint-staged
+echo test
+npx lint-staged
