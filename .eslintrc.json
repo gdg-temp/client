@@ -11,17 +11,16 @@
     "plugin:storybook/recommended",
     "plugin:@typescript-eslint/recommended"
   ],
-  "plugins": [
-    "@tanstack/eslint-plugin-query",
-    "prettier",
-    "@typescript-eslint"
-  ],
+  "plugins": ["@tanstack/eslint-plugin-query", "prettier", "@typescript-eslint"],
   "rules": {
     "prettier/prettier": "error",
     "no-empty-function": "warn",
     "no-empty-pattern": "warn",
-    "@typescript-eslint/no-empty-function": "warn",
+    "no-unused-vars": "warn",
+    "no-anonymous-default-export ": "off",
     "no-console": "warn",
-    "no-var": "error"
+    "no-var": "error",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "@typescript-eslint/no-empty-function": "warn"
   }
 }
