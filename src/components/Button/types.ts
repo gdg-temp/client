@@ -1,6 +1,6 @@
-import type { ReactNode } from 'react';
+import type { ReactNode, ButtonHTMLAttributes } from 'react';
 
-export interface ButtonProps {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   color: 'black' | 'blue' | 'red' | 'green' | 'white';
   disabled?: boolean;
