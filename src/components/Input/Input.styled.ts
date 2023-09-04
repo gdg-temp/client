@@ -18,4 +18,10 @@ const Input = styled.input<InputProps>`
   background-color: #ffffff;
 `;
 
-export default { Input };
+const InputError = styled.div`
+  font-size: '15px';
+  color: #e52528;
+  margin-top: '5px';
+`;
+
+export default { Input, InputError };
