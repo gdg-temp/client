@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-export default function CollectionPage() {
+export default function CollectionsPage() {
   return (
     <>
       <Head>
