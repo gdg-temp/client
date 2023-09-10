@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { getNavLayout } from '@utils';
 
 export default function CardDetailPage() {
   return (
@@ -10,3 +11,5 @@ export default function CardDetailPage() {
     </>
   );
 }
+
+CardDetailPage.getLayout = getNavLayout;
