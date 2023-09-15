@@ -21,7 +21,8 @@
       "@hooks": ["./src/hooks/index"],
       "@layouts": ["./src/layouts/index"],
       "@styles": ["./src/styles/index"],
-      "@utils": ["./src/utils/index"]
+      "@utils": ["./src/utils/index"],
+      "@types": ["./src/types/index"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
