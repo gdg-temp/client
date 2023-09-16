@@ -1,4 +1,15 @@
-export type color = 'main' | 'sub1' | 'sub2' | 'error' | 'success';
+export type color = 'main' | 'sub1' | 'sub2' | 'sub3' | 'error' | 'success';
+export type colorGray =
+  | 'white'
+  | 'bluegray50'
+  | 'bluegray100'
+  | 'bluegray200'
+  | 'bluegray300'
+  | 'bluegray400'
+  | 'bluegray500'
+  | 'bluegray600'
+  | 'bluegray700'
+  | 'black';
 export type fontSize = 'title' | 'subtitle' | 'body1' | 'body2' | 'body3' | 'body4';
 export type fontWeight = 'bold' | 'medium' | 'regular';
 export type fontFamily = string;
@@ -6,9 +17,23 @@ export type fontFamily = string;
 const color: { [key in color]: string } = {
   main: '#5C42FF',
   sub1: '#4532BF',
-  sub2: '#312485', // 다시 설정 필요
-  error: '#e52528', // 다시 설정 필요
-  success: '#2ab1fa', // 다시 설정 필요
+  sub2: '#2E2180',
+  sub3: '#FFB800',
+  error: '#FF3D00',
+  success: '#00A3FF',
+};
+
+const colorGray: { [key in colorGray]: string } = {
+  white: '#FFFFFF',
+  bluegray50: '#F7F8FB',
+  bluegray100: '#ECEFF2',
+  bluegray200: '#CCCFD3',
+  bluegray300: '#A2A5AA',
+  bluegray400: '#6E6F73',
+  bluegray500: '#424345',
+  bluegray600: '#343436',
+  bluegray700: '#1E1E1E',
+  black: '#000000',
 };
 
 export const fontSize: { [key in fontSize]: number } = {
@@ -28,4 +53,4 @@ export const fontWeight: { [key in fontWeight]: string } = {
 
 export const fontFamily = 'pretendard';
 
-export default { color, fontSize, fontWeight, fontFamily };
+export default { color, colorGray, fontSize, fontWeight, fontFamily };
