@@ -48,9 +48,9 @@ export const ModalProvider = ({ children }: ContextProviderProps) => {
           isLoading={isLoading}
           isOpened={isOpened}
           content={modalProps.content}
+          size={modalProps.size}
           buttonType={modalProps.buttonType}
           buttonTitle={modalProps.buttonTitle}
-          on
           onClick={modalProps.onClick}
           onClose={() => setIsOpened(false)}
         />
