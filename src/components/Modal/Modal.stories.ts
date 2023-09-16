@@ -8,28 +8,28 @@ const meta: Meta<typeof Modal> = {
   component: Modal,
   argTypes: {
     buttonType: {
-      description: 'test',
+      description: '버튼의 갯수를 조절합니다.',
     },
     buttonTitle: {
-      description: 'test',
+      description: '메인 버튼에 들어갈 텍스트입니다.',
     },
     content: {
-      description: 'test',
+      description: '모달에 들어가는 컨텐츠이며 React Node입니다.',
     },
     isLoading: {
-      description: 'test',
+      description: '로딩을 보여줄지 여부를 선택합니다.',
     },
     isOpened: {
-      description: 'test',
+      description: '모달이 열려있는지 여부를 선택합니다.',
     },
     size: {
-      description: 'test',
+      description: '모달의 사이즈를 나타냅니다.',
     },
     onClick: {
-      description: 'test',
+      description: '클릭시 실행될 함수입니다.',
     },
     onClose: {
-      description: 'test',
+      description: '모달을 닫을 수 있는 함수를 넣습니다.',
     },
   },
 };
