@@ -1,20 +1,6 @@
-export type color = 'main' | 'sub1' | 'sub2' | 'sub3' | 'error' | 'success';
-export type colorGray =
-  | 'white'
-  | 'bluegray50'
-  | 'bluegray100'
-  | 'bluegray200'
-  | 'bluegray300'
-  | 'bluegray400'
-  | 'bluegray500'
-  | 'bluegray600'
-  | 'bluegray700'
-  | 'black';
-export type fontSize = 'title' | 'subtitle' | 'body1' | 'body2' | 'body3' | 'body4';
-export type fontWeight = 'bold' | 'medium' | 'regular';
-export type fontFamily = string;
+import { DefaultTheme } from 'styled-components';
 
-const color: { [key in color]: string } = {
+const color = {
   main: '#5C42FF',
   sub1: '#4532BF',
   sub2: '#2E2180',
@@ -23,7 +9,7 @@ const color: { [key in color]: string } = {
   success: '#00A3FF',
 };
 
-const colorGray: { [key in colorGray]: string } = {
+const colorGray = {
   white: '#FFFFFF',
   bluegray50: '#F7F8FB',
   bluegray100: '#ECEFF2',
@@ -36,7 +22,7 @@ const colorGray: { [key in colorGray]: string } = {
   black: '#000000',
 };
 
-export const fontSize: { [key in fontSize]: number } = {
+const fontSize = {
   title: 32,
   subtitle: 24,
   body1: 18,
@@ -45,12 +31,24 @@ export const fontSize: { [key in fontSize]: number } = {
   body4: 12,
 };
 
-export const fontWeight: { [key in fontWeight]: string } = {
+const fontWeight = {
   bold: 'bold',
   medium: 'normal',
   regular: 'light',
 };
 
-export const fontFamily = 'pretendard';
+const fontFamily = 'pretendard';
 
-export default { color, colorGray, fontSize, fontWeight, fontFamily };
+export type colorTypes = typeof color;
+export type colorGrayTypes = typeof colorGray;
+export type fontSizeTypes = typeof fontSize;
+export type fontWeightTypes = typeof fontWeight;
+export type fontFamilyTypes = string;
+
+export const theme: DefaultTheme = {
+  color,
+  colorGray,
+  fontSize,
+  fontWeight,
+  fontFamily,
+};
