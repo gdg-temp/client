@@ -12,7 +12,7 @@ const meta: Meta<typeof Input> = {
     type: {
       description: '타입을 결정합니다.',
     },
-    size: {
+    _size: {
       description: '입력창의 크기를 결정합니다.',
     },
     error: {
@@ -28,7 +28,7 @@ export const Default: Story = {
   args: {
     id: 'userid',
     type: 'text',
-    size: 'large',
+    _size: 'large',
     placeholder: '아이디로 사용할 이메일을 입력하세요.',
   },
 };
@@ -37,7 +37,7 @@ export const Password: Story = {
   args: {
     id: 'password',
     type: 'password',
-    size: 'medium',
+    _size: 'medium',
     placeholder: '비밀번호를 입력하세요.',
   },
 };
@@ -46,7 +46,7 @@ export const PasswordError: Story = {
   args: {
     id: 'password',
     type: 'password',
-    size: 'small',
+    _size: 'small',
     placeholder: '비밀번호를 입력하세요.',
     error: '비밀번호가 잘못되었습니다.',
   },
