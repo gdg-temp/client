@@ -11,3 +11,4 @@ export type AppPropsWithLayout = AppProps & {
 };
 
 export { default as NavLayout } from './NavLayout';
+export { default as DefaultLayout } from './DefaultLayout';
