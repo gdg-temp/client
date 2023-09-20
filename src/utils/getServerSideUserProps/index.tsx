@@ -8,6 +8,7 @@ const getServerSideUserProps: GetServerSideProps<{
 }> = async (ctx) => {
   const cookies = ctx.req.headers.cookie;
   const path = ctx.resolvedUrl;
+
   let user = {} as User;
   try {
     user = await getUser({
@@ -17,7 +18,9 @@ const getServerSideUserProps: GetServerSideProps<{
     });
   } catch (error) {
     // 에러 및 로그인 X
-    if (path === '/collections' || path === '/settings' || path === '/cards') {
+    const isOnlyLoggedInPage =
+      path === '/collections' || path === '/settings' || path === '/cards' || path.includes('edit');
+    if (isOnlyLoggedInPage) {
       return {
         redirect: {
           destination: '/',
