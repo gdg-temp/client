@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { getNavLayout } from '@utils';
+import { getNavLayout, getServerSideUserProps } from '@utils';
 import { useRouter } from 'next/router';
 
 export default function CardDetailPage() {
@@ -22,3 +22,4 @@ export default function CardDetailPage() {
 }
 
 CardDetailPage.getLayout = getNavLayout;
+export const getServerSideProps = getServerSideUserProps;
