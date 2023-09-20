@@ -17,7 +17,7 @@ const getServerSideUserProps: GetServerSideProps<{
     });
   } catch (error) {
     // 에러 및 로그인 X
-    if (path === '/collections' || path === '/settings') {
+    if (path === '/collections' || path === '/settings' || path === '/cards') {
       return {
         redirect: {
           destination: '/',
