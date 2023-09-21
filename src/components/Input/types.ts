@@ -4,6 +4,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   id: string;
   type: string;
   placeholder: string;
-  _size: 'large' | 'medium' | 'small';
-  error: string;
+  label: string;
+  guide: string;
+  success: boolean;
 }
