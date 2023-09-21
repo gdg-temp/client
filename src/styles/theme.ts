@@ -32,9 +32,9 @@ const fontSize = {
 };
 
 const fontWeight = {
-  bold: 'bold',
-  medium: 'normal',
-  regular: 'light',
+  bold: 700,
+  medium: 500,
+  regular: 400,
 };
 
 const fontFamily = 'pretendard';
