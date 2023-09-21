@@ -23,12 +23,12 @@ const colorGray = {
 };
 
 const fontSize = {
-  title: 32,
-  subtitle: 24,
-  body1: 18,
-  body2: 16,
-  body3: 14,
-  body4: 12,
+  title: '32px',
+  subtitle: '24px',
+  body1: '18px',
+  body2: '16px',
+  body3: '14px',
+  body4: '12px',
 };
 
 const fontWeight = {
