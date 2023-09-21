@@ -1,10 +1,8 @@
 import Head from 'next/head';
 
 import type { AppPropsWithLayout } from '@layouts';
-
-import GlobalStyle from '../styles/global-styles';
+import { GlobalStyles, theme } from '@styles';
 import { ThemeProvider } from 'styled-components';
-import { theme } from '../styles/theme';
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
@@ -17,7 +15,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ThemeProvider theme={theme}>
-        <GlobalStyle />
+        <GlobalStyles />
         {getLayout(<Component {...pageProps} />)}
       </ThemeProvider>
     </>
