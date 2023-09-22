@@ -4,17 +4,16 @@ import type { InputProps } from './types';
 const Input = styled.input<InputProps>`
   padding: 14px 16px;
   border: ${(props) =>
-    props.success
+    props.isError
       ? `1px solid ${props.theme.color.success}`
-      : props.success === false
+      : props.isError === false
       ? `1px solid ${props.theme.color.error}`
       : null};
   border-radius: 8px;
   outline: none;
   width: 319px;
   height: 48px;
-  font-family: ${(props) => props.theme.fontFamily};
-  font-size: ${({ theme }) => theme.fontSize.body3}px;
+  font-size: ${({ theme }) => theme.fontSize.body3};
   font-weight: ${({ theme }) => theme.fontWeight.regular};
   color: ${(props) => props.theme.colorGray.white};
   background-color: ${(props) => props.theme.colorGray.bluegray700};
@@ -27,8 +26,7 @@ const Input = styled.input<InputProps>`
 `;
 
 const Label = styled.div`
-  font-size: ${(props) => props.theme.fontSize.body3}px;
-  font-family: ${(props) => props.theme.fontFamily};
+  font-size: ${(props) => props.theme.fontSize.body3};
   font-weight: ${(props) => props.theme.fontWeight.medium};
   color: ${(props) => props.theme.colorGray.white};
   width: 319px;
@@ -39,12 +37,11 @@ const Label = styled.div`
 const InputError = styled.div`
   width: 311px;
   height: 17px
-  font-size: ${(props) => props.theme.fontSize.body3}px;
-  font-family: ${(props) => props.theme.fontFamily};
+  font-size: ${(props) => props.theme.fontSize.body3};
   color: ${(props) =>
-    props.success
+    props.isError
       ? props.theme.color.success
-      : props.success === false
+      : props.isError === false
       ? props.theme.color.error
       : props.theme.color.main};
 

@@ -18,7 +18,7 @@ const meta: Meta<typeof Input> = {
     guide: {
       description: '가이드를 제공합니다.',
     },
-    success: {
+    isError: {
       description: '성공 여부를 결정합니다.',
     },
   },
@@ -44,7 +44,7 @@ export const Guide: Story = {
     placeholder: '비밀번호를 입력하세요.',
     guide: '가이드 문구입니다.',
     label: 'Label',
-    success: true,
+    isError: false,
   },
 };
 
@@ -54,6 +54,6 @@ export const Error: Story = {
     type: 'text',
     placeholder: '텍스트를 입력해주세요.',
     guide: '형식에 맞지 않습니다.',
-    success: false,
+    isError: true,
   },
 };
