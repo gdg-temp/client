@@ -19,7 +19,7 @@ const getServerSideUserProps: GetServerSideProps<{
   } catch (error) {
     // 에러 및 로그인 X
     const isOnlyLoggedInPage =
-      path === '/collections' || path === '/settings' || path === '/cards' || path.includes('edit');
+      path === '/collections' || path === '/settings' || path.includes('edit');
     if (isOnlyLoggedInPage) {
       return {
         redirect: {
