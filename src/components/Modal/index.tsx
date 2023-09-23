@@ -27,7 +27,9 @@ const Modal = ({
       ) : (
         <S.ModalBackground onClick={handleBackgroundClick}>
           <S.ModalWrapper size={size}>
-            <S.ContentWrapper>{content}</S.ContentWrapper>
+            <S.ContentWrapper type={'body6'} grayColor={'white'}>
+              {content}
+            </S.ContentWrapper>
             <S.ButtonWrapper>
               {buttonType === 'noneButton' ? (
                 <></>

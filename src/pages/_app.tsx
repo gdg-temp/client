@@ -5,6 +5,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ModalProvider } from '@stores';
 
 import { AppPropsWithLayout, DefaultLayout } from '@layouts';
+import { GlobalStyles, theme } from '@styles';
+import { ThemeProvider } from 'styled-components';
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
   const [queryClient] = useState(
@@ -28,15 +30,17 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ModalProvider>
-        <RecoilRoot>
-          <QueryClientProvider client={queryClient}>
-            <DefaultLayout pageProps={...pageProps}>
-              {getLayout(<Component {...pageProps} />)}
-            </DefaultLayout>
-          </QueryClientProvider>
-        </RecoilRoot>
-      </ModalProvider>
+      <ThemeProvider theme={theme}>
+        <ModalProvider>
+          <RecoilRoot>
+            <QueryClientProvider client={queryClient}>
+              <DefaultLayout pageProps={...pageProps}>
+                {getLayout(<Component {...pageProps} />)}
+              </DefaultLayout>
+            </QueryClientProvider>
+          </RecoilRoot>
+        </ModalProvider>
+      </ThemeProvider>
     </>
   );
 }

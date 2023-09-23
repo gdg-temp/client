@@ -13,7 +13,9 @@ const config: StorybookConfig = {
     '@storybook/addon-onboarding',
     '@storybook/addon-interactions',
     '@storybook/addon-actions',
+    '@storybook/addon-styling',
   ],
+  staticDirs: ['../public'],
   framework: {
     name: '@storybook/nextjs',
     options: {},

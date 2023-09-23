@@ -1,5 +1,10 @@
 import type { Preview } from '@storybook/react';
 
+import { withThemeFromJSXProvider } from '@storybook/addon-styling';
+import GlobalStyles from '../src/styles/global-styles';
+import { theme } from '../src/styles/theme';
+import { ThemeProvider } from 'styled-components';
+
 const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
@@ -12,5 +17,13 @@ const preview: Preview = {
     },
   },
 };
+
+export const decorators = [
+  withThemeFromJSXProvider({
+    themes: { theme },
+    Provider: ThemeProvider,
+    GlobalStyles,
+  }),
+];
 
 export default preview;

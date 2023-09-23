@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import type { ModalStyleProps, SizeStyleOption } from './types';
+import { Typography } from '@components';
 
 const MODAL_WIDTH: Record<SizeStyleOption, string> = {
   large: '585px',
@@ -31,13 +32,14 @@ const ModalWrapper = styled.div<{ size: SizeStyleOption }>`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 10px;
   margin: 24px 40px;
   width: ${({ size }) => MODAL_WIDTH[size]};
   height: ${({ size }) => MODAL_HEIGHT[size]};
-  background-color: white;
+  background-color: ${({ theme }) => theme.colorGray.blueGray500};
 `;
 
-const ContentWrapper = styled.div<ModalStyleProps>`
+const ContentWrapper = styled(Typography)<ModalStyleProps>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,8 +47,10 @@ const ContentWrapper = styled.div<ModalStyleProps>`
 `;
 
 const ButtonWrapper = styled.div<ModalStyleProps>`
+  margin-top: 23px;
   display: flex;
   justify-content: space-between;
+  gap: 10px;
 `;
 
 export default { ModalBackground, ModalWrapper, ContentWrapper, ButtonWrapper };
