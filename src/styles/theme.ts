@@ -11,14 +11,14 @@ const color = {
 
 const colorGray = {
   white: '#FFFFFF',
-  bluegray50: '#F7F8FB',
-  bluegray100: '#ECEFF2',
-  bluegray200: '#CCCFD3',
-  bluegray300: '#A2A5AA',
-  bluegray400: '#6E6F73',
-  bluegray500: '#424345',
-  bluegray600: '#343436',
-  bluegray700: '#1E1E1E',
+  blueGray50: '#F7F8FB',
+  blueGray100: '#ECEFF2',
+  blueGray200: '#CCCFD3',
+  blueGray300: '#A2A5AA',
+  blueGray400: '#6E6F73',
+  blueGray500: '#424345',
+  blueGray600: '#343436',
+  blueGray700: '#1E1E1E',
   black: '#000000',
 };
 
@@ -39,11 +39,11 @@ const fontWeight = {
 
 const fontFamily = 'pretendard';
 
-export type colorTypes = typeof color;
-export type colorGrayTypes = typeof colorGray;
-export type fontSizeTypes = typeof fontSize;
-export type fontWeightTypes = typeof fontWeight;
-export type fontFamilyTypes = string;
+export type ColorTypes = typeof color;
+export type ColorGrayTypes = typeof colorGray;
+export type FontSizeTypes = typeof fontSize;
+export type FontWeightTypes = typeof fontWeight;
+export type FontFamilyTypes = string;
 
 export const theme: DefaultTheme = {
   color,

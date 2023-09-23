@@ -22,7 +22,8 @@
       "@layouts": ["./src/layouts/index"],
       "@styles": ["./src/styles/index"],
       "@utils": ["./src/utils/index"],
-      "@types": ["./src/types/index"]
+      "@types": ["./src/types/index"],
+      "@stores": ["./src/stores/index"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
