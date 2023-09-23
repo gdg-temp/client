@@ -1,6 +1,7 @@
 import Head from 'next/head';
 
 import type { AppPropsWithLayout } from '@layouts';
+import { ModalProvider } from '@stores';
 import { GlobalStyles, theme } from '@styles';
 import { ThemeProvider } from 'styled-components';
 
@@ -15,8 +16,10 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ThemeProvider theme={theme}>
-        <GlobalStyles />
-        {getLayout(<Component {...pageProps} />)}
+        <ModalProvider>
+          <GlobalStyles />
+          {getLayout(<Component {...pageProps} />)}
+        </ModalProvider>
       </ThemeProvider>
     </>
   );

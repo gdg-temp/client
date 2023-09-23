@@ -2194,6 +2194,28 @@
     ts-dedent "^2.0.0"
     uuid "^9.0.0"
 
+"@storybook/addon-actions@^7.4.2":
+  version "7.4.2"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-7.4.2.tgz#7f1d69a5439d6d39c7453e2167f831f34c620380"
+  integrity sha512-aKHyYjxcWaOTf/7B8x4EmUNkDAiYJZyJfGTYg2TDEDs89x7/9slujAA01qIgOp74C9nWkHDUVdm7/J+h3kWJWw==
+  dependencies:
+    "@storybook/client-logger" "7.4.2"
+    "@storybook/components" "7.4.2"
+    "@storybook/core-events" "7.4.2"
+    "@storybook/global" "^5.0.0"
+    "@storybook/manager-api" "7.4.2"
+    "@storybook/preview-api" "7.4.2"
+    "@storybook/theming" "7.4.2"
+    "@storybook/types" "7.4.2"
+    dequal "^2.0.2"
+    lodash "^4.17.21"
+    polished "^4.2.2"
+    prop-types "^15.7.2"
+    react-inspector "^6.0.0"
+    telejson "^7.2.0"
+    ts-dedent "^2.0.0"
+    uuid "^9.0.0"
+
 "@storybook/addon-backgrounds@7.3.2":
   version "7.3.2"
   resolved "https://registry.yarnpkg.com/@storybook/addon-backgrounds/-/addon-backgrounds-7.3.2.tgz#e2361b162c5aac1e71ee45b8c8607d3e8fe613be"
@@ -2650,7 +2672,7 @@
     use-resize-observer "^9.1.0"
     util-deprecate "^1.0.2"
 
-"@storybook/components@^7.0.12":
+"@storybook/components@7.4.2", "@storybook/components@^7.0.12":
   version "7.4.2"
   resolved "https://registry.yarnpkg.com/@storybook/components/-/components-7.4.2.tgz#f8c3019a2255a48de61712e8de9f2c60cf4b3f5e"
   integrity sha512-ecbDzSUd74vf6IwHsbQr+9mVRxKWLmwd9zJ8RHMcR8UejTRAAR/eVvYoCG331TQ8TrhTmHTy5xCVv47pm6ORkQ==
@@ -3030,7 +3052,7 @@
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
-"@storybook/preview-api@^7.0.12":
+"@storybook/preview-api@7.4.2", "@storybook/preview-api@^7.0.12":
   version "7.4.2"
   resolved "https://registry.yarnpkg.com/@storybook/preview-api/-/preview-api-7.4.2.tgz#b481d3cbeac6ee1813b97e8fbdd76e0393b78772"
   integrity sha512-ihTHRYzI/sI6bD215aYppiWF+1u38TrlsNjFYJ/Grftbti5d40g5wCwvAXK41SxJNYpk6CRtfvNKOwbEAC33gg==
