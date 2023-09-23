@@ -2,7 +2,7 @@ import S from './Input.styled';
 
 import type { InputProps } from './types';
 
-const Input = ({ id, type, placeholder, label, guide, isError, ...args }: InputProps) => {
+const Input = ({ id, type, placeholder, label, guide, isError = false, ...args }: InputProps) => {
   return (
     <>
       {label && <S.Label>{label}</S.Label>}

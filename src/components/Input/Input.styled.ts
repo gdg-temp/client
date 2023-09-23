@@ -40,9 +40,9 @@ const InputError = styled.div`
   font-size: ${(props) => props.theme.fontSize.body3};
   color: ${(props) =>
     props.isError
-      ? props.theme.color.success
-      : props.isError === false
       ? props.theme.color.error
+      : props.isError === false
+      ? props.theme.color.success
       : props.theme.color.main};
 
   margin-top: 8px;
