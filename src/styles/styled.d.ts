@@ -1,18 +1,18 @@
 import 'styled-components';
-import {
-  colorTypes,
-  colorGrayTypes,
-  fontSizeTypes,
-  fontWeightTypes,
-  fontFamilyTypes,
+import type {
+  ColorTypes,
+  ColorGrayTypes,
+  FontSizeTypes,
+  FontWeightTypes,
+  FontFamilyTypes,
 } from './theme';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
-    color: colorTypes;
-    colorGray: colorGrayTypes;
-    fontSize: fontSizeTypes;
-    fontWeight: fontWeightTypes;
-    fontFamily: fontFamilyTypes;
+    color: ColorTypes;
+    colorGray: ColorGrayTypes;
+    fontSize: FontSizeTypes;
+    fontWeight: FontWeightTypes;
+    fontFamily: FontFamilyTypes;
   }
 }
