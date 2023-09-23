@@ -5,9 +5,9 @@ const Input = styled.input<InputProps>`
   padding: 14px 16px;
   border: ${(props) =>
     props.isError
-      ? `1px solid ${props.theme.color.success}`
-      : props.isError === false
       ? `1px solid ${props.theme.color.error}`
+      : props.isError === false
+      ? `1px solid ${props.theme.color.success}`
       : null};
   border-radius: 8px;
   outline: none;

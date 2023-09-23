@@ -37,7 +37,7 @@ export const Default: Story = {
   },
 };
 
-export const Guide: Story = {
+export const Success: Story = {
   args: {
     id: 'password',
     type: 'password',
