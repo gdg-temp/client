@@ -39,11 +39,11 @@ const fontWeight = {
 
 const fontFamily = 'pretendard';
 
-export type colorTypes = typeof color;
-export type colorGrayTypes = typeof colorGray;
-export type fontSizeTypes = typeof fontSize;
-export type fontWeightTypes = typeof fontWeight;
-export type fontFamilyTypes = string;
+export type ColorTypes = typeof color;
+export type ColorGrayTypes = typeof colorGray;
+export type FontSizeTypes = typeof fontSize;
+export type FontWeightTypes = typeof fontWeight;
+export type FontFamilyTypes = string;
 
 export const theme: DefaultTheme = {
   color,
