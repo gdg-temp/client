@@ -23,3 +23,11 @@ export const Default: Story = {
     text: 'MBTI',
   },
 };
+
+export const Disabled: Story = {
+  args: {
+    isClicked: false,
+    text: 'MBTI',
+    disabled: true,
+  },
+};
