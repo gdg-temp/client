@@ -9,8 +9,8 @@ const meta: Meta<typeof Chip> = {
     isClicked: {
       description: '클릭 여부를 결정합니다.',
     },
-    text: {
-      description: '내부 텍스트를 정합니다.',
+    value: {
+      description: '칩 버튼의 value값을 정합니다.',
     },
   },
 };
@@ -20,14 +20,14 @@ type Story = StoryObj<typeof Chip>;
 export const Default: Story = {
   args: {
     isClicked: false,
-    text: 'MBTI',
+    value: 'MBTI',
   },
 };
 
 export const Disabled: Story = {
   args: {
     isClicked: false,
-    text: 'MBTI',
+    value: 'MBTI',
     disabled: true,
   },
 };
