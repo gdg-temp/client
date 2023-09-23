@@ -1,5 +1,7 @@
 import Head from 'next/head';
 
+import { getServerSideUserProps } from '@utils';
+
 export default function SettingsPage() {
   return (
     <>
@@ -10,3 +12,5 @@ export default function SettingsPage() {
     </>
   );
 }
+
+export const getServerSideProps = getServerSideUserProps;

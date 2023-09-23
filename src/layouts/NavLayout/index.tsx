@@ -1,11 +1,15 @@
 import { NavBar } from '@components';
+import { userAtom } from '@stores';
 
-import type { ReactElement } from 'react';
+import { ReactElement } from 'react';
+import { useRecoilState } from 'recoil';
 
 const NavLayout = ({ children }: { children: ReactElement }) => {
+  const [userState, setUserState] = useRecoilState(userAtom);
+
   return (
     <div>
-      <NavBar />
+      {userState.name ? <NavBar /> : <div>로그인안됨</div>}
       {children}
     </div>
   );

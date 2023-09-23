@@ -1,15 +1,28 @@
 import Head from 'next/head';
-import { getNavLayout } from '@utils';
+import { useQuery } from '@tanstack/react-query';
+import { getNavLayout, getServerSideUserProps } from '@utils';
+import { KEY } from '@static';
+import { getCards } from '@api';
+import { Loading } from '@components';
 
 export default function CardsListPage() {
+  const { data, isLoading, isError } = useQuery({ queryKey: [KEY.CARDS], queryFn: getCards });
   return (
     <>
       <Head>
-        <title>Create Next App</title>
+        <title>Card List</title>
       </Head>
-      <div>카드 리스트 페이지</div>
+      {isError ? (
+        <div>ERROR</div>
+      ) : isLoading ? (
+        <Loading />
+      ) : (
+        data.map((card) => <h1 key={card.id}>{card.name}</h1>)
+      )}
     </>
   );
 }
 
 CardsListPage.getLayout = getNavLayout;
+
+export const getServerSideProps = getServerSideUserProps;

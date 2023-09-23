@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { getServerSideUserProps } from '@utils';
 
 export default function LoginPage() {
   return (
@@ -10,3 +11,5 @@ export default function LoginPage() {
     </>
   );
 }
+
+export const getServerSideProps = getServerSideUserProps;
