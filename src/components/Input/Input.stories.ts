@@ -12,11 +12,14 @@ const meta: Meta<typeof Input> = {
     type: {
       description: '타입을 결정합니다.',
     },
-    size: {
-      description: '입력창의 크기를 결정합니다.',
+    label: {
+      description: '라벨을 제공합니다.',
     },
-    error: {
-      description: '오류 여부를 결정합니다.',
+    guide: {
+      description: '가이드를 제공합니다.',
+    },
+    isError: {
+      description: '성공 여부를 결정합니다.',
     },
   },
 };
@@ -28,27 +31,29 @@ export const Default: Story = {
   args: {
     id: 'userid',
     type: 'text',
-    size: 'large',
-    placeholder: '아이디로 사용할 이메일을 입력하세요.',
+    placeholder: '텍스트를 입력해주세요.',
+    label: 'Label',
+    guide: '가이드 문구입니다.',
   },
 };
 
-export const Password: Story = {
+export const Guide: Story = {
   args: {
     id: 'password',
     type: 'password',
-    size: 'medium',
     placeholder: '비밀번호를 입력하세요.',
+    guide: '가이드 문구입니다.',
+    label: 'Label',
+    isError: false,
   },
 };
 
-export const PasswordError: Story = {
+export const Error: Story = {
   args: {
-    id: 'password',
-    type: 'password',
-    size: 'small',
-    placeholder: '비밀번호를 입력하세요.',
-    error: '비밀번호가 잘못되었습니다.',
+    id: 'userid',
+    type: 'text',
+    placeholder: '텍스트를 입력해주세요.',
+    guide: '형식에 맞지 않습니다.',
+    isError: true,
   },
 };
-PasswordError.storyName = 'Password(Error)';

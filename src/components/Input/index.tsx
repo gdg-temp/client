@@ -2,11 +2,12 @@ import S from './Input.styled';
 
 import type { InputProps } from './types';
 
-const Input = ({ id, type, placeholder, size, error, ...args }: InputProps) => {
+const Input = ({ id, type, placeholder, label, guide, isError = false, ...args }: InputProps) => {
   return (
     <>
-      <S.Input id={id} type={type} placeholder={placeholder} size={size} {...args} />
-      {error && <S.InputError>{error}</S.InputError>}
+      {label && <S.Label>{label}</S.Label>}
+      <S.Input id={id} type={type} placeholder={placeholder} isError={isError} {...args} />
+      {guide && <S.InputError isError={isError}>{guide}</S.InputError>}
     </>
   );
 };
