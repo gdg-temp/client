@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { getNavLayout } from '@utils';
+import { getNavLayout, getServerSideUserProps } from '@utils';
 
 export default function CollectionsPage() {
   return (
@@ -13,3 +13,5 @@ export default function CollectionsPage() {
 }
 
 CollectionsPage.getLayout = getNavLayout;
+
+export const getServerSideProps = getServerSideUserProps;

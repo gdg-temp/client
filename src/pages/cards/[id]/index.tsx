@@ -1,8 +1,12 @@
 import Head from 'next/head';
-import { getNavLayout } from '@utils';
+import { getNavLayout, getServerSideCardProps } from '@utils';
 import { useRouter } from 'next/router';
+import { InferGetServerSidePropsType } from 'next';
 
-export default function CardDetailPage() {
+export default function CardDetailPage({
+  user,
+  card,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const {
     query: { id },
     push,
@@ -15,10 +19,11 @@ export default function CardDetailPage() {
       <Head>
         <title>Create Next App</title>
       </Head>
-      <div>{`단일 카드 페이지 : ${id}`}</div>
+      <div>{`단일 카드 페이지 : ${card.name}`}</div>
       <button onClick={handleClickButton}>수정하기</button>
     </>
   );
 }
 
 CardDetailPage.getLayout = getNavLayout;
+export const getServerSideProps = getServerSideCardProps;

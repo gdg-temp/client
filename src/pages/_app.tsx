@@ -1,6 +1,10 @@
 import Head from 'next/head';
+import { RecoilRoot } from 'recoil';
+import { useState } from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ModalProvider } from '@stores';
 
-import type { AppPropsWithLayout } from '@layouts';
+import { AppPropsWithLayout, DefaultLayout } from '@layouts';
 import { GlobalStyles, theme } from '@styles';
 import { ThemeProvider } from 'styled-components';
 
@@ -9,7 +13,19 @@ import localFont from 'next/font/local';
 const pretendard = localFont({ src: '../../public/fonts/PretendardVariable.woff2' });
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            refetchOnWindowFocus: false,
+            retry: false,
+          },
+        },
+      }),
+  );
   const getLayout = Component.getLayout ?? ((page) => page);
+
   return (
     <>
       <Head>
@@ -21,7 +37,15 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
       <ThemeProvider theme={theme}>
         <main className={pretendard.className}>
           <GlobalStyles />
-          {getLayout(<Component {...pageProps} />)}
+          <ModalProvider>
+            <RecoilRoot>
+              <QueryClientProvider client={queryClient}>
+                <DefaultLayout pageProps={...pageProps}>
+                  {getLayout(<Component {...pageProps} />)}
+                </DefaultLayout>
+              </QueryClientProvider>
+            </RecoilRoot>
+          </ModalProvider>
         </main>
       </ThemeProvider>
     </>
