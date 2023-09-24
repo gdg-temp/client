@@ -13,6 +13,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       });
     } else {
       res.status(200).json({
+        id: 0,
         email: 'harry@kakao.com',
         name: 'Harry',
         oauthServerType: 'KAKAO',
