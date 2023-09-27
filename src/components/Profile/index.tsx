@@ -2,7 +2,7 @@ import S from './Profile.styled';
 
 import type { ProfileProps } from './types';
 
-const Profile = ({ size = 'small', cameraBtn = false, src, onClick }: ProfileProps) => {
+const Profile = ({ size = 'large', cameraBtn = false, src, onClick }: ProfileProps) => {
   return (
     <S.ProfileWrapper size={size}>
       {src ? (
