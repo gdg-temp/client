@@ -6,11 +6,11 @@ export interface NavbarProps {
   /**
    * 네비게이션바 왼쪽에 들어갈 아이콘입니다.
    */
-  leadingButton?: 'back';
+  leadingButton?: 'back' | 'menu';
   /**
    * 네비게이션바 오른쪽에 들어갈 아이콘입니다.
    */
-  trailingButton?: 'home' | 'save';
+  trailingButton?: 'add' | 'flip';
   /**
    *
    * @returns 아이콘 클릭 시 실행될 함수입니다

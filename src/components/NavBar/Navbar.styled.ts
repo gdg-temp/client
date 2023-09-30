@@ -4,10 +4,11 @@ import type { NavbarProps } from './types';
 
 const LEFT_ICON: Record<Required<NavbarProps>['leadingButton'], string> = {
   back: "url('/icons/CaretLeft_24px.svg') 50% 50% no-repeat",
+  menu: "url('/icons/Menu.svg') 50% 50% no-repeat",
 };
 const RIGHT_ICON: Record<Required<NavbarProps>['trailingButton'], string> = {
-  home: "url('/icons/Home.svg') 50% 50% no-repeat",
-  save: "url('/icons/Save.svg') 50% 50% no-repeat",
+  add: "url('/icons/Add.svg') 50% 50% no-repeat",
+  flip: "url('/icons/Flip.svg') 50% 50% no-repeat",
 };
 
 const Navbar = styled.div`

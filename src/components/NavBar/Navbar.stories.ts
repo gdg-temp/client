@@ -13,24 +13,23 @@ type Story = StoryObj<typeof NavBar>;
 
 export const Default: Story = {
   args: {
-    title: '페이지 제목',
+    leadingButton: 'back',
     onClick: () => action('onClick Triggered')('test'),
   },
 };
 
-export const WithButtons: Story = {
+export const MainNav: Story = {
   args: {
-    title: '페이지 제목',
-    leadingButton: 'back',
-    trailingButton: 'home',
+    leadingButton: 'menu',
+    trailingButton: 'add',
     onClick: () => action('onClick Triggered')('test'),
   },
 };
 
-export const OnlyButtons: Story = {
+export const SubNav: Story = {
   args: {
+    title: '명함 수정하기',
     leadingButton: 'back',
-    trailingButton: 'home',
     onClick: () => action('onClick Triggered')('test'),
   },
 };
