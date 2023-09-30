@@ -9,7 +9,7 @@ const SearchBar = styled.div`
   padding: 14px 16px;
   width: 264px;
   height: 48px;
-  background: ${({ theme }) => theme.colorGray.blueGray700};
+  background: rgba(0, 0, 0, 0);
   border-radius: 8px;
   &:focus-within {
     border: 1px solid ${({ theme }) => theme.color.main};
@@ -19,7 +19,7 @@ const SearchBar = styled.div`
 const SearchBarInput = styled.input<SearchBarProps>`
   width: 232px;
   height: 20px;
-  background: ${({ theme }) => theme.colorGray.blueGray700};
+  background: rgba(0, 0, 0, 0);
   color: ${({ theme }) => theme.colorGray.white};
   font-size: ${({ theme }) => theme.fontSize.body3};
   font-weight: ${({ theme }) => theme.fontWeight.regular};
