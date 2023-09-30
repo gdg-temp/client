@@ -15,7 +15,7 @@ const Navbar = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background: ${({ theme }) => theme.colorGray.blueGray700};
+  background: rgnb(0, 0, 0, 0);
   width: 375px;
   height: 64px;
   padding: 18px 24px;
@@ -37,10 +37,7 @@ const NavItemRight = styled.div<NavbarProps>`
 `;
 
 const Title = styled.div<NavbarProps>`
-  font-size: ${({ theme }) => theme.fontSize.body2};
-  font-weight: ${({ theme }) => theme.fontWeight.medium};
-  color: ${({ theme }) => theme.colorGray.white};
-  background: ${({ theme }) => theme.colorGray.black};
+  background: rgnb(0, 0, 0, 0);
   text-align: center;
 `;
 
