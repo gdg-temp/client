@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import type { ModalStyleProps, SizeStyleOption } from './types';
-import { Typography } from '@components';
+import Typography from '../Typography';
 
 const MODAL_WIDTH: Record<SizeStyleOption, string> = {
   large: '585px',

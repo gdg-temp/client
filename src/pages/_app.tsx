@@ -10,7 +10,7 @@ import { ThemeProvider } from 'styled-components';
 
 import localFont from 'next/font/local';
 
-const pretendard = localFont({ src: 'fonts/PretendardVariable.woff2' });
+const pretendard = localFont({ src: '../../public/fonts/PretendardVariable.woff2' });
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
   const [queryClient] = useState(
