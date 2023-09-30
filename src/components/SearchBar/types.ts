@@ -1,6 +1,7 @@
-import { InputProps } from '../Input/types';
+import type { InputHTMLAttributes } from 'react';
 
-export interface SearchBarProps extends InputProps {
-  isWrite: boolean;
+export interface SearchBarProps extends InputHTMLAttributes<HTMLInputElement> {
+  placeholder: string;
   onClick: () => void;
+  isWrite: boolean;
 }

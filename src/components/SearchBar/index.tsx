@@ -2,19 +2,12 @@ import S from './Searchbar.styled';
 
 import type { SearchBarProps } from './types';
 
-const SearchBar = ({
-  id,
-  type,
-  placeholder,
-  isWrite = false,
-  onClick,
-  ...args
-}: SearchBarProps) => {
+const SearchBar = ({ placeholder, isWrite = false, onClick, ...args }: SearchBarProps) => {
   return (
     <S.SearchBar>
-      <S.SearchBarInput id={id} type={type} placeholder={placeholder} onClick={onClick} {...args} />
-      <S.DeleteIcon isWrite={isWrite} />
-      <S.SearchIcon />
+      <S.SearchBarInput placeholder={placeholder} {...args} />
+      <S.DeleteIcon isWrite={isWrite} onClick={onClick} />
+      <S.SearchIcon onClick={onClick} />
     </S.SearchBar>
   );
 };
