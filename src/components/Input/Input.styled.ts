@@ -26,9 +26,6 @@ const Input = styled.input<InputProps>`
 `;
 
 const Label = styled.div`
-  font-size: ${({ theme }) => theme.fontSize.body3};
-  font-weight: ${({ theme }) => theme.fontWeight.medium};
-  color: ${({ theme }) => theme.colorGray.white};
   width: 319px;
   height: 20px;
   margin-bottom: 8px;
@@ -37,7 +34,6 @@ const Label = styled.div`
 const InputError = styled.div<Pick<InputProps, 'colorType'>>`
   width: 311px;
   height: 17px;
-  font-size: ${({ theme }) => theme.fontSize.body3};
   color: ${(props) =>
     props.colorType === undefined
       ? props.theme.color.main
