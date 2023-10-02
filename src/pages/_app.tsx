@@ -1,12 +1,27 @@
 import Head from 'next/head';
-
-import type { AppPropsWithLayout } from '@layouts';
+import { RecoilRoot } from 'recoil';
+import { useState } from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ModalProvider } from '@stores';
+
+import { AppPropsWithLayout, DefaultLayout } from '@layouts';
 import { GlobalStyles, theme } from '@styles';
 import { ThemeProvider } from 'styled-components';
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            refetchOnWindowFocus: false,
+            retry: false,
+          },
+        },
+      }),
+  );
   const getLayout = Component.getLayout ?? ((page) => page);
+
   return (
     <>
       <Head>
@@ -16,9 +31,15 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ThemeProvider theme={theme}>
+        <GlobalStyles />
         <ModalProvider>
-          <GlobalStyles />
-          {getLayout(<Component {...pageProps} />)}
+          <RecoilRoot>
+            <QueryClientProvider client={queryClient}>
+              <DefaultLayout pageProps={...pageProps}>
+                {getLayout(<Component {...pageProps} />)}
+              </DefaultLayout>
+            </QueryClientProvider>
+          </RecoilRoot>
         </ModalProvider>
       </ThemeProvider>
     </>

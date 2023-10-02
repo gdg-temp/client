@@ -4,14 +4,18 @@ import { useModal } from '@hooks';
 const TempPAge = () => {
   const { open, close } = useModal();
   const setTempCookie = () => {
-    Cookies.set('LYL_TOKEN', 'TEST');
+    if (Cookies.get('LYL_TOKEN')) {
+      Cookies.remove('LYL_TOKEN');
+    } else {
+      Cookies.set('LYL_TOKEN', 'TEST');
+    }
     close();
   };
   const handleButton = () => {
     open({
-      content: '정말 삭제하시겠습니까?',
+      content: '쿠키를 생성 또는 삭제하시겠습니다.',
       buttonType: 'twoButton',
-      buttonTitle: '삭제',
+      buttonTitle: '네',
       onClick: setTempCookie,
       onClose: close,
     });
@@ -19,7 +23,7 @@ const TempPAge = () => {
 
   return (
     <div>
-      <button onClick={handleButton}>임시 토큰 발급</button>
+      <button onClick={handleButton}>임시 토큰 설정</button>
     </div>
   );
 };
