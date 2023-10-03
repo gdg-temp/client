@@ -7,7 +7,7 @@ const TypoWrapper = styled.div<TypographyProps>`
       return props.customColor;
     } else if (props.systemColor) {
       return props.theme.color[props.systemColor];
-    } else {
+    } else if (props.grayColor) {
       return props.theme.colorGray[props.grayColor];
     }
   }};
