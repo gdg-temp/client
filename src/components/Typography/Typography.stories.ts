@@ -29,7 +29,7 @@ type Story = StoryObj<typeof Typography>;
 
 export const Default: Story = {
   args: {
-    grayColor: 'bluegray600',
+    grayColor: 'blueGray600',
     type: 'body2',
     children: '텍스트를 위한 Typography',
   },
