@@ -8,7 +8,7 @@ const NavBar = ({ title, leadingButton, trailingButton, onClick, ...args }: Navb
       <S.Navbar>
         <S.NavItemLeft leadingButton={leadingButton} onClick={onClick} {...args} />
         <S.Title>
-          <Typography type="body2" grayColor="white">
+          <Typography type="body4" grayColor="white">
             {title}
           </Typography>
         </S.Title>
