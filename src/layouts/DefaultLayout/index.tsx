@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { userAtom } from '@stores';
 import { User } from '@types';
+import S from './DefaultLayout.styled';
 
 interface DefaultLayoutProps {
   children: ReactNode;
@@ -16,7 +17,7 @@ const DefaultLayout = ({ children, pageProps }: DefaultLayoutProps) => {
       setUserState(pageProps.user);
     }
   }, []);
-  return <>{children}</>;
+  return <S.DefaultLayoutWrapper>{children}</S.DefaultLayoutWrapper>;
 };
 
 export default DefaultLayout;

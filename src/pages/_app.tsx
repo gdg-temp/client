@@ -31,6 +31,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ThemeProvider theme={theme}>
+        <GlobalStyles />
         <ModalProvider>
           <RecoilRoot>
             <QueryClientProvider client={queryClient}>
