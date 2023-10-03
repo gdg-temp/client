@@ -15,6 +15,7 @@ const Input = styled.input<InputProps>`
   height: 48px;
   font-size: ${({ theme }) => theme.fontSize.body3};
   font-weight: ${({ theme }) => theme.fontWeight.regular};
+  font-family: 'Pretendard';
   color: ${(props) => props.theme.colorGray.white};
   background-color: ${(props) => props.theme.colorGray.blueGray700};
   &:focus {

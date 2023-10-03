@@ -28,6 +28,7 @@ const Button = styled.button<ButtonProps>`
   border: ${({ color }) => (color === 'white' ? '1px solid #CCCFD3' : 'none')};
   border-radius: 10px;
   font-size: 16px;
+  font-family: 'Pretendard';
   background-color: ${({ disabled, color }) => (disabled ? '#CCCFD3' : BACKGROUND_COLOR[color])};
   color: ${({ color }) => (color === 'white' ? '#000' : '#fff')};
 `;
