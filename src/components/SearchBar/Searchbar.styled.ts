@@ -3,24 +3,24 @@ import type { SearchBarProps } from './types';
 
 const SearchBar = styled.div`
   display: flex;
+  gap: 8px;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
   padding: 14px 16px;
   width: 264px;
   height: 48px;
-  background: rgba(0, 0, 0, 0);
   border-radius: 8px;
   &:focus-within {
     border: 1px solid ${({ theme }) => theme.color.main};
   }
 `;
 
-const SearchBarInput = styled.input<SearchBarProps>`
-  width: 232px;
+const SearchBarInput = styled.input<Pick<SearchBarProps, 'placeholder'>>`
+  width: 214px;
   height: 20px;
-  background: rgba(0, 0, 0, 0);
   color: ${({ theme }) => theme.colorGray.white};
+  background: rgba(0, 0, 0, 0);
   font-size: ${({ theme }) => theme.fontSize.body3};
   font-weight: ${({ theme }) => theme.fontWeight.regular};
   border: none;
@@ -32,14 +32,13 @@ const SearchBarInput = styled.input<SearchBarProps>`
   }
 `;
 
-const SearchIcon = styled.div`
+const SearchIcon = styled.div<Pick<SearchBarProps, 'onClick'>>`
   width: 24px;
   height: 24px;
-  margin-left: 8px;
   background: url('/icons/Search.svg') 50% 50% no-repeat;
 `;
 
-const DeleteIcon = styled.div<SearchBarProps>`
+const DeleteIcon = styled.div<Omit<SearchBarProps, 'placeholder'>>`
   width: 24px;
   height: 24px;
   background: ${({ isWrite }) =>
