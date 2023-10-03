@@ -16,7 +16,6 @@ const Navbar = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background: rgnb(0, 0, 0, 0);
   width: 375px;
   height: 64px;
   padding: 18px 24px;
@@ -38,7 +37,6 @@ const NavItemRight = styled.div<NavbarProps>`
 `;
 
 const Title = styled.div<NavbarProps>`
-  background: rgnb(0, 0, 0, 0);
   text-align: center;
 `;
 
