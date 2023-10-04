@@ -23,7 +23,7 @@ type Story = StoryObj<typeof Button>;
 
 export const Default: Story = {
   args: {
-    color: 'black',
+    color: 'primary',
     size: 'large',
     children: '버튼',
   },
@@ -31,7 +31,7 @@ export const Default: Story = {
 
 export const Disabled: Story = {
   args: {
-    color: 'black',
+    color: 'primary',
     size: 'large',
     disabled: true,
     children: '버튼',
