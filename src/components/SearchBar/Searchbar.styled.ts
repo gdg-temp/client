@@ -36,9 +36,10 @@ const SearchIcon = styled.div<Pick<SearchBarProps, 'onClick'>>`
   width: 24px;
   height: 24px;
   background: url('/icons/Search.svg') 50% 50% no-repeat;
+  cursor: pointer;
 `;
 
-const DeleteIcon = styled.div<Omit<SearchBarProps, 'placeholder'>>`
+const DeleteIcon = styled.div<Pick<SearchBarProps, 'isWrite' | 'onClick'>>`
   width: 24px;
   height: 24px;
   background: ${({ isWrite }) =>
