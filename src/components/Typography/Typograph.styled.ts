@@ -35,7 +35,7 @@ const TypoWrapper = styled.div<TypographyProps>`
       case 'caption1':
         return theme.fontSize.body3;
       case 'caption2':
-        return theme.fontSize.body2;
+        return theme.fontSize.body4;
       default:
         return theme.fontSize.body1;
     }
