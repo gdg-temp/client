@@ -70,19 +70,28 @@ export default function LoginPage() {
         </Typography>
       </LoginTextWrapper>
       <ButtonWrapper>
-        <StartButtonLink backgroundColor="#FFCC01">
+        <StartButtonLink
+          backgroundColor="#FFCC01"
+          href={`https://kauth.kakao.com/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_CLIENT_ID_KAKAO}&response_type=code&redirect_uri=${process.env.NEXT_PUBLIC_REDIRECT_URI}/kakao`}
+        >
           <StartButtonIcon src={'/login/kakao.svg'} />
           <Typography type="body3" grayColor="black">
             카카오톡으로 시작하기
           </Typography>
         </StartButtonLink>
-        <StartButtonLink backgroundColor="#5AC451">
+        <StartButtonLink
+          backgroundColor="#5AC451"
+          href={`https://nid.naver.com/oauth2.0/authorize?client_id=${process.env.NEXT_PUBLIC_CLIENT_ID_NAVER}&response_type=code&redirect_uri=${process.env.NEXT_PUBLIC_REDIRECT_URI}/naver&state=LYL`}
+        >
           <StartButtonIcon src={'/login/naver.svg'} />
           <Typography type="body3" grayColor="white">
             네이버로 시작하기
           </Typography>
         </StartButtonLink>
-        <StartButtonLink backgroundColor="#FFFFFF">
+        <StartButtonLink
+          backgroundColor="#FFFFFF"
+          href={`https://accounts.google.com/o/oauth2/v2/auth?client_id=${process.env.NEXT_PUBLIC_CLIENT_ID_GOOGLE}&redirect_uri=${process.env.NEXT_PUBLIC_REDIRECT_URI}/google&response_type=code&scope=email profile`}
+        >
           <StartButtonIcon src={'/login/google.svg'} />
           <Typography type="body3" grayColor="black">
             구글로 시작하기
@@ -92,5 +101,4 @@ export default function LoginPage() {
     </LoginWrapper>
   );
 }
-
 export const getServerSideProps = getServerSideUserProps;
