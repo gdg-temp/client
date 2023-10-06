@@ -12,7 +12,7 @@ const GlobalStyles = createGlobalStyle`
       display: flex;
       justify-content: center;
       background-color: ${({ theme }) => theme.colorGray.blueGray700};
-      background-image: url("bg-line.svg");
+      background-image: url("/bg-line.svg");
       background-repeat: no-repeat;
       background-position: center 0;
       background-size: 1177.8px 1052px;
