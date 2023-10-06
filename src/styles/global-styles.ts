@@ -24,9 +24,9 @@ const GlobalStyles = createGlobalStyle`
       background-size: 1177.8px 1052px;
     }
   }
-  a { color: #fff; text-decoration: none; outline: none }
-  button{ outline: none; background: none; border: none; cursor: pointer; };
-  input { border: none; outline:  none; };
+  a { color: #fff; text-decoration: none; outline: none; font-family: 'Pretendard'; }
+  button{ outline: none; background: none; border: none; cursor: pointer; font-family: 'Pretendard';};
+  input { border: none; outline:  none; font-family: 'Pretendard';};
 `;
 
 export default GlobalStyles;
