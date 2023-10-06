@@ -2,20 +2,12 @@ import Button from './index';
 
 import type { StoryObj, Meta } from '@storybook/react';
 
+import ArrowIcon from '../../../public/icons/ArrowIcon';
+import GitHubIcon from '../../../public/icons/GithubIcon';
+
 const meta: Meta<typeof Button> = {
   title: 'components/Button',
   component: Button,
-  argTypes: {
-    color: {
-      description: '색상을 결정합니다.',
-    },
-    size: {
-      description: '버튼의 크기를 결정합니다.',
-    },
-    disabled: {
-      description: '비활성화 여부를 결정합니다.',
-    },
-  },
 };
 
 export default meta;
@@ -26,6 +18,19 @@ export const Default: Story = {
     color: 'primary',
     size: 'large',
     children: '버튼',
+  },
+};
+
+export const AddLink: Story = {
+  args: {
+    color: 'addLink',
+    size: 'addLink',
+    children: (
+      <>
+        <GitHubIcon />
+        <ArrowIcon />
+      </>
+    ),
   },
 };
 
