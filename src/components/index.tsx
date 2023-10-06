@@ -4,3 +4,6 @@ export { default as Loading } from './Loading';
 export { default as Button } from './Button';
 export { default as Typography } from './Typography';
 export { default as Profile } from './Profile';
+export { default as Chip } from './Chip';
+export { default as Checkbox } from './Checkbox';
+export { default as Input } from './Input';
