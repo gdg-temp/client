@@ -24,6 +24,12 @@ const Modal = ({
         <S.ModalBackground onClick={handleBackgroundClick}>
           <div>...Loading</div>
         </S.ModalBackground>
+      ) : size === 'addLink' ? (
+        <S.ModalBackground onClick={handleBackgroundClick}>
+          <S.ModalWrapper size={size}>
+            <S.AddLinkItemWrapper>{content}</S.AddLinkItemWrapper>
+          </S.ModalWrapper>
+        </S.ModalBackground>
       ) : (
         <S.ModalBackground onClick={handleBackgroundClick}>
           <S.ModalWrapper size={size}>
