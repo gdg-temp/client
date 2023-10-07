@@ -16,5 +16,5 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * 버튼의 크기를 결정합니다.
    */
-  size: 'large' | 'medium' | 'small' | 'plus' | 'addLink' | 'addLinkItem';
+  size: 'large' | 'medium' | 'small' | 'addLink' | 'addLinkItem';
 }

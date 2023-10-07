@@ -25,7 +25,7 @@ const ModalBackground = styled.div`
   z-index: 999;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.5);
 `;
 
 const ModalWrapper = styled.div<{ size: SizeStyleOption }>`
@@ -36,13 +36,14 @@ const ModalWrapper = styled.div<{ size: SizeStyleOption }>`
   align-items: center;
   border-radius: ${({ size }) => (size === 'addLink' ? '8px' : '10px')};
   margin: 24px 40px;
-  padding: ${({ size }) => (size === 'addLink' ? '4px 0' : '0')};
+  padding: ${({ size }) => (size === 'addLink' ? '4px 0' : '51px 40px 24px 40px')};
   width: ${({ size }) => MODAL_WIDTH[size]};
   height: ${({ size }) => MODAL_HEIGHT[size]};
   background-color: ${({ theme, size }) =>
     size === 'addLink' ? theme.colorGray.blueGray700 : theme.colorGray.blueGray500};
   border: ${({ theme, size }) => (size === 'addLink' ? theme.colorGray.blueGray600 : 'none')};
   overflow: hidden;
+  box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.8);
 `;
 
 const ContentWrapper = styled(Typography)<ModalStyleProps>`
@@ -62,9 +63,10 @@ const AddLinkItemWrapper = styled.div<ModalStyleProps>`
 `;
 
 const ButtonWrapper = styled.div<ModalStyleProps>`
-  margin-top: 23px;
+  margin-top: 29px;
   display: flex;
   justify-content: space-between;
+  width: 200px;
   gap: 10px;
 `;
 

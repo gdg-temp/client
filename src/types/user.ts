@@ -1,6 +1,7 @@
 export type User = {
-  id: number;
+  id?: number;
   name: string;
   email: string;
-  oauthServerType: 'KAKAO' | 'APPLE';
+  isFirst?: boolean;
+  oauthServerType: 'KAKAO' | 'NAVER' | 'GOOGLE';
 };

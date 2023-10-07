@@ -1,3 +1,4 @@
+import Button from '../Button';
 import S from './Modal.styled';
 
 import type { ModalProps } from '@types';
@@ -16,13 +17,16 @@ const Modal = ({
     e.stopPropagation();
     onClose();
   };
+  const preventPropagation = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+  };
   return (
     <>
       {!isOpened ? (
         <></>
       ) : isLoading ? (
         <S.ModalBackground onClick={handleBackgroundClick}>
-          <div>...Loading</div>
+          <div onClick={preventPropagation}>...Loading</div>
         </S.ModalBackground>
       ) : size === 'addLink' ? (
         <S.ModalBackground onClick={handleBackgroundClick}>
@@ -32,7 +36,7 @@ const Modal = ({
         </S.ModalBackground>
       ) : (
         <S.ModalBackground onClick={handleBackgroundClick}>
-          <S.ModalWrapper size={size}>
+          <S.ModalWrapper size={size} onClick={preventPropagation}>
             <S.ContentWrapper type={'body6'} grayColor={'white'}>
               {content}
             </S.ContentWrapper>
@@ -40,11 +44,17 @@ const Modal = ({
               {buttonType === 'noneButton' ? (
                 <></>
               ) : buttonType === 'oneButton' ? (
-                <button onClick={onClick}>{buttonTitle}</button>
+                <Button size="medium" color="primary" onClick={onClick}>
+                  {buttonTitle}
+                </Button>
               ) : (
                 <>
-                  <button onClick={onClose}>취소</button>
-                  <button onClick={onClick}>{buttonTitle}</button>
+                  <Button size="medium" color="secondary" onClick={onClose}>
+                    취소
+                  </Button>
+                  <Button size="medium" color="primary" onClick={onClick}>
+                    {buttonTitle}
+                  </Button>
                 </>
               )}
             </S.ButtonWrapper>

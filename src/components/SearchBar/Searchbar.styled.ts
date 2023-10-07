@@ -3,7 +3,6 @@ import type { SearchBarProps } from './types';
 
 const SearchBar = styled.div`
   display: flex;
-  gap: 8px;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
@@ -17,7 +16,7 @@ const SearchBar = styled.div`
 `;
 
 const SearchBarInput = styled.input<Pick<SearchBarProps, 'placeholder'>>`
-  width: 214px;
+  width: 160px;
   height: 20px;
   color: ${({ theme }) => theme.colorGray.white};
   background: rgba(0, 0, 0, 0);
@@ -42,6 +41,7 @@ const SearchIcon = styled.div<Pick<SearchBarProps, 'onClick'>>`
 const DeleteIcon = styled.div<Pick<SearchBarProps, 'isWrite' | 'onClick'>>`
   width: 24px;
   height: 24px;
+  margin-right: 8px;
   background: ${({ isWrite }) =>
     isWrite != false ? `url('/icons/Delete_gray.svg') 50% 50% no-repeat` : null};
 `;
