@@ -7,3 +7,4 @@ export { default as Profile } from './Profile';
 export { default as Chip } from './Chip';
 export { default as Checkbox } from './Checkbox';
 export { default as Input } from './Input';
+export { default as Toast } from './Toast';

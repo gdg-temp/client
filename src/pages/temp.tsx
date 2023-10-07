@@ -1,14 +1,17 @@
 import Cookies from 'js-cookie';
-import { useModal } from '@hooks';
+import { useModal, useToast } from '@hooks';
+import { Button } from '@components';
 
 const TempPAge = () => {
   const { open, close } = useModal();
+  const { showToast } = useToast();
   const setTempCookie = () => {
     if (Cookies.get('LYL_TOKEN')) {
       Cookies.remove('LYL_TOKEN');
     } else {
       Cookies.set('LYL_TOKEN', 'TEST');
     }
+    showToast('쿠키 작업 완료.');
     close();
   };
   const handleButton = () => {
@@ -23,7 +26,9 @@ const TempPAge = () => {
 
   return (
     <div>
-      <button onClick={handleButton}>임시 토큰 설정</button>
+      <Button color={'primary'} size="medium" onClick={handleButton}>
+        임시 토큰 설정
+      </Button>
     </div>
   );
 };

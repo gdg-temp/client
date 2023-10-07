@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { RecoilRoot } from 'recoil';
 import { useState } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ModalProvider } from '@stores';
+import { ModalProvider, ToastProvider } from '@stores';
 
 import { AppPropsWithLayout, DefaultLayout } from '@layouts';
 import { GlobalStyles, theme } from '@styles';
@@ -38,13 +38,15 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         <main className={pretendard.className}>
           <GlobalStyles />
           <ModalProvider>
-            <RecoilRoot>
-              <QueryClientProvider client={queryClient}>
-                <DefaultLayout pageProps={...pageProps}>
-                  {getLayout(<Component {...pageProps} />)}
-                </DefaultLayout>
-              </QueryClientProvider>
-            </RecoilRoot>
+            <ToastProvider>
+              <RecoilRoot>
+                <QueryClientProvider client={queryClient}>
+                  <DefaultLayout pageProps={...pageProps}>
+                    {getLayout(<Component {...pageProps} />)}
+                  </DefaultLayout>
+                </QueryClientProvider>
+              </RecoilRoot>
+            </ToastProvider>
           </ModalProvider>
         </main>
       </ThemeProvider>

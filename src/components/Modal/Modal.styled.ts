@@ -23,7 +23,7 @@ const ModalBackground = styled.div`
   z-index: 999;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.5);
 `;
 
 const ModalWrapper = styled.div<{ size: SizeStyleOption }>`
@@ -33,10 +33,11 @@ const ModalWrapper = styled.div<{ size: SizeStyleOption }>`
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  margin: 24px 40px;
+  padding: 51px 40px 24px 40px;
   width: ${({ size }) => MODAL_WIDTH[size]};
   height: ${({ size }) => MODAL_HEIGHT[size]};
   background-color: ${({ theme }) => theme.colorGray.blueGray500};
+  box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.8);
 `;
 
 const ContentWrapper = styled(Typography)<ModalStyleProps>`
@@ -47,9 +48,10 @@ const ContentWrapper = styled(Typography)<ModalStyleProps>`
 `;
 
 const ButtonWrapper = styled.div<ModalStyleProps>`
-  margin-top: 23px;
+  margin-top: 29px;
   display: flex;
   justify-content: space-between;
+  width: 200px;
   gap: 10px;
 `;
 
