@@ -1,12 +1,20 @@
-import Link from 'next/link';
+import S from './Navbar.styled';
+import { NavbarProps } from './types';
+import Typography from '../Typography';
 
-const NavBar = () => {
+const NavBar = ({ title, leadingButton, trailingButton, onClick, ...args }: NavbarProps) => {
   return (
-    <div>
-      <Link href={'/cards'}>내 명함</Link>
-      <Link href={'/collections'}>명함 수집</Link>
-      <Link href={'/settings'}>환경 설정</Link>
-    </div>
+    <>
+      <S.Navbar>
+        <S.NavItemLeft leadingButton={leadingButton} onClick={onClick} {...args} />
+        <S.Title>
+          <Typography type="body4" grayColor="white">
+            {title}
+          </Typography>
+        </S.Title>
+        <S.NavItemRight trailingButton={trailingButton} onClick={onClick} {...args} />
+      </S.Navbar>
+    </>
   );
 };
 

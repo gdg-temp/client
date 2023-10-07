@@ -8,6 +8,10 @@ import { AppPropsWithLayout, DefaultLayout } from '@layouts';
 import { GlobalStyles, theme } from '@styles';
 import { ThemeProvider } from 'styled-components';
 
+import localFont from 'next/font/local';
+
+const pretendard = localFont({ src: '../../public/fonts/PretendardVariable.woff2' });
+
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
   const [queryClient] = useState(
     () =>
@@ -31,18 +35,20 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ThemeProvider theme={theme}>
-        <GlobalStyles />
-        <ModalProvider>
-          <ToastProvider>
-            <RecoilRoot>
-              <QueryClientProvider client={queryClient}>
-                <DefaultLayout pageProps={...pageProps}>
-                  {getLayout(<Component {...pageProps} />)}
-                </DefaultLayout>
-              </QueryClientProvider>
-            </RecoilRoot>
-          </ToastProvider>
-        </ModalProvider>
+        <main className={pretendard.className}>
+          <GlobalStyles />
+          <ModalProvider>
+            <ToastProvider>
+              <RecoilRoot>
+                <QueryClientProvider client={queryClient}>
+                  <DefaultLayout pageProps={...pageProps}>
+                    {getLayout(<Component {...pageProps} />)}
+                  </DefaultLayout>
+                </QueryClientProvider>
+              </RecoilRoot>
+            </ToastProvider>
+          </ModalProvider>
+        </main>
       </ThemeProvider>
     </>
   );
