@@ -6,7 +6,7 @@ import type { ModalStyleProps, SizeStyleOption } from './types';
 const MODAL_WIDTH: Record<SizeStyleOption, string> = {
   large: '585px',
   small: '280px',
-  addLink: '180px',
+  addLink: '319px',
 };
 
 const MODAL_HEIGHT: Record<SizeStyleOption, string> = {
