@@ -42,7 +42,7 @@ const BUTTON_WIDTH: Record<ButtonProps['size'], string> = {
   medium: '100%',
   small: '74px',
   addLink: '96px',
-  addLinkItem: '180px',
+  addLinkItem: '100%',
 };
 
 const BUTTON_HEIGHT: Record<ButtonProps['size'], string> = {
