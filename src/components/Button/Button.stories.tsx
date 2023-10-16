@@ -3,9 +3,6 @@ import Button from './index';
 import type { StoryObj, Meta } from '@storybook/react';
 import { ButtonProps } from './types';
 
-import ArrowIcon from '../../../public/icons/ArrowIcon';
-import GitHubIcon from '../../../public/icons/GithubIcon';
-
 const meta: Meta<typeof Button> = {
   title: 'components/Button',
   component: Button,
@@ -37,8 +34,8 @@ export const AddLink: Story = {
     size: 'addLink',
     children: (
       <>
-        <GitHubIcon />
-        <ArrowIcon />
+        <img src={'icons/Github.svg'} />
+        <img src={'icons/CaretDown_16px.svg'} />
       </>
     ),
   },
