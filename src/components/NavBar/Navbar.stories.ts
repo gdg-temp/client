@@ -14,7 +14,7 @@ type Story = StoryObj<typeof NavBar>;
 export const Default: Story = {
   args: {
     leadingButton: 'back',
-    onClick: () => action('onClick Triggered')('test'),
+    onClickLeftBtn: () => action('onClick Triggered')('test'),
   },
 };
 
@@ -22,7 +22,8 @@ export const MainNav: Story = {
   args: {
     leadingButton: 'menu',
     trailingButton: 'add',
-    onClick: () => action('onClick Triggered')('test'),
+    onClickLeftBtn: () => action('onClick Triggered')('test'),
+    onClickRightBtn: () => action('onClick Triggered')('test'),
   },
 };
 
@@ -30,6 +31,6 @@ export const SubNav: Story = {
   args: {
     title: '명함 수정하기',
     leadingButton: 'back',
-    onClick: () => action('onClick Triggered')('test'),
+    onClickLeftBtn: () => action('onClick Triggered')('test'),
   },
 };

@@ -13,7 +13,12 @@ export interface NavbarProps {
   trailingButton?: 'add' | 'flip';
   /**
    *
-   * @returns 아이콘 클릭 시 실행될 함수입니다
+   * @returns 왼쪽 버튼 클릭 시 실행될 함수입니다
    */
-  onClick?: () => void;
+  onClickLeftBtn?: () => void;
+  /**
+   *
+   * @returns 오른쪽 버튼 클릭 시 실행될 함수입니다
+   */
+  onClickRightBtn?: () => void;
 }

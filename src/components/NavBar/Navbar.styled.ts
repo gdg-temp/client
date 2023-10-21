@@ -16,11 +16,10 @@ const Navbar = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 375px;
   height: 64px;
-  padding: 18px 24px;
+  padding: 18px 0px;
 `;
-3;
+
 const NavItemLeft = styled.div<NavbarProps>`
   background: ${({ leadingButton }) => (leadingButton != null ? LEFT_ICON[leadingButton] : null)};
   width: 24px;
