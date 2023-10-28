@@ -6,7 +6,7 @@ export interface ModalProps {
   buttonType?: 'noneButton' | 'oneButton' | 'twoButton';
   isLoading?: boolean;
   isOpened?: boolean;
-  size?: 'large' | 'small';
+  size?: 'large' | 'small' | 'addLink';
   onClick: () => void;
   onClose: () => void;
 }
