@@ -9,16 +9,29 @@ on:
 
 # List of jobs
 jobs:
-  test:
-    # Operating System
+  storybook:
     runs-on: ubuntu-latest
-    # Job steps
     steps:
       - uses: actions/checkout@v1
       - run: yarn
-        #👇 Adds Chromatic as a step in the workflow
-      - uses: chromaui/action@v1
-        # Options required for Chromatic's GitHub Action
+      - name: Chromatic Deployment
+        id: chromatic
+        uses: chromaui/action@v1
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Notify Slack on Success
+        uses: 8398a7/action-slack@v3
+        if: always()
+        with:
+          status: ${{ job.status }}
+          if_mention: failure,cancelled
+          mention: here
+          author_name: ${{ github.actor }}
+          text: |
+            Chromatic build finished!
+            - Chromatic : ${{ steps.chromatic.outputs.buildUrl }}
+            - Storybook : ${{ steps.chromatic.outputs.storybookUrl }}
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
