@@ -17,7 +17,7 @@ const KakaoRedirect = () => {
     }
     if (data?.isFirst) {
       //TODO:  생성시 필요한 데이터 아톰에 저장
-      router.replace('/generation');
+      router.replace('/signup');
     }
   }, [router, data]);
   return <></>;

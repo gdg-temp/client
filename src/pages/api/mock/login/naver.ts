@@ -5,10 +5,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const delay = (s: number) => new Promise((resolve) => setTimeout(resolve, s));
     await delay(500);
     res.status(200).json({
-      email: 'harry@kakao.com',
-      name: 'Harry',
-      oauthServerType: 'KAKAO',
-      isFirst: true,
+      email: 'jarry@naver.com',
+      name: 'Jarry',
+      oauthServerType: 'NAVER',
+      isFirst: false,
     });
   }
 };
