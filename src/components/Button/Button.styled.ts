@@ -53,6 +53,7 @@ const Button = styled.button<ButtonProps>`
   &:active {
     background-color: ${({ disabled, color }) => (disabled ? 'none' : BUTTON_ACTIVE[color])};
   }
+  z-index: 2;
 `;
 
 export default { Button };
