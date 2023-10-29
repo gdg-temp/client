@@ -5,4 +5,8 @@ const CARDS = 'CARDS_STATE';
 
 const CARD = 'CARD_STATE';
 
-export default { USER, CARDS, CARD };
+const CARD_BODY = 'CARD_BODY_STATE';
+
+const LINK_BODY = 'LINK_BODY_STATE';
+
+export default { USER, CARDS, CARD, CARD_BODY, LINK_BODY };

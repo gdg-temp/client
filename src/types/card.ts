@@ -1,20 +1,22 @@
-export type Card = {
-  id: number;
-  name: string;
-  email: string;
-  workType: string;
-  job: string;
-  position: string;
-  companyName: string;
-  companyAddress: string;
-  birth: string;
-  templateURL: string;
-  links: [
-    {
-      id: number;
-      linkType: string;
-      linkUrl: string;
-      linkText: string;
-    },
-  ];
+import { CardLink } from './link';
+
+export type Card = CardInfo & {
+  LinkInfoVOList: CardLink[];
 };
+
+export type CardInfo = {
+  cardId: number;
+  encodeId: string;
+  isMine: true;
+  name: string;
+  profileImage: string;
+  email: string;
+  introduction: string;
+  styleTemplate: string;
+  designTemplate: string;
+  companyName: string;
+  position: string;
+  reasonTexts: string[];
+};
+
+export type UpdateCardInfoReq = Omit<CardInfo, 'cardId' | 'encodeId' | 'isMine'>;
