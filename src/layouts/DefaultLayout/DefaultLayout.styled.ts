@@ -14,13 +14,16 @@ const DefaultLayoutWrapper = styled.div`
 const LandingLayoutWrapper = styled.div`
   background-color: ${({ theme }) => theme.colorGray.black};
   min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-position: -16vw 168px;
+  background-size: 160vw auto;
+  background-image: url('/bg-line-color.svg');
   // 데스크탑
   @media screen and (min-width: 768px) {
+    height: 100vh;
     width: 100vw;
-    display: flex;
-    justify-content: center;
-    background-image: url('/bg-line-color.svg');
-    background-repeat: no-repeat;
     background-position: center 64px;
     background-size: 1177.8px auto;
   }
