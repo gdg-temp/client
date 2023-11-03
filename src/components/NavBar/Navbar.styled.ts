@@ -17,7 +17,7 @@ const Navbar = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 64px;
-  padding: 18px 0px;
+  padding: 18px 0;
 `;
 
 const NavItemLeft = styled.div<NavbarProps>`
