@@ -4,6 +4,7 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
+    "baseUrl": ".",
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
@@ -24,7 +25,8 @@
       "@utils": ["./src/utils/index"],
       "@types": ["./src/types/index"],
       "@stores": ["./src/stores/index"],
-      "@templates": ["./src/templates/index"]
+      "@templates": ["./src/templates/index"],
+      "@pages/*": ["./src/pages/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
