@@ -4,22 +4,22 @@ import Typography from '../Typography';
 
 const NavBar = ({
   title,
-  leadingButton,
+  leadingButton = 'back',
   trailingButton,
-  onClickLeftBtn,
-  onClickRightBtn,
+  onClickLeft,
+  onClickRight,
   ...args
 }: NavbarProps) => {
   return (
     <>
       <S.Navbar>
-        <S.NavItemLeft leadingButton={leadingButton} onClick={onClickLeftBtn} {...args} />
+        <S.NavItemLeft leadingButton={leadingButton} onClick={onClickLeft} {...args} />
         <S.Title>
           <Typography type="body4" grayColor="white">
             {title}
           </Typography>
         </S.Title>
-        <S.NavItemRight trailingButton={trailingButton} onClick={onClickRightBtn} {...args} />
+        <S.NavItemRight trailingButton={trailingButton} onClick={onClickRight} {...args} />
       </S.Navbar>
     </>
   );

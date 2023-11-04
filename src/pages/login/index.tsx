@@ -61,6 +61,17 @@ const StartButtonIcon = styled.img`
 `;
 
 export default function LoginPage() {
+  const getLinkUrl = (target: string) => {
+    if (process.env.NEXT_PUBLIC_ENV === 'develop') {
+      return `/login/${target}?code=develop`;
+    } else if (target === 'kakao') {
+      return `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_CLIENT_ID_KAKAO}&response_type=code&redirect_uri=${process.env.NEXT_PUBLIC_REDIRECT_URI}/kakao`;
+    } else if (target === 'naver') {
+      return `https://nid.naver.com/oauth2.0/authorize?client_id=${process.env.NEXT_PUBLIC_CLIENT_ID_NAVER}&response_type=code&redirect_uri=${process.env.NEXT_PUBLIC_REDIRECT_URI}/naver&state=LYL`;
+    } else if (target === 'google') {
+      return `https://accounts.google.com/o/oauth2/v2/auth?client_id=${process.env.NEXT_PUBLIC_CLIENT_ID_GOOGLE}&redirect_uri=${process.env.NEXT_PUBLIC_REDIRECT_URI}/google&response_type=code&scope=email profile`;
+    }
+  };
   return (
     <LoginWrapper>
       <Logo src={'/logo-vertical.svg'} alt={'LYL Vertical logo'} />
@@ -70,28 +81,19 @@ export default function LoginPage() {
         </Typography>
       </LoginTextWrapper>
       <ButtonWrapper>
-        <StartButtonLink
-          backgroundColor="#FFCC01"
-          href={`https://kauth.kakao.com/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_CLIENT_ID_KAKAO}&response_type=code&redirect_uri=${process.env.NEXT_PUBLIC_REDIRECT_URI}/kakao`}
-        >
+        <StartButtonLink backgroundColor="#FFCC01" href={getLinkUrl('kakao')}>
           <StartButtonIcon src={'/login/kakao.svg'} />
           <Typography type="body3" grayColor="black">
             카카오톡으로 시작하기
           </Typography>
         </StartButtonLink>
-        <StartButtonLink
-          backgroundColor="#5AC451"
-          href={`https://nid.naver.com/oauth2.0/authorize?client_id=${process.env.NEXT_PUBLIC_CLIENT_ID_NAVER}&response_type=code&redirect_uri=${process.env.NEXT_PUBLIC_REDIRECT_URI}/naver&state=LYL`}
-        >
+        <StartButtonLink backgroundColor="#5AC451" href={getLinkUrl('naver')}>
           <StartButtonIcon src={'/login/naver.svg'} />
           <Typography type="body3" grayColor="white">
             네이버로 시작하기
           </Typography>
         </StartButtonLink>
-        <StartButtonLink
-          backgroundColor="#FFFFFF"
-          href={`https://accounts.google.com/o/oauth2/v2/auth?client_id=${process.env.NEXT_PUBLIC_CLIENT_ID_GOOGLE}&redirect_uri=${process.env.NEXT_PUBLIC_REDIRECT_URI}/google&response_type=code&scope=email profile`}
-        >
+        <StartButtonLink backgroundColor="#FFFFFF" href={getLinkUrl('google')}>
           <StartButtonIcon src={'/login/google.svg'} />
           <Typography type="body3" grayColor="black">
             구글로 시작하기

@@ -8,6 +8,8 @@ const getServerSideUserProps: GetServerSideProps<{
 }> = async (ctx) => {
   const cookies = ctx.req.headers.cookie;
   const path = ctx.resolvedUrl;
+  const isOnlyLoggedInPage =
+    path === '/collections' || path === '/settings' || path.includes('edit');
 
   let user = {} as User;
   try {
@@ -18,8 +20,6 @@ const getServerSideUserProps: GetServerSideProps<{
     });
   } catch (error) {
     // 에러 및 로그인 X
-    const isOnlyLoggedInPage =
-      path === '/collections' || path === '/settings' || path.includes('edit');
     if (isOnlyLoggedInPage) {
       return {
         redirect: {
@@ -32,7 +32,6 @@ const getServerSideUserProps: GetServerSideProps<{
   }
   switch (path) {
     case '/':
-    case '/generation':
     case '/login':
       return {
         // 로그인 되어있을 경우 카드리스트 페이지

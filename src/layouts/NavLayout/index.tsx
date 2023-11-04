@@ -14,7 +14,7 @@ const NavLayout = ({ children }: { children: ReactElement }) => {
 
   return (
     <>
-      <NavBar leadingButton="menu" trailingButton="add" onClickLeftBtn={toggleSidebar} />
+      <NavBar leadingButton="menu" trailingButton="add" onClickLeft={toggleSidebar} />
       {isSidebarOpen &&
         (userState.name ? (
           <SideBar isLogined={true} name="이름" loginIcon="kakao" onClose={toggleSidebar} />
