@@ -1,2 +1,2 @@
 export { default as KEY } from './key';
-export * from './agreement';
+export { AGREEMENT_TEXTS } from './agreement';

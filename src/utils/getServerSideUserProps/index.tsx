@@ -35,7 +35,6 @@ const getServerSideUserProps: GetServerSideProps<{
   }
   switch (path) {
     case '/':
-    case '/signup':
     case '/login':
       return {
         // 로그인 되어있을 경우 카드리스트 페이지

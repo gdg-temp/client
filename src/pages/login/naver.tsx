@@ -4,8 +4,11 @@ import { loginUser } from '@api';
 import { KEY } from '@static';
 import { useQuery } from '@tanstack/react-query';
 import { getServerSideUserProps } from '@utils';
+import { useRecoilState } from 'recoil';
+import { userAtom } from '@stores';
 
 const NaverRedirect = () => {
+  const [userState, setUserState] = useRecoilState(userAtom);
   const router = useRouter();
   const { data, isLoading, isError } = useQuery({
     queryKey: [KEY.USER],
@@ -16,10 +19,10 @@ const NaverRedirect = () => {
       router.replace('/login');
     }
     if (data?.isFirst) {
-      //TODO:  생성시 필요한 데이터 아톰에 저장
+      setUserState(data);
       router.replace('/signup');
     }
-  }, [router, data]);
+  }, [router, data, setUserState]);
   return <></>;
 };
 
