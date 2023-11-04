@@ -2,9 +2,17 @@ import S from './Sidebar.styled';
 import Typography from '../Typography';
 import type { SideBarProps } from './types';
 import { Button } from '@components';
-import router from 'next/router';
 
-const SideBar = ({ onClose, name, contentIcon, loginIcon, isLogined = false }: SideBarProps) => {
+const SideBar = ({
+  onClose,
+  onClick,
+  name,
+  contentIcon,
+  loginIcon,
+  isLogined = false,
+  myCardCnt = 0,
+  collectCardCnt = 0,
+}: SideBarProps) => {
   const handleBackgroundClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
     if (onClose) {
@@ -16,14 +24,6 @@ const SideBar = ({ onClose, name, contentIcon, loginIcon, isLogined = false }: S
     e.stopPropagation();
   };
 
-  const handleLoginClick = () => {
-    router.push('/login');
-  };
-
-  const handleLogoutClick = () => {
-    // 로그아웃
-  };
-
   interface menuItem {
     id: number;
     label: string;
@@ -32,13 +32,10 @@ const SideBar = ({ onClose, name, contentIcon, loginIcon, isLogined = false }: S
 
   const menuItems: menuItem[] = [
     { id: 1, label: '내소식', contentIcon: 'alarm' },
-    { id: 2, label: '내 명함', contentIcon: 'alarm' },
-    { id: 3, label: '명함 수집', contentIcon: 'alarm' },
+    { id: 2, label: '내 명함', contentIcon: 'mycard' },
+    { id: 3, label: '명함 수집', contentIcon: 'briefcase' },
     { id: 4, label: '환경설정', contentIcon: 'setting' },
   ];
-
-  const myCard: number = 3;
-  const allCard: number = 11;
 
   return (
     <>
@@ -57,13 +54,13 @@ const SideBar = ({ onClose, name, contentIcon, loginIcon, isLogined = false }: S
                   </S.UserInfoContainer>
                   <S.UserInfoContainer>
                     <Typography systemColor="main" type="caption1">
-                      {myCard}
+                      {myCardCnt}
                     </Typography>
                     <Typography grayColor="blueGray300" type="caption1">
                       내 명함
                     </Typography>
                     <Typography systemColor="main" type="caption1">
-                      {allCard}
+                      {collectCardCnt}
                     </Typography>
                     <Typography grayColor="blueGray300" type="caption1">
                       수집 명함
@@ -71,7 +68,7 @@ const SideBar = ({ onClose, name, contentIcon, loginIcon, isLogined = false }: S
                   </S.UserInfoContainer>
                   <S.ContentContainer>
                     {menuItems.map((menuItem) => (
-                      <S.ContentItems key={menuItem.id}>
+                      <S.ContentItems key={menuItem.id} onClick={onClick}>
                         <S.ContentIcon contentIcon={menuItem.contentIcon} />
                         <Typography type={'body3'} grayColor={'white'}>
                           {menuItem.label}
@@ -80,7 +77,7 @@ const SideBar = ({ onClose, name, contentIcon, loginIcon, isLogined = false }: S
                     ))}
                   </S.ContentContainer>
                 </S.SidebarContainer>
-                <S.LogoutButton onClick={handleLogoutClick}>{'로그아웃'}</S.LogoutButton>
+                <S.LogoutButton onClick={onClick}>{'로그아웃'}</S.LogoutButton>
               </>
             ) : (
               <>
@@ -91,15 +88,14 @@ const SideBar = ({ onClose, name, contentIcon, loginIcon, isLogined = false }: S
                     </Typography>
                   </S.UserInfoContainer>
                   <S.ButtonContainer>
-                    <Button size="medium" color="primary" onClick={handleLoginClick}>
+                    <Button size="medium" color="primary" onClick={onClick}>
                       회원가입
                     </Button>
-                    <Button size="medium" color="secondary" onClick={handleLoginClick}>
+                    <Button size="medium" color="secondary" onClick={onClick}>
                       로그인
                     </Button>
                   </S.ButtonContainer>
                 </S.SidebarContainer>
-                <S.LogoutButton onClick={handleLogoutClick}>{''}</S.LogoutButton>
               </>
             )}
           </S.SidebarWrapper>

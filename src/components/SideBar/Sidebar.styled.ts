@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-import Typography from '../Typography';
 import type { SideBarProps } from './types';
 
 const CONTENT_ICON: Record<Required<SideBarProps>['contentIcon'], string> = {
   alarm: "url('/icons/Alarm.svg') 50% 50% no-repeat",
-  breifcase: "url('/icons/Breifcase.svg') 50% 50% no-repeat",
+  briefcase: "url('/icons/Briefcase.svg') 50% 50% no-repeat",
   mycard: "url('/icons/mycard.svg') 50% 50% no-repeat",
   setting: "url('/icons/Setting.svg') 50% 50% no-repeat",
 };
@@ -17,7 +16,7 @@ const LOGIN_ICON: Record<Required<SideBarProps>['loginIcon'], string> = {
 
 const SidebarBackground = styled.div`
   position: fixed;
-  z-index: 20;
+  z-index: 30;
   background-color: rgba(0, 0, 0, 0.8);
   display: flex;
 `;
@@ -28,14 +27,14 @@ const SidebarWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: start;
-  padding: 60px 0px;
+  padding: 40px 0px;
   background: ${({ theme }) => theme.colorGray.black};
-  transition: left 0.3s ease-in-out;
 `;
 
 const SidebarContainer = styled.div`
   width: 221px;
-  margin-bottom: 310px;
+  margin-bottom: 335px;
+  margin-top: 33px;
 `;
 
 const CloseButton = styled.div`
