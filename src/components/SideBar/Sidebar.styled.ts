@@ -4,6 +4,8 @@ import type { SideBarProps } from './types';
 
 const CONTENT_ICON: Record<Required<SideBarProps>['contentIcon'], string> = {
   alarm: "url('/icons/Alarm.svg') 50% 50% no-repeat",
+  breifcase: "url('/icons/Breifcase.svg') 50% 50% no-repeat",
+  mycard: "url('/icons/mycard.svg') 50% 50% no-repeat",
   setting: "url('/icons/Setting.svg') 50% 50% no-repeat",
 };
 
@@ -22,24 +24,24 @@ const SidebarBackground = styled.div`
 
 const SidebarWrapper = styled.div`
   position: absolute;
-  width: 221px;
   height: 812px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 24px 0px;
+  justify-content: start;
+  padding: 60px 0px;
   background: ${({ theme }) => theme.colorGray.black};
   transition: left 0.3s ease-in-out;
 `;
 
 const SidebarContainer = styled.div`
   width: 221px;
+  margin-bottom: 310px;
 `;
 
 const CloseButton = styled.div`
   width: 24px;
   height: 24px;
-  background: url('/icons/Delete_simple.svg') 50% 50% no-repeat;
+  background: url('/icons/Delete_simple.svg') no-repeat;
   margin-left: 180px;
   cursor: pointer;
 `;
@@ -89,6 +91,9 @@ const ContentItems = styled.div`
   padding: 16px 28px;
   color: ${({ theme }) => theme.colorGray.white};
   cursor: pointer;
+  &:hover {
+    background: #343436;
+  }
 `;
 
 const ContentIcon = styled.div<Pick<SideBarProps, 'contentIcon'>>`

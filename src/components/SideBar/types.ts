@@ -6,7 +6,7 @@ export interface SideBarProps {
   /**
    * 컨텐츠를 나타내는 아이콘을 선택합니다.
    */
-  contentIcon?: 'alarm' | 'setting';
+  contentIcon?: 'alarm' | 'mycard' | 'breifcase' | 'setting';
   /**
    * 로그인 아이콘을 나타냅니다.
    */
@@ -16,8 +16,12 @@ export interface SideBarProps {
    */
   isLogined: boolean;
   /**
+   * @returns 버튼을 클릭하면 실행할 함수를 넣습니다.
+   */
+  onClick?: () => void;
+  /**
    *
    * @returns 사이드바를 닫을 수 있는 함수를 넣습니다.
    */
-  onClose: () => void;
+  onClose?: () => void;
 }

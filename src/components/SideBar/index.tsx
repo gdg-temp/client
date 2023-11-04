@@ -7,7 +7,9 @@ import router from 'next/router';
 const SideBar = ({ onClose, name, contentIcon, loginIcon, isLogined = false }: SideBarProps) => {
   const handleBackgroundClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
-    onClose();
+    if (onClose) {
+      onClose();
+    }
   };
 
   const preventPropagation = (e: React.MouseEvent<HTMLDivElement>) => {
