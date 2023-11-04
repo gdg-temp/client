@@ -7,6 +7,7 @@ declare global {
       NEXT_PUBLIC_CLIENT_ID_KAKAO: string;
       NEXT_PUBLIC_CLIENT_ID_NAVER: string;
       NEXT_PUBLIC_CLIENT_ID_GOOGLE: string;
+      NEXT_PUBLIC_ENV: string;
     }
   }
 }

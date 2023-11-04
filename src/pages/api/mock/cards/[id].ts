@@ -1,20 +1,23 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { Card } from '@types';
 
-const mockData = {
-  id: 10,
+const mockData: Card = {
+  cardId: 10,
+  encodeId: 'encodeId-1',
   name: '해리2',
   email: 'string',
-  workType: 'STUDENT',
-  job: 'string',
-  position: 'string',
+  position: 'STUDENT',
   companyName: 'string',
-  companyAddress: 'string',
-  birth: '1999-09-09',
-  templateURL: 'string',
-  links: [
+  designTemplate: '',
+  styleTemplate: '',
+  introduction: '',
+  isMine: true,
+  profileImage: '',
+  reasonTexts: [],
+  LinkInfoVOList: [
     {
       id: 0,
-      linkType: 'INSTAGRAM',
+      linkType: 'instagram',
       linkUrl: 'string',
       linkText: 'string',
     },
@@ -32,16 +35,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     case 'POST':
       res.status(200).json({
-        id: 77,
-        name: 'string',
-        email: 'string',
-        workType: 'STUDENT',
-        job: 'string',
-        position: 'string',
-        companyName: 'string',
-        companyAddress: 'string',
-        birth: '2023-09-17',
-        templateURL: 'string',
+        ...mockData,
+        ...req.body,
       });
       break;
     default:

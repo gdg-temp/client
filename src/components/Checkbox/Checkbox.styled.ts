@@ -27,6 +27,7 @@ const Checkbox = styled.input.attrs({
   appearance: none;
   width: 24px;
   height: 24px;
+  margin-right: ${({ shapes }) => (shapes === 'circle' ? '12px' : '16px')};
   cursor: pointer;
   border-radius: 50%;
   background: ${({ shapes }) => CHECKBOX_SHAPES[shapes]};

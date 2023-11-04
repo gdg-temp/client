@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import type { TypographyProps } from './types';
 
 const TypoWrapper = styled.div<TypographyProps>`
+  line-height: 140%;
   color: ${(props) => {
     if (props.customColor) {
       return props.customColor;

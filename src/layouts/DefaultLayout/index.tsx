@@ -13,6 +13,7 @@ interface DefaultLayoutProps {
 
 const DefaultLayout = ({ children, pageProps }: DefaultLayoutProps) => {
   const [userState, setUserState] = useRecoilState(userAtom);
+
   const { pathname } = useRouter();
 
   useEffect(() => {
