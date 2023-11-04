@@ -5,8 +5,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const delay = (s: number) => new Promise((resolve) => setTimeout(resolve, s));
     await delay(500);
 
-    const isAllowedUser = Object.hasOwn(req.cookies, 'LYL_TOKEN');
-    if (!isAllowedUser) {
+    const token = req.cookies['LYL_TOKEN'];
+    if (!token) {
       res.status(401).json({
         statusCode: 401,
         message: 'error',
@@ -14,8 +14,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     } else {
       res.status(200).json({
         id: 0,
-        email: 'harry@kakao.com',
-        name: 'Harry',
+        email: `${token}@kakao.com`,
+        name: token,
         oauthServerType: 'KAKAO',
       });
     }

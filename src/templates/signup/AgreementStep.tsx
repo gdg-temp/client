@@ -3,6 +3,7 @@ import { AGREEMENT_TEXTS } from '@static';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import S from './Signup.styled';
+import { checkAgreements } from '@utils';
 
 interface AgreementStepProps {
   onClickAllAgreement: (isCheck: boolean) => void;
@@ -24,16 +25,7 @@ const AgreementStep = ({
   const router = useRouter();
 
   useEffect(() => {
-    let requiredChecked = true;
-    let allChecked = true;
-    agreements.forEach((agreement, i) => {
-      // allChecked 검증
-      if (!agreement) allChecked = false;
-      // requiredChecked 검증
-      if (AGREEMENT_TEXTS[i].required && !agreement) {
-        requiredChecked = false;
-      }
-    });
+    const { allChecked, requiredChecked } = checkAgreements(agreements);
     setIsAllChecked(allChecked);
     setIsRequiredChecked(requiredChecked);
   }, [agreements]);

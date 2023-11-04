@@ -57,7 +57,7 @@ export default function SignUpPage() {
       />
     );
   } else {
-    return <ConfirmStep />;
+    return <ConfirmStep agreements={agreements} />;
   }
 }
 
