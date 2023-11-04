@@ -9,10 +9,7 @@ const getServerSideUserProps: GetServerSideProps<{
   const cookies = ctx.req.headers.cookie;
   const path = ctx.resolvedUrl;
   const isOnlyLoggedInPage =
-    path === '/collections' ||
-    path === '/settings' ||
-    path.includes('generation') ||
-    path.includes('edit');
+    path === '/collections' || path === '/settings' || path.includes('edit');
 
   let user = {} as User;
   try {
