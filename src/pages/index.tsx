@@ -52,7 +52,7 @@ export default function HomePage() {
       <HomeWrapper>
         <LogoTextWrapper>링크로 공유하는 내 명함</LogoTextWrapper>
         <Logo src="/logo-vertical.svg" alt={'logo'} />
-        <CardImageWrapper src={'/icons/splash-card.svg'} alt={'Splash Card Image'} />
+        <CardImageWrapper src={'/landing/splash-card.svg'} alt={'Splash Card Image'} />
         <Button color="primary" size="large" onClick={() => router.push('/login')}>
           로그인
         </Button>
