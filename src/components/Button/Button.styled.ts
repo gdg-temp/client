@@ -87,6 +87,7 @@ const Button = styled.button<ButtonProps>`
     border: ${({ disabled, color }) => (disabled ? 'none' : BUTTON_BORDER[color])};
     color: ${({ color }) => (color === 'addLinkItem' ? '#5C42ff' : FONT_COLOR[color])};
   }
+  z-index: 2;
 `;
 
 export default { Button, IconWrapper, addLinkItemWrapper };

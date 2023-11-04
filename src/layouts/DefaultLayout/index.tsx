@@ -21,8 +21,8 @@ const DefaultLayout = ({ children, pageProps }: DefaultLayoutProps) => {
       setUserState(pageProps.user);
     }
   }, []);
-  if (pathname.startsWith('/login')) return <S.LoginLayoutWrapper>{children}</S.LoginLayoutWrapper>;
-  if (pathname === '/') return <S.LandingLayoutWrapper>{children}</S.LandingLayoutWrapper>;
+  if (pathname === '/' || pathname === '/login')
+    return <S.LoginLayoutWrapper>{children}</S.LoginLayoutWrapper>;
   return <S.DefaultLayoutWrapper>{children}</S.DefaultLayoutWrapper>;
 };
 
