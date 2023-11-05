@@ -10,7 +10,7 @@ export interface SideBarProps {
   /**
    * 로그인 아이콘을 나타냅니다.
    */
-  loginIcon?: 'kakao' | 'naver' | 'google';
+  loginIcon?: 'KAKAO' | 'NAVER' | 'GOOGLE';
   /**
    *  로그인 여부를 결정합니다.
    */
@@ -24,12 +24,16 @@ export interface SideBarProps {
    */
   collectCardCnt?: number;
   /**
-   * @returns 버튼을 클릭하면 실행할 함수를 넣습니다.
-   */
-  onClick?: () => void;
-  /**
-   *
    * @returns 사이드바를 닫을 수 있는 함수를 넣습니다.
    */
   onClose?: () => void;
+  /**
+   * @returns 로그인 버튼을 누를 시 실행될 함수를 넣습니다.
+   */
+  onClickLogin?: () => void;
+  /**
+   *
+   * @returns 로그아웃 버튼을 누를 시 실행될 함수를 넣습니다.
+   */
+  onClickLogout?: () => void;
 }

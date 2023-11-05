@@ -13,7 +13,7 @@ type Story = StoryObj<typeof SideBar>;
 
 export const Default: Story = {
   args: {
-    onClick: () => action('onClick Triggered')('test'),
+    onClickLogin: () => action('onClickLogin Triggered')('test'),
     onClose: () => action('onClose Triggered')('test'),
     isLogined: false,
   },
@@ -22,9 +22,9 @@ export const Default: Story = {
 export const Logined: Story = {
   args: {
     name: '이름',
-    loginIcon: 'kakao',
-    onClick: () => action('onClick Triggered')('test'),
+    loginIcon: 'KAKAO',
     onClose: () => action('onClose Triggered')('test'),
+    onClickLogout: () => action('onClickLogout Triggered')('test'),
     isLogined: true,
   },
 };

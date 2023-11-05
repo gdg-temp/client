@@ -9,9 +9,9 @@ const CONTENT_ICON: Record<Required<SideBarProps>['contentIcon'], string> = {
 };
 
 const LOGIN_ICON: Record<Required<SideBarProps>['loginIcon'], string> = {
-  kakao: "url('/icons/Kakao.svg') 50% 50% no-repeat",
-  google: "url('/icons/Google.svg') 50% 50% no-repeat",
-  naver: "url('/icons/Naver.svg') 50% 50% no-repeat",
+  KAKAO: "url('/icons/Kakao.svg') 50% 50% no-repeat",
+  GOOGLE: "url('/icons/Google.svg') 50% 50% no-repeat",
+  NAVER: "url('/icons/Naver.svg') 50% 50% no-repeat",
 };
 
 const SidebarBackground = styled.div`
@@ -23,7 +23,6 @@ const SidebarBackground = styled.div`
 
 const SidebarWrapper = styled.div`
   position: absolute;
-  height: 812px;
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -38,6 +37,7 @@ const SidebarContainer = styled.div`
 `;
 
 const CloseButton = styled.div`
+  position: fixed;
   width: 24px;
   height: 24px;
   background: url('/icons/Delete_simple.svg') no-repeat;
@@ -47,26 +47,22 @@ const CloseButton = styled.div`
 
 const LogoutButton = styled.button`
   font-size: 14px;
-  font-weight: medium;
   color: ${({ theme }) => theme.colorGray.blueGray300};
   height: 43.56px;
-  padding: 16px 28px;
 `;
 
 const UserInfoContainer = styled.div`
   display: flex;
   flex-direction: row;
   gap: 6px;
+  margin-top: 33px;
   margin-bottom: 24px;
   padding: 0px 28px;
   background: ${({ theme }) => theme.colorGray.black};
 `;
 
 const ButtonContainer = styled.div`
-  display: flex;
-  flex-direction: column;
   padding: 0px 28px;
-  gap: 12px;
 `;
 
 const LoginIcon = styled.div<Pick<SideBarProps, 'loginIcon'>>`
