@@ -2,16 +2,18 @@ import S from './Sidebar.styled';
 import Typography from '../Typography';
 import type { SideBarProps } from './types';
 import { Button } from '@components';
+import { useRouter } from 'next/router';
 
 const SideBar = ({
   onClose,
-  onClick,
   name,
   contentIcon,
   loginIcon,
   isLogined = false,
   myCardCnt = 0,
   collectCardCnt = 0,
+  onClickLogin,
+  onClickLogout,
 }: SideBarProps) => {
   const handleBackgroundClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
@@ -24,17 +26,28 @@ const SideBar = ({
     e.stopPropagation();
   };
 
-  interface menuItem {
+  const router = useRouter();
+
+  const menuItems: {
     id: number;
     label: string;
     contentIcon: typeof contentIcon;
-  }
-
-  const menuItems: menuItem[] = [
-    { id: 1, label: '내소식', contentIcon: 'alarm' },
-    { id: 2, label: '내 명함', contentIcon: 'mycard' },
-    { id: 3, label: '명함 수집', contentIcon: 'briefcase' },
-    { id: 4, label: '환경설정', contentIcon: 'setting' },
+    handlerouter: () => void;
+  }[] = [
+    { id: 1, label: '내소식', contentIcon: 'alarm', handlerouter: () => router.push('/') },
+    { id: 2, label: '내 명함', contentIcon: 'mycard', handlerouter: () => router.push('/card') },
+    {
+      id: 3,
+      label: '명함 수집',
+      contentIcon: 'briefcase',
+      handlerouter: () => router.push('/collection'),
+    },
+    {
+      id: 4,
+      label: '환경설정',
+      contentIcon: 'setting',
+      handlerouter: () => router.push('/setting'),
+    },
   ];
 
   return (
@@ -68,7 +81,7 @@ const SideBar = ({
                   </S.UserInfoContainer>
                   <S.ContentContainer>
                     {menuItems.map((menuItem) => (
-                      <S.ContentItems key={menuItem.id} onClick={onClick}>
+                      <S.ContentItems key={menuItem.id} onClick={menuItem.handlerouter}>
                         <S.ContentIcon contentIcon={menuItem.contentIcon} />
                         <Typography type={'body3'} grayColor={'white'}>
                           {menuItem.label}
@@ -77,7 +90,7 @@ const SideBar = ({
                     ))}
                   </S.ContentContainer>
                 </S.SidebarContainer>
-                <S.LogoutButton onClick={onClick}>{'로그아웃'}</S.LogoutButton>
+                <S.LogoutButton onClick={onClickLogout}>{'로그아웃'}</S.LogoutButton>
               </>
             ) : (
               <>
@@ -88,10 +101,7 @@ const SideBar = ({
                     </Typography>
                   </S.UserInfoContainer>
                   <S.ButtonContainer>
-                    <Button size="medium" color="primary" onClick={onClick}>
-                      회원가입
-                    </Button>
-                    <Button size="medium" color="secondary" onClick={onClick}>
+                    <Button size="medium" color="primary" onClick={onClickLogin}>
                       로그인
                     </Button>
                   </S.ButtonContainer>
