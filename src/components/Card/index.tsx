@@ -37,7 +37,7 @@ const Card = ({
         {isFront ? (
           <>
             <S.CardFront
-              style={{ background: `url('/card_design/${designTemplate}/${styleTemplate}')` }}
+              style={{ background: `url('/card_design/${designTemplate}/${styleTemplate}.png')` }}
             >
               <S.CardFrontTop>
                 <div>

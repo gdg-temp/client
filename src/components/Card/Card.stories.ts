@@ -21,6 +21,6 @@ export const Default: Story = {
     reasons: 'default',
     isFront: true,
     designTemplate: 'soft',
-    styleTemplate: '1.png',
+    styleTemplate: 1,
   },
 };

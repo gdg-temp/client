@@ -40,9 +40,9 @@ export interface CardProps {
   /**
    * 명함의 디자인를 정합니다.
    */
-  designTemplate: string;
+  designTemplate: 'default' | 'city' | 'character' | 'future' | 'line' | 'soft';
   /**
    * 명함의 스타일를 정합니다.
    */
-  styleTemplate: string;
+  styleTemplate: number;
 }
