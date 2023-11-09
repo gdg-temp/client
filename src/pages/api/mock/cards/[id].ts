@@ -8,7 +8,7 @@ const mockData: Card = {
   email: 'string',
   position: 'STUDENT',
   companyName: 'string',
-  designTemplate: '',
+  designTemplate: 0,
   styleTemplate: '',
   introduction: '',
   isMine: true,

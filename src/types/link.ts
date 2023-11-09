@@ -19,4 +19,3 @@ export type LinkType =
   | 'thread'
   | 'youtube'
   | 'tiktok';
-export type UpdateCardLinkReq = Omit<CardLink, 'id'>;
