@@ -12,3 +12,7 @@ export type PostGenerationRequest = DefaultCardInfo & {
 export type PostLinkRequest = Omit<CardLink, 'id'> & { cardId: number };
 
 export type UpdateLinkRequest = Partial<Omit<CardLink, 'id'>> & { linkId: number };
+
+export type PostImageRequest = {
+  file: string;
+};
