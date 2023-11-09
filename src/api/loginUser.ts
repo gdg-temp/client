@@ -12,7 +12,10 @@ const loginUser = async <T = User>(
   config?: AxiosRequestConfig,
 ): Promise<T> => {
   const { oauthServerType, code } = loginParams;
-  const { data } = await axiosInstance.get<T>(`/login/${oauthServerType}?code=${code}`, config);
+  const { data } = await axiosInstance.get<T>(
+    `/login/${oauthServerType.toLowerCase()}?code=${code}`,
+    config,
+  );
   return data;
 };
 

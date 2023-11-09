@@ -18,7 +18,7 @@ const Navbar = styled.div`
   align-items: center;
   width: 375px;
   height: 64px;
-  padding: 18px 24px;
+  padding: 18px 0;
 `;
 3;
 const NavItemLeft = styled.div<NavbarProps>`
