@@ -1,5 +1,5 @@
 export type CardLink = {
-  id: number;
+  id?: number;
   linkType: LinkType;
   linkUrl: string;
   linkText: string;

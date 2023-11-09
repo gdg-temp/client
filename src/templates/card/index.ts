@@ -1,3 +1,3 @@
-export { default as CardInfo } from './CardInfo';
-export { default as CardStyled } from './CardStyled';
-export { default as CardReason } from './CardReason';
+export { default as CardInfoForm } from './CardInfoForm';
+export { default as CardStyledForm } from './CardStyledForm';
+export { default as CardReasonForm } from './CardReasonForm';
