@@ -4,10 +4,6 @@ export interface SideBarProps {
    */
   name?: string;
   /**
-   * 컨텐츠를 나타내는 아이콘을 선택합니다.
-   */
-  contentIcon?: 'alarm' | 'mycard' | 'briefcase' | 'setting';
-  /**
    * 로그인 아이콘을 나타냅니다.
    */
   loginIcon?: 'KAKAO' | 'NAVER' | 'GOOGLE';

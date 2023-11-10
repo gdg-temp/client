@@ -1,27 +1,23 @@
 import styled from 'styled-components';
 import type { SideBarProps } from './types';
 
-const CONTENT_ICON: Record<Required<SideBarProps>['contentIcon'], string> = {
-  alarm: "url('/icons/Alarm.svg') 50% 50% no-repeat",
-  briefcase: "url('/icons/Briefcase.svg') 50% 50% no-repeat",
-  mycard: "url('/icons/mycard.svg') 50% 50% no-repeat",
-  setting: "url('/icons/Setting.svg') 50% 50% no-repeat",
-};
-
 const LOGIN_ICON: Record<Required<SideBarProps>['loginIcon'], string> = {
-  KAKAO: "url('/icons/Kakao.svg') 50% 50% no-repeat",
-  GOOGLE: "url('/icons/Google.svg') 50% 50% no-repeat",
-  NAVER: "url('/icons/Naver.svg') 50% 50% no-repeat",
+  KAKAO: "url('/icons/kakao_mini.svg') 50% 50% no-repeat",
+  GOOGLE: "url('/icons/google_mini.svg') 50% 50% no-repeat",
+  NAVER: "url('/icons/naver_mini.svg') 50% 50% no-repeat",
 };
 
 const SidebarBackground = styled.div`
   position: fixed;
+  width: 375px;
+  height: 100vh;
   z-index: 30;
   background-color: rgba(0, 0, 0, 0.8);
   display: flex;
 `;
 
 const SidebarWrapper = styled.div`
+  height: 812px;
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -41,6 +37,7 @@ const CloseButton = styled.div`
   width: 24px;
   height: 24px;
   background: url('/icons/Delete_simple.svg') no-repeat;
+  fill: ${({ theme }) => theme.colorGray.blueGray400};
   margin-left: 180px;
   cursor: pointer;
 `;
@@ -54,11 +51,11 @@ const LogoutButton = styled.button`
 const UserInfoContainer = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 6px;
   margin-top: 33px;
   margin-bottom: 24px;
   padding: 0px 28px;
-  background: ${({ theme }) => theme.colorGray.black};
 `;
 
 const ButtonContainer = styled.div`
@@ -91,8 +88,7 @@ const ContentItems = styled.div`
   }
 `;
 
-const ContentIcon = styled.div<Pick<SideBarProps, 'contentIcon'>>`
-  background: ${({ contentIcon }) => (contentIcon != null ? CONTENT_ICON[contentIcon] : null)};
+const ContentIcon = styled.img`
   width: 24px;
   height: 24px;
   margin-right: 8px;

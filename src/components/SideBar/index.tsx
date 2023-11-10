@@ -7,7 +7,6 @@ import { useRouter } from 'next/router';
 const SideBar = ({
   onClose,
   name,
-  contentIcon,
   loginIcon,
   isLogined = false,
   myCardCnt = 0,
@@ -31,21 +30,31 @@ const SideBar = ({
   const menuItems: {
     id: number;
     label: string;
-    contentIcon: typeof contentIcon;
+    contentIcon: string;
     handlerouter: () => void;
   }[] = [
-    { id: 1, label: '내소식', contentIcon: 'alarm', handlerouter: () => router.push('/') },
-    { id: 2, label: '내 명함', contentIcon: 'mycard', handlerouter: () => router.push('/card') },
+    {
+      id: 1,
+      label: '내소식',
+      contentIcon: '/icons/Alarm.svg',
+      handlerouter: () => router.push('/'),
+    },
+    {
+      id: 2,
+      label: '내 명함',
+      contentIcon: '/icons/Briefcase.svg',
+      handlerouter: () => router.push('/cards'),
+    },
     {
       id: 3,
       label: '명함 수집',
-      contentIcon: 'briefcase',
+      contentIcon: '/icons/mycard.svg',
       handlerouter: () => router.push('/collection'),
     },
     {
       id: 4,
       label: '환경설정',
-      contentIcon: 'setting',
+      contentIcon: '/icons/Setting.svg',
       handlerouter: () => router.push('/setting'),
     },
   ];
@@ -82,7 +91,7 @@ const SideBar = ({
                   <S.ContentContainer>
                     {menuItems.map((menuItem) => (
                       <S.ContentItems key={menuItem.id} onClick={menuItem.handlerouter}>
-                        <S.ContentIcon contentIcon={menuItem.contentIcon} />
+                        <S.ContentIcon src={menuItem.contentIcon} />
                         <Typography type={'body3'} grayColor={'white'}>
                           {menuItem.label}
                         </Typography>
