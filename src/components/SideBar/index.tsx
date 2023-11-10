@@ -49,13 +49,13 @@ const SideBar = ({
       id: 3,
       label: '명함 수집',
       contentIcon: '/icons/mycard.svg',
-      handlerouter: () => router.push('/collection'),
+      handlerouter: () => router.push('/collections'),
     },
     {
       id: 4,
       label: '환경설정',
       contentIcon: '/icons/Setting.svg',
-      handlerouter: () => router.push('/setting'),
+      handlerouter: () => router.push('/settings'),
     },
   ];
 
