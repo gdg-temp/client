@@ -22,10 +22,10 @@ const NavLayout = ({ children }: { children: ReactElement }) => {
     queryFn: () => getCards(),
   });
 
-  // const collectionData = useQuery({
-  //   queryKey: [KEY.COLLECTION],
-  //   queryFn: () => getCollection(),
-  // });
+  const collectionData = useQuery({
+    queryKey: [KEY.COLLECTION],
+    queryFn: () => getCollection(),
+  });
 
   // 페이지에 따른 네비게이션바 설정 필요
   return (
@@ -43,7 +43,7 @@ const NavLayout = ({ children }: { children: ReactElement }) => {
             name={userState.name}
             loginIcon={userState.oauthServerType}
             myCardCnt={cardsData.data?.length}
-            collectCardCnt={0}
+            collectCardCnt={collectionData.data?.length}
             onClose={() => setisSidebarOpen(!isSidebarOpen)}
             onClickLogout={() => {}}
           />
