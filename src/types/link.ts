@@ -11,7 +11,7 @@ export type LinkType =
   | 'behance'
   | 'tistory'
   | 'linkedin'
-  | 'naverBlog'
+  | 'naverblog'
   | 'instagram'
   | 'notion'
   | 'medium'
