@@ -5,13 +5,19 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { CardLink, DefaultCardInfo, ReasonTexts } from '@types';
 import { NavBar, Typography } from '@components';
+import { DefaultTemplate } from '@templates';
+import { InferGetServerSidePropsType } from 'next';
 
 type GenerateStep = 'default' | 'reason' | 'style' | 'confirm';
 
-export default function GenerationPage() {
+export default function GenerationPage({
+  user,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [userState, setUserState] = useRecoilState(userAtom);
   const [generateStep, setGenerateStep] = useState<GenerateStep>('default');
-  const [cardLinks, setCardLinks] = useState<CardLink[]>([]);
+  const [cardLinks, setCardLinks] = useState<CardLink[]>([
+    { linkText: '', linkType: 'custom', linkUrl: '' },
+  ]);
   const [reasonTexts, setReasonTexts] = useState<ReasonTexts>([]);
   const [cardInfo, setCardInfo] = useState<DefaultCardInfo>({
     name: userState.name,
@@ -24,9 +30,7 @@ export default function GenerationPage() {
     designTemplate: 0,
   });
   const router = useRouter();
-  useEffect(() => {
-    if (!userState.email) router.push('/login');
-  }, [router, userState]);
+
   const handleClickBack = () => {
     if (generateStep === 'default') router.push('/cards');
     if (generateStep === 'reason') setGenerateStep('default');
@@ -97,6 +101,14 @@ export default function GenerationPage() {
     <>
       <NavBar onClickLeft={handleClickBack} />
       {getHeaderText()}
+      <DefaultTemplate
+        cardInfo={cardInfo}
+        cardLinks={cardLinks}
+        changeCardInfo={changeCardInfo}
+        removeCardLinkByIndex={removeCardLinkByIndex}
+        addCardLink={addCardLink}
+        changeCardLink={changeCardLink}
+      />
     </>
   );
 }

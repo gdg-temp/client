@@ -11,7 +11,7 @@ const Input = styled.input<InputProps>`
       : `1px solid ${props.theme.color.success}`};
   border-radius: 8px;
   outline: none;
-  width: 319px;
+  width: 100%;
   height: 48px;
   font-size: ${({ theme }) => theme.fontSize.body3};
   font-weight: ${({ theme }) => theme.fontWeight.regular};

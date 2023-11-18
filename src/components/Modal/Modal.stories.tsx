@@ -63,7 +63,7 @@ const iconList = [
   ['notion.svg', 'Notion'],
   ['medium.svg', 'Medium'],
   ['x.svg', 'X'],
-  ['threads.svg', 'Thread'],
+  ['thread.svg', 'Thread'],
   ['youtube.svg', 'Youtube'],
   ['tiktok.svg', 'Tiktok'],
 ].map((ele, index) => (

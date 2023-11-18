@@ -5,3 +5,4 @@ export { default as loginUser } from './loginUser';
 export { default as postSignup } from './postSignup';
 export { default as postGeneration } from './postGeneration';
 export { default as postLink } from './postLink';
+export { default as postImage } from './postImage';
