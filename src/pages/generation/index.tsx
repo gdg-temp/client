@@ -5,10 +5,16 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { CardLink, DefaultCardInfo, ReasonTexts, ReasonType } from '@types';
 import { NavBar, Typography } from '@components';
-import { DefaultFooter, DefaultTemplate, ReasonTemplate } from '@templates';
+import {
+  DefaultFooter,
+  DefaultTemplate,
+  DesignTemplate,
+  ReasonTemplate,
+  StyleTemplate,
+} from '@templates';
 import { InferGetServerSidePropsType } from 'next';
 
-type GenerateStep = 'default' | 'reason' | 'style' | 'confirm';
+type GenerateStep = 'default' | 'reason' | 'style' | 'design' | 'confirm';
 
 export default function GenerationPage({
   user,
@@ -34,8 +40,8 @@ export default function GenerationPage({
     companyName: '',
     position: '',
     profileImage: '',
-    styleTemplate: 'default',
-    designTemplate: 0,
+    styleTemplate: 'default' as const,
+    designTemplate: 1,
   });
   const router = useRouter();
 
@@ -43,7 +49,8 @@ export default function GenerationPage({
     if (generateStep === 'default') router.push('/cards');
     if (generateStep === 'reason') setGenerateStep('default');
     if (generateStep === 'style') setGenerateStep('reason');
-    if (generateStep === 'confirm') setGenerateStep('style');
+    if (generateStep === 'design') setGenerateStep('style');
+    if (generateStep === 'confirm') setGenerateStep('design');
   };
 
   const getHeaderText = () => {
@@ -70,7 +77,16 @@ export default function GenerationPage({
         <Typography grayColor="white" type="title2">
           {cardInfo.name}님을 표현하는
           <br />
-          스타일을 골라보세요!
+          <span style={{ color: '#EBD9FF' }}>스타일</span>을 골라보세요!
+        </Typography>
+      );
+    }
+    if (generateStep === 'design') {
+      return (
+        <Typography grayColor="white" type="title2">
+          {cardInfo.name}님을 표현하는
+          <br />
+          <span style={{ color: '#EBD9FF' }}>디자인</span>을 골라보세요!
         </Typography>
       );
     }
@@ -146,7 +162,27 @@ export default function GenerationPage({
           </>
         );
       case 'style':
-        return <></>;
+        return (
+          <>
+            <StyleTemplate
+              cardInfo={cardInfo}
+              changeCardInfo={changeCardInfo}
+              onPrev={() => setGenerateStep('reason')}
+              onNext={() => setGenerateStep('design')}
+            />
+          </>
+        );
+      case 'design':
+        return (
+          <>
+            <DesignTemplate
+              cardInfo={cardInfo}
+              changeCardInfo={changeCardInfo}
+              onPrev={() => setGenerateStep('style')}
+              onNext={() => setGenerateStep('confirm')}
+            />
+          </>
+        );
       case 'confirm':
         return <></>;
 

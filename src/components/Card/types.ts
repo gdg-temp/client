@@ -1,3 +1,4 @@
+import { StyleType } from '@types';
 import { ReactNode } from 'react';
 
 export interface CardProps {
@@ -8,19 +9,19 @@ export interface CardProps {
   /**
    * 명함 속 회사 입니다.
    */
-  company: string;
+  company?: string;
   /**
    * 명함 속 직책 입니다.
    */
-  position: string;
+  position?: string;
   /**
    * 명함 속 이메일 입니다.
    */
   email: string;
   /**
-   * 명함 속 프로필컴포넌트 입니다.
+   * 명함 속 프로필 이미지 url 입니다.
    */
-  profile?: ReactNode;
+  profileUrl?: string;
   /**
    * 명함 속 링크들의 정보 입니다.
    */
@@ -40,9 +41,9 @@ export interface CardProps {
   /**
    * 명함의 디자인를 정합니다.
    */
-  designTemplate: 'default' | 'city' | 'character' | 'future' | 'line' | 'soft';
+  designTemplate: number;
   /**
    * 명함의 스타일를 정합니다.
    */
-  styleTemplate: number;
+  styleTemplate: StyleType;
 }

@@ -14,4 +14,27 @@ const NextStepWrapper = styled.div`
   flex-grow: 2;
 `;
 
-export default { StepsWrapper, PrevStepWrapper, NextStepWrapper };
+const DesignArrowWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #1e1e1e;
+  cursor: pointer;
+`;
+
+const DesignSelectWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export default {
+  StepsWrapper,
+  PrevStepWrapper,
+  NextStepWrapper,
+  DesignArrowWrapper,
+  DesignSelectWrapper,
+};

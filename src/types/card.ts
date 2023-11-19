@@ -16,7 +16,7 @@ export type DefaultCardInfo = {
   profileImage: string;
   email: string;
   introduction: string;
-  styleTemplate: string;
+  styleTemplate: StyleType;
   designTemplate: number;
   companyName: string;
   position: string;
@@ -25,3 +25,5 @@ export type DefaultCardInfo = {
 export type ReasonTexts = string[];
 
 export type UpdateCardInfoReq = Omit<CardInfo, 'cardId' | 'encodeId' | 'isMine'>;
+
+export type StyleType = 'default' | 'city' | 'character' | 'future' | 'line' | 'soft';

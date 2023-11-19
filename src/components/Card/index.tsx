@@ -9,7 +9,7 @@ const Card = ({
   company,
   position,
   email,
-  profile,
+  profileUrl,
   linkInfo,
   reasons,
   isFront = true,
@@ -25,7 +25,7 @@ const Card = ({
         company={company}
         position={position}
         email={email}
-        profile={profile}
+        profileUrl={profileUrl}
         linkInfo={linkInfo}
         reasons={reasons}
         isFront={isFront}
@@ -37,14 +37,18 @@ const Card = ({
         {isFront ? (
           <>
             <S.CardFront
-              style={{ background: `url('/card_design/${designTemplate}/${styleTemplate}.png')` }}
+              style={{ background: `url('/card_design/${styleTemplate}/${designTemplate}.png')` }}
             >
               <S.CardFrontTop>
                 <div>
                   <S.CardFrontName>{name}</S.CardFrontName>
                   <S.CardFrontPosition>{position}</S.CardFrontPosition>
                 </div>
-                {profile ? <Profile size="small" /> : <div style={{ height: '84px' }}></div>}
+                {styleTemplate !== 'character' ? (
+                  <Profile size="small" src={profileUrl} />
+                ) : (
+                  <div style={{ height: '84px' }}></div>
+                )}
               </S.CardFrontTop>
               <S.CardFrontEmail>
                 <img src="/icons/Email.svg" alt="email" />
