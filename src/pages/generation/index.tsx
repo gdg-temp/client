@@ -3,9 +3,9 @@ import { useRecoilState } from 'recoil';
 import { userAtom } from '@stores';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { CardLink, DefaultCardInfo, ReasonTexts } from '@types';
+import { CardLink, DefaultCardInfo, ReasonTexts, ReasonType } from '@types';
 import { NavBar, Typography } from '@components';
-import { DefaultTemplate } from '@templates';
+import { DefaultFooter, DefaultTemplate, ReasonTemplate } from '@templates';
 import { InferGetServerSidePropsType } from 'next';
 
 type GenerateStep = 'default' | 'reason' | 'style' | 'confirm';
@@ -18,7 +18,15 @@ export default function GenerationPage({
   const [cardLinks, setCardLinks] = useState<CardLink[]>([
     { linkText: '', linkType: 'custom', linkUrl: '' },
   ]);
-  const [reasonTexts, setReasonTexts] = useState<ReasonTexts>([]);
+  const [reasonTexts, setReasonTexts] = useState<{ [key in ReasonType]: boolean }>({
+    share: false,
+    image: false,
+    contact: false,
+    introduce: false,
+    coworker: false,
+    communication: false,
+    nothing: false,
+  });
   const [cardInfo, setCardInfo] = useState<DefaultCardInfo>({
     name: userState.name,
     email: userState.email,
@@ -79,8 +87,16 @@ export default function GenerationPage({
     });
   };
 
-  const changeReasonTexts = (arr: ReasonTexts) => {
-    setReasonTexts(arr);
+  const changeReasonTexts = (reasonKey: ReasonType, isActive: boolean) => {
+    const activeCount = Object.values(reasonTexts).reduce((acc, cur) => {
+      return cur ? acc + 1 : acc;
+    }, 0);
+    if (activeCount >= 3 && isActive === true) return;
+    setReasonTexts((prev) => {
+      const newObj = { ...prev };
+      newObj[reasonKey] = isActive;
+      return newObj;
+    });
   };
 
   const removeCardLinkByIndex = (index: number) => {
@@ -97,18 +113,52 @@ export default function GenerationPage({
       ...prev.slice(index + 1),
     ]);
   };
+  const getTemplate = () => {
+    switch (generateStep) {
+      case 'default':
+        return (
+          <>
+            <DefaultTemplate
+              cardInfo={cardInfo}
+              cardLinks={cardLinks}
+              changeCardInfo={changeCardInfo}
+              removeCardLinkByIndex={removeCardLinkByIndex}
+              addCardLink={addCardLink}
+              changeCardLink={changeCardLink}
+            />
+            <DefaultFooter
+              confirmText={'다음'}
+              onConfirm={() => setGenerateStep('reason')}
+              isNew={true}
+              disabled={!cardInfo.name || !cardInfo.email}
+            />
+          </>
+        );
+      case 'reason':
+        return (
+          <>
+            <ReasonTemplate
+              reasonTexts={reasonTexts}
+              changeReasonTexts={changeReasonTexts}
+              onPrev={() => setGenerateStep('default')}
+              onNext={() => setGenerateStep('style')}
+            />
+          </>
+        );
+      case 'style':
+        return <></>;
+      case 'confirm':
+        return <></>;
+
+      default:
+        break;
+    }
+  };
   return (
     <>
       <NavBar onClickLeft={handleClickBack} />
       {getHeaderText()}
-      <DefaultTemplate
-        cardInfo={cardInfo}
-        cardLinks={cardLinks}
-        changeCardInfo={changeCardInfo}
-        removeCardLinkByIndex={removeCardLinkByIndex}
-        addCardLink={addCardLink}
-        changeCardLink={changeCardLink}
-      />
+      {getTemplate()}
     </>
   );
 }

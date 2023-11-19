@@ -60,6 +60,7 @@ const LinkForm = ({ changeCardLink, removeCardLinkByIndex, cardLink, index }: Li
           height={24}
           src={'icons/Delete_white.svg'}
           onClick={() => removeCardLinkByIndex(index)}
+          style={{ cursor: 'pointer' }}
         />
       </div>
       <Input

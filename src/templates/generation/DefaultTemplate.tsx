@@ -1,8 +1,8 @@
 import { postImage } from '@api';
-import { Input, Profile, Typography } from '@components';
+import { Button, Input, Profile, Typography } from '@components';
 import { CardLink, DefaultCardInfo } from '@types';
 import { ChangeEvent, useRef, useState } from 'react';
-import LinkForm from './LinkForm';
+import LinkForm from './form/LinkForm';
 
 interface DefaultTemplateProps {
   cardInfo: DefaultCardInfo;
@@ -94,6 +94,9 @@ const DefaultTemplate = ({
           removeCardLinkByIndex={removeCardLinkByIndex}
         />
       ))}
+      <Button color="primary" size="small" disabled={cardLinks.length >= 5} onClick={addCardLink}>
+        링크추가
+      </Button>
     </>
   );
 };
