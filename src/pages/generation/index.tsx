@@ -2,10 +2,11 @@ import { getServerSideUserProps } from '@utils';
 import { useRecoilState } from 'recoil';
 import { userAtom } from '@stores';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import { CardLink, DefaultCardInfo, ReasonTexts, ReasonType } from '@types';
+import { useState } from 'react';
+import { Card, CardLink, DefaultCardInfo, ReasonType } from '@types';
 import { NavBar, Typography } from '@components';
 import {
+  ConfirmTemplate,
   DefaultFooter,
   DefaultTemplate,
   DesignTemplate,
@@ -13,12 +14,31 @@ import {
   StyleTemplate,
 } from '@templates';
 import { InferGetServerSidePropsType } from 'next';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { AxiosError } from 'axios';
+import { PostGenerationRequest, PostLinkRequest } from 'src/api/types';
+import { postGeneration, postLink } from '@api';
+import { KEY } from '@static';
+import { REASON_TEXT } from 'src/static/reason';
+import { useToast } from '@hooks';
 
 type GenerateStep = 'default' | 'reason' | 'style' | 'design' | 'confirm';
 
 export default function GenerationPage({
   user,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  const { showToast } = useToast();
+  const queryClient = useQueryClient();
+  const { mutateAsync: mutateGeneration } = useMutation<Card, AxiosError, PostGenerationRequest>({
+    mutationFn: postGeneration,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [KEY.CARD] });
+      queryClient.invalidateQueries({ queryKey: [KEY.CARDS] });
+    },
+  });
+  const { mutateAsync: mutateLink } = useMutation<CardLink, AxiosError, PostLinkRequest>({
+    mutationFn: postLink,
+  });
   const [userState, setUserState] = useRecoilState(userAtom);
   const [generateStep, setGenerateStep] = useState<GenerateStep>('default');
   const [cardLinks, setCardLinks] = useState<CardLink[]>([
@@ -44,6 +64,25 @@ export default function GenerationPage({
     designTemplate: 1,
   });
   const router = useRouter();
+
+  const handleConfirm = async () => {
+    const trueKeys = (Object.keys(reasonTexts) as ReasonType[]).filter(
+      (key) => reasonTexts[key] === true,
+    );
+    try {
+      const cardResult = await mutateGeneration({
+        ...cardInfo,
+        reasonTexts: trueKeys.map((key) => REASON_TEXT[key]),
+      });
+      showToast('새로운 명함이 추가되었습니다.');
+      cardLinks.forEach((cardLink) => {
+        mutateLink({ ...cardLink, cardId: cardResult.cardId });
+      });
+      router.push('/cards');
+    } catch (error) {
+      showToast('명함 생성 중 오류가 발생하였습니다.');
+    }
+  };
 
   const handleClickBack = () => {
     if (generateStep === 'default') router.push('/cards');
@@ -91,7 +130,18 @@ export default function GenerationPage({
       );
     }
     if (generateStep === 'confirm') {
-      return <></>;
+      return (
+        <>
+          <Typography grayColor="blueGray100" type="caption1">
+            새로운 명함이 탄생했어요!
+          </Typography>
+          <Typography grayColor="white" type="title2">
+            이 명함으로
+            <br />
+            시작해볼까요?
+          </Typography>
+        </>
+      );
     }
   };
   const changeCardInfo = (info: Partial<DefaultCardInfo>) => {
@@ -184,7 +234,15 @@ export default function GenerationPage({
           </>
         );
       case 'confirm':
-        return <></>;
+        return (
+          <>
+            <ConfirmTemplate
+              cardInfo={cardInfo}
+              onReset={() => setGenerateStep('default')}
+              onConfirm={handleConfirm}
+            />
+          </>
+        );
 
       default:
         break;
