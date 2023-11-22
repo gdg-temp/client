@@ -33,93 +33,11 @@ const NavLayout = ({ children }: { children: ReactElement }) => {
     setisSidebarOpen(false);
   }, [router.pathname]);
 
-  if (pathname === '/cards') {
-    return (
-      <>
-        <NavBar
-          leadingButton="menu"
-          trailingButton="add"
-          onClickLeft={() => setisSidebarOpen(!isSidebarOpen)}
-          onClickRight={() => router.push('/generation')}
-        />
-        {isSidebarOpen &&
-          (userState.name ? (
-            <SideBar
-              isLogined={true}
-              name={userState.name}
-              loginIcon={userState.oauthServerType}
-              myCardCnt={cardsData.data?.length}
-              collectCardCnt={collectionData.data?.length}
-              onClose={() => setisSidebarOpen(!isSidebarOpen)}
-              onClickLogout={() => {}}
-            />
-          ) : (
-            <SideBar
-              isLogined={false}
-              onClickLogin={() => router.push('/login')}
-              onClose={() => setisSidebarOpen(!isSidebarOpen)}
-            />
-          ))}
-        <ContentLayout>{children}</ContentLayout>
-      </>
-    );
-  } else if (pathname === '/generation') {
-    return (
-      <>
-        <NavBar
-          leadingButton="back"
-          onClickLeft={() => {
-            router.back();
-          }}
-        />
-        <ContentLayout>{children}</ContentLayout>
-      </>
-    );
-  } else if (pathname === '/cards/[id]') {
-    return (
-      <>
-        <NavBar
-          leadingButton="back"
-          trailingButton="flip"
-          onClickLeft={() => {
-            router.back();
-          }}
-          onClickRight={() => {}}
-        />
-        <ContentLayout>{children}</ContentLayout>
-      </>
-    );
-  } else if (pathname === '/cards/[id]/edit') {
-    return (
-      <>
-        <NavBar
-          title="명함 수정하기"
-          leadingButton="back"
-          onClickLeft={() => {
-            router.back();
-          }}
-        />
-        <ContentLayout>{children}</ContentLayout>
-      </>
-    );
-  } else if (pathname === '/settings') {
-    return (
-      <>
-        <NavBar
-          title="환경설정"
-          leadingButton="back"
-          onClickLeft={() => {
-            router.back();
-          }}
-        />
-        <ContentLayout>{children}</ContentLayout>
-      </>
-    );
-  }
   return (
     <>
       <NavBar
         leadingButton="menu"
+        trailingButton={pathname === '/cards' ? 'add' : undefined}
         showSearchBar={true}
         onClickLeft={() => setisSidebarOpen(!isSidebarOpen)}
       />
