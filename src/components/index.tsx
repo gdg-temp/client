@@ -9,3 +9,4 @@ export { default as Checkbox } from './Checkbox';
 export { default as Input } from './Input';
 export { default as Toast } from './Toast';
 export { default as SideBar } from './SideBar';
+export { default as Card } from './Card';

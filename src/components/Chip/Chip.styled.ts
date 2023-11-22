@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import type { ChipProps } from './types';
 
 const Chip = styled.button<ChipProps>`
-  width: 66px;
+  padding: 10px 16px;
   height: 40px;
   font-size: 14px;
   border: ${({ disabled, isClicked }) =>
