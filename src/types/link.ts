@@ -1,5 +1,5 @@
 export type CardLink = {
-  id: number;
+  id?: number;
   linkType: LinkType;
   linkUrl: string;
   linkText: string;
@@ -11,7 +11,7 @@ export type LinkType =
   | 'behance'
   | 'tistory'
   | 'linkedin'
-  | 'naverBlog'
+  | 'naverblog'
   | 'instagram'
   | 'notion'
   | 'medium'
@@ -19,4 +19,3 @@ export type LinkType =
   | 'thread'
   | 'youtube'
   | 'tiktok';
-export type UpdateCardLinkReq = Omit<CardLink, 'id'>;

@@ -53,19 +53,19 @@ export const Default: Story = {
 };
 
 const iconList = [
-  ['Custom.svg', '직접입력'],
-  ['Github.svg', 'GitHub'],
-  ['Behance.svg', 'Behance'],
-  ['Tistory.svg', 'Tistory'],
-  ['Linkedin.svg', 'LinkedIn'],
-  ['Naverblog.svg', 'Naver Blog'],
-  ['Instagram.svg', 'Instagram'],
-  ['Notion.svg', 'Notion'],
-  ['Medium.svg', 'Medium'],
-  ['X.svg', 'X'],
-  ['Threads.svg', 'Thread'],
-  ['Youtube.svg', 'Youtube'],
-  ['TikTok.svg', 'Tiktok'],
+  ['custom.svg', '직접입력'],
+  ['github.svg', 'GitHub'],
+  ['behance.svg', 'Behance'],
+  ['tistory.svg', 'Tistory'],
+  ['linkedin.svg', 'LinkedIn'],
+  ['naverblog.svg', 'Naver Blog'],
+  ['instagram.svg', 'Instagram'],
+  ['notion.svg', 'Notion'],
+  ['medium.svg', 'Medium'],
+  ['x.svg', 'X'],
+  ['thread.svg', 'Thread'],
+  ['youtube.svg', 'Youtube'],
+  ['tiktok.svg', 'Tiktok'],
 ].map((ele, index) => (
   <Button key={index} size={'addLinkItem'} color={'addLinkItem'}>
     <img src={`/icons/${ele[0]}`} alt="" />
