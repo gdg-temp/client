@@ -5,9 +5,15 @@ interface ConfirmTemplateProps {
   cardInfo: DefaultCardInfo;
   onConfirm: () => void;
   onReset: () => void;
+  mode?: 'generate' | 'edit';
 }
 
-const ConfirmTemplate = ({ cardInfo, onConfirm, onReset }: ConfirmTemplateProps) => {
+const ConfirmTemplate = ({
+  cardInfo,
+  onConfirm,
+  onReset,
+  mode = 'generate',
+}: ConfirmTemplateProps) => {
   return (
     <div>
       <Card
@@ -18,7 +24,7 @@ const ConfirmTemplate = ({ cardInfo, onConfirm, onReset }: ConfirmTemplateProps)
         designTemplate={cardInfo.designTemplate}
       />
       <Button size="large" color="primary" onClick={onConfirm}>
-        네 시작할게요
+        {mode === 'generate' ? '네 시작할게요' : '내 명함으로 가기'}
       </Button>
       <Button size="large" color="secondary" onClick={onReset}>
         다시 만들고 싶어요
