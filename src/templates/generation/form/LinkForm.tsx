@@ -51,14 +51,14 @@ const LinkForm = ({ changeCardLink, removeCardLinkByIndex, cardLink, index }: Li
           onChange={(e) => changeCardLink(index, { linkText: e.currentTarget.value })}
         />
         <Button size="addLink" color="addLink" onClick={handleLinkDropDown}>
-          <Image alt="link-icon" width={32} height={32} src={`icons/${cardLink.linkType}.svg`} />
-          <Image alt="link-drop-down" width={16} height={16} src={'icons/CaretDown_16px.svg'} />
+          <Image alt="link-icon" width={32} height={32} src={`/icons/${cardLink.linkType}.svg`} />
+          <Image alt="link-drop-down" width={16} height={16} src={'/icons/CaretDown_16px.svg'} />
         </Button>
         <Image
           alt="delete-link-button"
           width={24}
           height={24}
-          src={'icons/Delete_white.svg'}
+          src={'/icons/Delete_white.svg'}
           onClick={() => removeCardLinkByIndex(index)}
           style={{ cursor: 'pointer' }}
         />
