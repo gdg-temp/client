@@ -65,7 +65,7 @@ export default function CardsListPage() {
             const zIndex = isStacked ? data.length - index : 0;
 
             return (
-              <Link href={`/cards/[id]`} as={`/cards/${index}`} key={card.encodeId}>
+              <Link href={`/cards/[id]`} as={`/cards/${card.cardId}`} key={card.encodeId}>
                 <StackedCard
                   key={card.encodeId}
                   name={card.name}
