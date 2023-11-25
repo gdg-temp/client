@@ -39,6 +39,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         ...req.body,
       });
       break;
+    case 'PUT':
+      res.status(200).json({
+        ...mockData,
+        ...req.body,
+        encodedId: id,
+      });
+      break;
     default:
       break;
   }

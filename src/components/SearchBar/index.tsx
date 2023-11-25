@@ -12,7 +12,7 @@ const SearchBar = ({
   return (
     <S.SearchBar>
       <S.SearchBarInput placeholder={placeholder} {...args} />
-      <S.DeleteIcon isWrite={isWrite} onClick={onClickDelete} />
+      {isWrite && <S.DeleteIcon onClick={onClickDelete} />}
       <S.SearchIcon onClick={onClickSearch} />
     </S.SearchBar>
   );
