@@ -8,9 +8,9 @@ const postLink = async <T = Card>(
   linkParams: PostLinkRequest,
   config?: AxiosRequestConfig,
 ): Promise<T> => {
-  const { cardId, linkText, linkType, linkUrl } = linkParams;
+  const { encodedId, linkText, linkType, linkUrl } = linkParams;
   const { data } = await axiosInstance.post<T>(
-    `/link/${cardId}`,
+    `/link/${encodedId}`,
     {
       linkText,
       linkType,

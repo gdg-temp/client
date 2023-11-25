@@ -9,7 +9,7 @@ export type PostGenerationRequest = DefaultCardInfo & {
   reasonTexts: ReasonTexts;
 };
 
-export type PostLinkRequest = Omit<CardLink, 'id'> & { cardId: number };
+export type PostLinkRequest = Omit<CardLink, 'id'> & { encodedId: string };
 
 export type UpdateLinkRequest = Partial<Omit<CardLink, 'id'>> & { linkId: number };
 

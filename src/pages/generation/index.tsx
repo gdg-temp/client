@@ -76,7 +76,7 @@ export default function GenerationPage({
       });
       showToast('새로운 명함이 추가되었습니다.');
       cardLinks.forEach((cardLink) => {
-        mutateLink({ ...cardLink, cardId: cardResult.cardId });
+        mutateLink({ ...cardLink, encodedId: cardResult.encodeId });
       });
       router.push('/cards');
     } catch (error) {

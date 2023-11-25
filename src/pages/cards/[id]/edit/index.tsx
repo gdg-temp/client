@@ -99,7 +99,7 @@ export default function GenerationPage({
         if (cardLink.id !== undefined) {
           mutateUpdateLink({ linkId: cardLink.id, ...cardLink });
         } else {
-          mutateAddLink({ ...cardLink, cardId: cardData?.cardId as number });
+          mutateAddLink({ ...cardLink, encodedId: cardData?.encodeId as string });
         }
       });
       push(`/cards/${id}`);
