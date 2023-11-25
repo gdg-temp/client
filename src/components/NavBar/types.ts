@@ -19,4 +19,8 @@ export interface NavbarProps {
    * 오른쪽 아이콘 클릭 시 실행될 함수입니다
    */
   onClickRight?: () => void;
+  /**
+   * 검색바를 표시할지의 여부를 결정합니다.
+   */
+  showSearchBar?: boolean;
 }

@@ -9,10 +9,16 @@ export type PostGenerationRequest = DefaultCardInfo & {
   reasonTexts: ReasonTexts;
 };
 
-export type PostLinkRequest = Omit<CardLink, 'id'> & { cardId: number };
+export type PostLinkRequest = Omit<CardLink, 'id'> & { encodedId: string };
 
 export type UpdateLinkRequest = Partial<Omit<CardLink, 'id'>> & { linkId: number };
 
+export type DeleteLinkRequest = { linkId: number };
+
 export type PostImageRequest = {
   file: FormData;
+};
+
+export type UpdateCardRequest = DefaultCardInfo & {
+  encodedId: string;
 };
