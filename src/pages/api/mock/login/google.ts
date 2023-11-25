@@ -6,10 +6,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     await delay(500);
     res.setHeader('Set-Cookie', 'LYL_TOKEN=marry; path=/; HttpOnly');
     res.status(200).json({
-      email: 'marry@google.com',
-      name: 'Marry',
-      oauthServerType: 'GOOGLE',
-      isFirst: false,
+      data: {
+        email: 'marry@google.com',
+        name: 'Marry',
+        oauthServerType: 'GOOGLE',
+        isFirst: false,
+      },
     });
   }
 };

@@ -30,7 +30,7 @@ const DefaultTemplate = ({
 
     try {
       const response = await postImage({ file: formData });
-      setImageUrl(response.imageUrl);
+      setImageUrl(response.data.imageUrl);
     } catch (error) {
       console.error('Image upload failed:', error);
     }

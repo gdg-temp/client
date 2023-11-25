@@ -16,8 +16,10 @@ const getServerSideCardProps: GetServerSideProps<{
   let user = {} as User;
   let card = {} as Card;
   try {
-    card = await getCard(ctx.query.id as string, config);
-    user = await getUser(config);
+    const cardResponse = await getCard(ctx.query.id as string, config);
+    const userResponse = await getUser(config);
+    card = cardResponse.data;
+    user = userResponse.data;
   } catch (error) {
     // TODO: 예외처리 필요
     return { props: { card, user } };

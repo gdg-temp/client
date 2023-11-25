@@ -17,7 +17,7 @@ export default function CardsListPage() {
       ) : isLoading ? (
         <Loading />
       ) : (
-        data.map((card) => <h1 key={card.encodeId}>{card.name}</h1>)
+        data.data.map((card) => <h1 key={card.encodeId}>{card.name}</h1>)
       )}
     </>
   );

@@ -47,8 +47,8 @@ const NavLayout = ({ children }: { children: ReactElement }) => {
             isLogined={true}
             name={userState.name}
             loginIcon={userState.oauthServerType}
-            myCardCnt={cardsData.data?.length}
-            collectCardCnt={collectionData.data?.length}
+            myCardCnt={cardsData.data?.data.length}
+            collectCardCnt={collectionData.data?.data.length}
             onClose={() => setisSidebarOpen(!isSidebarOpen)}
             onClickLogout={() => {}}
           />

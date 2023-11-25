@@ -1,9 +1,9 @@
 import { axiosInstance } from './common';
 
 import type { AxiosRequestConfig } from 'axios';
-import type { PostImageRequest } from './types';
+import type { PostImageRequest, ResponseData } from './types';
 
-const postImage = async <T = { imageUrl: string }>(
+const postImage = async <T = ResponseData<{ imageUrl: string }>>(
   imageParams: PostImageRequest,
   config?: AxiosRequestConfig,
 ): Promise<T> => {
