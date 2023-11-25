@@ -13,6 +13,12 @@ export type PostLinkRequest = Omit<CardLink, 'id'> & { cardId: number };
 
 export type UpdateLinkRequest = Partial<Omit<CardLink, 'id'>> & { linkId: number };
 
+export type DeleteLinkRequest = { linkId: number };
+
 export type PostImageRequest = {
   file: FormData;
+};
+
+export type UpdateCardRequest = DefaultCardInfo & {
+  encodedId: string;
 };
