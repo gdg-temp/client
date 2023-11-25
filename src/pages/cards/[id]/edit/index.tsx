@@ -84,22 +84,22 @@ export default function GenerationPage({
   // cardData 로딩이 끝나면 초깃값 셋팅
   useEffect(() => {
     if (cardData) {
-      setCardInfo(cardData);
-      setCardLinks(cardData.LinkInfoVOList);
+      setCardInfo(cardData.data);
+      setCardLinks(cardData.data.LinkInfoVOList);
     }
   }, [cardData]);
 
   const handleConfirm = async () => {
     try {
       await mutateCard({
-        encodedId: cardData?.encodeId ?? '',
+        encodedId: cardData?.data.encodeId ?? '',
         ...cardInfo,
       });
       cardLinks.forEach((cardLink) => {
         if (cardLink.id !== undefined) {
           mutateUpdateLink({ linkId: cardLink.id, ...cardLink });
         } else {
-          mutateAddLink({ ...cardLink, encodedId: cardData?.encodeId as string });
+          mutateAddLink({ ...cardLink, encodedId: cardData?.data.encodeId as string });
         }
       });
       push(`/cards/${id}`);
