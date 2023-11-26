@@ -10,6 +10,7 @@ const NavBar = ({
   trailingButton,
   onClickLeft,
   onClickRight,
+  onClickSearch,
   showSearchBar,
   ...args
 }: NavbarProps) => {
@@ -32,7 +33,7 @@ const NavBar = ({
             value={searchValue}
             onChange={handleSearchInputChange}
             onClickDelete={handleDeleteClick}
-            onClickSearch={() => {}}
+            onClickSearch={onClickSearch}
             isWrite={searchValue.length > 0}
           />
         )}

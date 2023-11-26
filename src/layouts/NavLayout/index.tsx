@@ -9,11 +9,7 @@ import { getCards, getCollection } from '@api';
 import { KEY } from '@static';
 import { useQuery } from '@tanstack/react-query';
 
-const ContentLayout = styled.div`
-  margin-top: 64px;
-`;
-
-const NavLayout = ({ children }: { children: ReactElement }) => {
+const NavLayout = ({ onClickSearch }: { onClickSearch: () => void }) => {
   const [userState, setUserState] = useRecoilState(userAtom);
   const [isSidebarOpen, setisSidebarOpen] = useState(false);
   const router = useRouter();
@@ -40,6 +36,7 @@ const NavLayout = ({ children }: { children: ReactElement }) => {
         trailingButton={pathname === '/cards' ? 'add' : undefined}
         showSearchBar={true}
         onClickLeft={() => setisSidebarOpen(!isSidebarOpen)}
+        onClickSearch={() => onClickSearch}
       />
       {isSidebarOpen &&
         (userState.name ? (
@@ -59,7 +56,6 @@ const NavLayout = ({ children }: { children: ReactElement }) => {
             onClose={() => setisSidebarOpen(!isSidebarOpen)}
           />
         ))}
-      <ContentLayout>{children}</ContentLayout>
     </>
   );
 };

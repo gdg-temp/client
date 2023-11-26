@@ -23,4 +23,9 @@ export interface NavbarProps {
    * 검색바를 표시할지의 여부를 결정합니다.
    */
   showSearchBar?: boolean;
+  /**
+   *
+   * @returns 검색 아이콘 클릭 시 실행될 함수입니다.
+   */
+  onClickSearch?: () => void;
 }
