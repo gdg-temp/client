@@ -19,8 +19,8 @@ const KakaoRedirect = () => {
       router.replace('/login');
     }
     if (data) {
-      setUserState(data);
-      if (data.isFirst) router.replace('/signup');
+      setUserState(data.data);
+      if (data.data.isFirst) router.replace('/signup');
       else router.replace('/cards');
     }
   }, [router, data, setUserState]);

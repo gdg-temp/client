@@ -30,20 +30,24 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   await delay(500);
   switch (req.method) {
     case 'GET':
-      res.status(200).json({ ...mockData, id: id as string, name: `해리-${id}` });
+      res.status(200).json({ data: { ...mockData, id: id as string, name: `해리-${id}` } });
       break;
 
     case 'POST':
       res.status(200).json({
-        ...mockData,
-        ...req.body,
+        data: {
+          ...mockData,
+          ...req.body,
+        },
       });
       break;
     case 'PUT':
       res.status(200).json({
-        ...mockData,
-        ...req.body,
-        encodedId: id,
+        data: {
+          ...mockData,
+          ...req.body,
+          encodedId: id,
+        },
       });
       break;
     default:

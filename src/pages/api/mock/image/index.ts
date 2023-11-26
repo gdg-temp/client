@@ -6,8 +6,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     await delay(500);
     const body = req.body;
     res.status(200).json({
-      imageUrl:
-        'https://t1.kakaocdn.net/friends/prod/main_tab/feed/media/media_0_20210826110030.jpg',
+      data: {
+        imageUrl:
+          'https://t1.kakaocdn.net/friends/prod/main_tab/feed/media/media_0_20210826110030.jpg',
+      },
     });
   }
 };

@@ -2,9 +2,9 @@ import { axiosInstance } from './common';
 
 import type { AxiosRequestConfig } from 'axios';
 import type { CardLink } from '@types';
-import { UpdateLinkRequest } from './types';
+import { ResponseData, UpdateLinkRequest } from './types';
 
-const updateLink = async <T = CardLink>(
+const updateLink = async <T = ResponseData<CardLink>>(
   linkParams: UpdateLinkRequest,
   config?: AxiosRequestConfig,
 ): Promise<T> => {

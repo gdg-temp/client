@@ -10,18 +10,16 @@ const getServerSideUserProps: GetServerSideProps<{
   const path = ctx.resolvedUrl;
   console.log({ path });
   const isOnlyLoggedInPage =
-    path === '/collections' ||
-    path === '/settings' ||
-    path === '/generation' ||
-    path.includes('edit');
+    path === '/collections' || path === '/settings' || path.includes('edit');
 
   let user = {} as User;
   try {
-    user = await getUser({
+    const userResponse = await getUser({
       headers: {
         cookie: cookies,
       },
     });
+    user = userResponse.data;
   } catch (error) {
     // 에러 및 로그인 X
     if (isOnlyLoggedInPage) {

@@ -22,3 +22,9 @@ export type PostImageRequest = {
 export type UpdateCardRequest = DefaultCardInfo & {
   encodedId: string;
 };
+
+export type ResponseData<data> = {
+  data: data;
+  status: number;
+  success: boolean;
+};

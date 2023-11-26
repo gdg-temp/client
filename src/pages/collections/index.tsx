@@ -43,7 +43,7 @@ export default function CollectionsPage() {
         <>
           <NavLayout onClickSearch={handleSearchIconClick} />
           <CollectionContainer>
-            {data.map((card) => {
+            {data.data.map((card) => {
               return (
                 <Link href={`/cards/[id]`} as={`/cards/${card.cardId}`} key={card.encodeId}>
                   <Card

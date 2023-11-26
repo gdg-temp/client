@@ -2,9 +2,9 @@ import { axiosInstance } from './common';
 
 import type { AxiosRequestConfig } from 'axios';
 import type { User } from '@types';
-import { PostSignupRequest } from './types';
+import { PostSignupRequest, ResponseData } from './types';
 
-const postSignup = async <T = User>(
+const postSignup = async <T = ResponseData<User>>(
   signupParams: PostSignupRequest,
   config?: AxiosRequestConfig,
 ): Promise<T> => {
