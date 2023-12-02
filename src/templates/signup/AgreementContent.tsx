@@ -13,9 +13,11 @@ const AgreementContent = ({ step, onClickAgreement, onClickBack }: AgreementCont
   return (
     <>
       <NavBar onClickLeft={onClickBack} />
-      <Typography grayColor="white" type="title2">
-        {AGREEMENT_TEXTS[step].title}
-      </Typography>
+      <S.AgreementsHeaderWrapper>
+        <Typography grayColor="white" type="title2">
+          {AGREEMENT_TEXTS[step].title}
+        </Typography>
+      </S.AgreementsHeaderWrapper>
       <Typography grayColor="blueGray300" type="body7">
         {AGREEMENT_TEXTS[step].content}
       </Typography>
