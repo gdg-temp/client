@@ -21,6 +21,7 @@ import { postGeneration, postLink } from '@api';
 import { KEY } from '@static';
 import { REASON_TEXT } from 'src/static/reason';
 import { useToast } from '@hooks';
+import GenerationStyled from 'src/templates/generation/Generation.styled';
 
 type GenerateStep = 'default' | 'reason' | 'style' | 'design' | 'confirm';
 
@@ -131,7 +132,7 @@ export default function GenerationPage({
     }
     if (generateStep === 'confirm') {
       return (
-        <>
+        <GenerationStyled.ConfirmTitleWrapper>
           <Typography grayColor="blueGray100" type="caption1">
             새로운 명함이 탄생했어요!
           </Typography>
@@ -140,7 +141,7 @@ export default function GenerationPage({
             <br />
             시작해볼까요?
           </Typography>
-        </>
+        </GenerationStyled.ConfirmTitleWrapper>
       );
     }
   };

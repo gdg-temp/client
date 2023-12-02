@@ -22,7 +22,7 @@ const ReasonTemplate = ({
       <Typography grayColor="blueGray300" type="body7">
         명함 뒷면에 선택한 문장이 노출됩니다.
       </Typography>
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <S.ReasonItemsWrapper>
         {(Object.keys(reasonTexts) as ReasonType[]).map((reasonKey, index) => (
           <div key={index}>
             <Chip
@@ -32,7 +32,7 @@ const ReasonTemplate = ({
             />
           </div>
         ))}
-      </div>
+      </S.ReasonItemsWrapper>
       <S.StepsWrapper>
         <S.PrevStepWrapper>
           <Button size="large" color="secondary" onClick={onPrev}>
