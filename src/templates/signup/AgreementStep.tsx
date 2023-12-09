@@ -33,23 +33,29 @@ const AgreementStep = ({
   return (
     <>
       <NavBar onClickLeft={() => router.back()} />
-      <Typography grayColor="white" type="title2">
-        개인정보 활용
-        <br />
-        동의가 필요해요.
-      </Typography>
-      <Typography grayColor="blueGray300" type="body7">
-        서비스 이용을 위해 개인정보 수집
-        <br />및 이용(필수) 동의가 필요합니다.
-      </Typography>
-      <Checkbox
-        shapes="circle"
-        id="all"
-        label="전체 약관에 동의합니다."
-        checked={isAllChecked}
-        onClick={() => onClickAllAgreement(!isAllChecked)}
-      />
-      <>
+      <S.AgreementsHeaderWrapper>
+        <Typography grayColor="white" type="title2">
+          개인정보 활용
+          <br />
+          동의가 필요해요.
+        </Typography>
+      </S.AgreementsHeaderWrapper>
+      <S.AgreementsDescriptionWrapper>
+        <Typography grayColor="blueGray300" type="body7">
+          서비스 이용을 위해 개인정보 수집
+          <br />및 이용(필수) 동의가 필요합니다.
+        </Typography>
+      </S.AgreementsDescriptionWrapper>
+      <S.AllAgreeTextWrapper>
+        <Checkbox
+          shapes="circle"
+          id="all"
+          label="전체 약관에 동의합니다."
+          checked={isAllChecked}
+          onClick={() => onClickAllAgreement(!isAllChecked)}
+        />
+      </S.AllAgreeTextWrapper>
+      <S.AgreementsTextsWrapper>
         {agreements.map((agreement, i) => {
           return (
             <S.AgreementsItemWrapper key={i}>
@@ -66,10 +72,12 @@ const AgreementStep = ({
             </S.AgreementsItemWrapper>
           );
         })}
-      </>
-      <Button color="primary" size="large" disabled={!isRequiredChecked} onClick={onClickNext}>
-        다음
-      </Button>
+      </S.AgreementsTextsWrapper>
+      <S.AgreementsStepButtonWrapper>
+        <Button color="primary" size="large" disabled={!isRequiredChecked} onClick={onClickNext}>
+          다음
+        </Button>
+      </S.AgreementsStepButtonWrapper>
     </>
   );
 };

@@ -4,6 +4,7 @@ import { SNS_TYPE } from '@static';
 import { CardLink, LinkType } from '@types';
 import { getNumberText } from '@utils';
 import Image from 'next/image';
+import S from './LinkForm.styled';
 
 interface LinkFormProps {
   cardLink: CardLink;
@@ -40,9 +41,9 @@ const LinkForm = ({ changeCardLink, removeCardLinkByIndex, cardLink, index }: Li
   };
 
   return (
-    <div>
+    <S.LinkFormWrapper>
       <Typography type="caption1">{getNumberText(index)} 링크</Typography>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
+      <S.LinkTopWrapper>
         <Input
           id={'linkText'}
           placeholder="링크 타이틀을 입력해주세요."
@@ -62,7 +63,7 @@ const LinkForm = ({ changeCardLink, removeCardLinkByIndex, cardLink, index }: Li
           onClick={() => removeCardLinkByIndex(index)}
           style={{ cursor: 'pointer' }}
         />
-      </div>
+      </S.LinkTopWrapper>
       <Input
         id={'link-url'}
         placeholder="링크를 입력해주세요."
@@ -70,7 +71,7 @@ const LinkForm = ({ changeCardLink, removeCardLinkByIndex, cardLink, index }: Li
         value={cardLink.linkUrl}
         onChange={(e) => changeCardLink(index, { linkUrl: e.currentTarget.value })}
       />
-    </div>
+    </S.LinkFormWrapper>
   );
 };
 
