@@ -35,24 +35,18 @@ const SideBar = ({
   }[] = [
     {
       id: 1,
-      label: '내소식',
-      contentIcon: '/icons/Alarm.svg',
-      handlerouter: () => router.push('/'),
-    },
-    {
-      id: 2,
       label: '내 명함',
       contentIcon: '/icons/Briefcase.svg',
       handlerouter: () => router.push('/cards'),
     },
     {
-      id: 3,
+      id: 2,
       label: '명함 수집',
       contentIcon: '/icons/mycard.svg',
       handlerouter: () => router.push('/collections'),
     },
     {
-      id: 4,
+      id: 3,
       label: '환경설정',
       contentIcon: '/icons/Setting.svg',
       handlerouter: () => router.push('/settings'),

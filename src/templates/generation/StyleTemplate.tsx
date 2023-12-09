@@ -26,24 +26,28 @@ const StyleTemplate = ({ cardInfo, changeCardInfo, onNext, onPrev }: StyleTempla
   };
   return (
     <div>
-      <Card
-        name={cardInfo.name}
-        email={cardInfo.email}
-        profileUrl={cardInfo.profileImage}
-        styleTemplate={cardInfo.styleTemplate}
-        designTemplate={cardInfo.designTemplate}
-      />
-      <S.DesignSelectWrapper>
-        <S.DesignArrowWrapper onClick={() => handleCardStyle(false)}>
-          <Image width={24} height={24} src={`/icons/CaretLeft_24px.svg`} alt={'left'} />
-        </S.DesignArrowWrapper>
-        <Typography grayColor="white" type="title2">
-          {CARD_STYLE_MAPPER[cardInfo.styleTemplate]}
-        </Typography>
-        <S.DesignArrowWrapper onClick={() => handleCardStyle(true)}>
-          <Image width={24} height={24} src={`/icons/CaretRight_24px.svg`} alt={'right'} />
-        </S.DesignArrowWrapper>
-      </S.DesignSelectWrapper>
+      <S.CardWrapper>
+        <Card
+          name={cardInfo.name}
+          email={cardInfo.email}
+          profileUrl={cardInfo.profileImage}
+          styleTemplate={cardInfo.styleTemplate}
+          designTemplate={cardInfo.designTemplate}
+        />
+      </S.CardWrapper>
+      <S.CardSelectWrapper>
+        <S.DesignSelectWrapper>
+          <S.DesignArrowWrapper onClick={() => handleCardStyle(false)}>
+            <Image width={24} height={24} src={`/icons/CaretLeft_24px.svg`} alt={'left'} />
+          </S.DesignArrowWrapper>
+          <Typography grayColor="white" type="title2">
+            {CARD_STYLE_MAPPER[cardInfo.styleTemplate]}
+          </Typography>
+          <S.DesignArrowWrapper onClick={() => handleCardStyle(true)}>
+            <Image width={24} height={24} src={`/icons/CaretRight_24px.svg`} alt={'right'} />
+          </S.DesignArrowWrapper>
+        </S.DesignSelectWrapper>
+      </S.CardSelectWrapper>
       <S.StepsWrapper>
         <S.PrevStepWrapper>
           <Button size="large" color="secondary" onClick={onPrev}>
