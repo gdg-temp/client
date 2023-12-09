@@ -4,10 +4,12 @@ import { useQuery } from '@tanstack/react-query';
 import styled, { css } from 'styled-components';
 import Link from 'next/link';
 
-import { getNavLayout, getServerSideUserProps } from '@utils';
+import { NavLayout } from '@layouts';
+import { getServerSideUserProps } from '@utils';
 import { KEY } from '@static';
 import { getCards } from '@api';
 import { Loading, Card } from '@components';
+import { Card as CardType } from '@types';
 
 const CardListContainer = styled.div`
   display: flex;
@@ -31,10 +33,13 @@ const StackedCard = styled(Card)<{ offset?: number; zIndex?: number }>`
 `;
 
 export default function CardsListPage() {
-  const { data, isLoading, isError } = useQuery({ queryKey: [KEY.CARDS], queryFn: getCards });
+  const { data, isLoading, isError } = useQuery<{ data: { data: CardType[] } }, unknown>({
+    queryKey: [KEY.CARDS],
+    queryFn: getCards,
+  });
   const [scrollY, setScrollY] = useState(0);
 
-  const isStacked = data ? data.length > 3 : null;
+  const isStacked = data ? data.data.data.length > 3 : false;
 
   const handleScroll = () => {
     setScrollY(window.scrollY);
@@ -48,6 +53,8 @@ export default function CardsListPage() {
     };
   }, []);
 
+  //console.log(data);
+
   return (
     <>
       <Head>
@@ -58,32 +65,34 @@ export default function CardsListPage() {
       ) : isLoading ? (
         <Loading />
       ) : (
-        <CardListContainer>
-          {data.map((card, index) => {
-            // 카드가 4장 이상이고 스크롤이 0일 때만 겹치도록
-            const offset = isStacked ? Math.max(0, index * 30 - scrollY / 3) : 0;
-            const zIndex = isStacked ? data.length - index : 0;
+        <>
+          <NavLayout />
+          <CardListContainer>
+            {Array.isArray(data?.data?.data) &&
+              data.data?.data.map((card: CardType, index: number) => {
+                // 카드가 4장 이상이고 스크롤이 0일 때만 겹치도록
+                const offset = isStacked ? Math.max(0, index * 30 - scrollY / 3) : 0;
+                const zIndex = isStacked ? data.data?.data.length - index : 0;
 
-            return (
-              <Link href={`/cards/[id]`} as={`/cards/${card.cardId}`} key={card.encodeId}>
-                <StackedCard
-                  key={card.encodeId}
-                  name={card.name}
-                  email={card.email}
-                  styleTemplate={card.styleTemplate}
-                  designTemplate={card.designTemplate}
-                  offset={offset}
-                  zIndex={zIndex}
-                />
-              </Link>
-            );
-          })}
-        </CardListContainer>
+                return (
+                  <Link href={`/cards/[id]`} as={`/cards/${card.cardId}`} key={card.encodeId}>
+                    <StackedCard
+                      key={card.encodeId}
+                      name={card.name}
+                      email={card.email}
+                      styleTemplate={card.styleTemplate}
+                      designTemplate={card.designTemplate}
+                      offset={offset}
+                      zIndex={zIndex}
+                    />
+                  </Link>
+                );
+              })}
+          </CardListContainer>
+        </>
       )}
     </>
   );
 }
-
-CardsListPage.getLayout = getNavLayout;
 
 export const getServerSideProps = getServerSideUserProps;

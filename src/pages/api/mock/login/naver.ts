@@ -6,10 +6,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     await delay(500);
     res.setHeader('Set-Cookie', 'LYL_TOKEN=jarry; path=/; HttpOnly');
     res.status(200).json({
-      email: 'jarry@naver.com',
-      name: 'Jarry',
-      oauthServerType: 'NAVER',
-      isFirst: false,
+      data: {
+        email: 'jarry@naver.com',
+        name: 'Jarry',
+        oauthServerType: 'NAVER',
+        isFirst: false,
+      },
     });
   }
 };

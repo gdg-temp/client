@@ -7,8 +7,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     await delay(500);
     const body = req.body;
     res.status(200).json({
-      id: 0,
-      ...body,
+      data: {
+        id: 0,
+        ...body,
+      },
     });
   }
   if (req.method === 'DELETE') {

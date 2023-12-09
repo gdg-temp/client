@@ -8,15 +8,19 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const token = req.cookies['LYL_TOKEN'];
     if (!token) {
       res.status(401).json({
-        statusCode: 401,
-        message: 'error',
+        data: {
+          statusCode: 401,
+          message: 'error',
+        },
       });
     } else {
       res.status(200).json({
-        id: 0,
-        email: `${token}@kakao.com`,
-        name: token,
-        oauthServerType: 'KAKAO',
+        data: {
+          id: 0,
+          email: `${token}@kakao.com`,
+          name: token,
+          oauthServerType: 'KAKAO',
+        },
       });
     }
   }
