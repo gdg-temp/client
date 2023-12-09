@@ -5,21 +5,31 @@ const mockData: Card = {
   cardId: 10,
   encodeId: 'encodeId-1',
   name: '해리2',
-  email: 'string',
-  position: 'STUDENT',
-  companyName: 'string',
-  designTemplate: 1,
+  email: 'haesoo9410@naver.com',
+  position: 'FE Developer',
+  companyName: 'kakao enterprise',
+  designTemplate: 3,
   styleTemplate: 'default',
-  introduction: '',
+  introduction: '윤해수입니다.',
   isMine: true,
   profileImage: '',
-  reasonTexts: [],
+  reasonTexts: [
+    '프로필 링크를 공유하고 싶어요',
+    '그냥 나라는 사람을 자랑하고 싶어요',
+    '다양한 업계 사람들과 소통하고 싶어요',
+  ],
   LinkInfoVOList: [
     {
       id: 0,
       linkType: 'instagram',
-      linkUrl: 'string',
-      linkText: 'string',
+      linkUrl: 'https://www.instagram.com/',
+      linkText: 'instagram',
+    },
+    {
+      id: 1,
+      linkType: 'youtube',
+      linkUrl: 'https://www.youtube.com/',
+      linkText: 'youtube',
     },
   ],
 };
@@ -41,6 +51,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         },
       });
       break;
+
     case 'PUT':
       res.status(200).json({
         data: {
@@ -50,6 +61,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         },
       });
       break;
+
+    case 'DELETE':
+      res.status(200).json({});
+      break;
+
     default:
       break;
   }

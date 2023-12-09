@@ -7,7 +7,7 @@ import { ResponseData } from './types';
 const getCollection = async <T = ResponseData<Collection[]>>(
   config?: AxiosRequestConfig,
 ): Promise<T> => {
-  const { data } = await axiosInstance.get<T>('/collection', config);
+  const { data } = await axiosInstance.get<T>('/collections', config);
   return data;
 };
 
