@@ -16,6 +16,7 @@ const Card = ({
   size = 'default',
   designTemplate,
   styleTemplate,
+  disableProfile = false,
   ...args
 }: CardProps) => {
   return (
@@ -44,7 +45,7 @@ const Card = ({
                   <S.CardFrontName>{name}</S.CardFrontName>
                   <S.CardFrontPosition>{position}</S.CardFrontPosition>
                 </div>
-                {styleTemplate !== 'character' ? (
+                {!disableProfile && styleTemplate !== 'character' ? (
                   <Profile size="small" src={profileUrl} />
                 ) : (
                   <div style={{ height: '84px' }}></div>

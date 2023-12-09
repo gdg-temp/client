@@ -136,7 +136,7 @@ export default function GenerationPage({
           <Typography grayColor="blueGray100" type="caption1">
             새로운 명함이 탄생했어요!
           </Typography>
-          <Typography grayColor="white" type="title2">
+          <Typography grayColor="white" type="title1">
             이 명함으로
             <br />
             시작해볼까요?
@@ -250,11 +250,11 @@ export default function GenerationPage({
     }
   };
   return (
-    <>
+    <GenerationStyled.GenerationPageWrapper>
       <NavBar onClickLeft={handleClickBack} />
       {getHeaderText()}
       {getTemplate()}
-    </>
+    </GenerationStyled.GenerationPageWrapper>
   );
 }
 

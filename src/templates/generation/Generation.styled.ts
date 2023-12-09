@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+const GenerationPageWrapper = styled.div`
+  /* position: relative; */
+`;
+
 const GenerationHeader = styled.div`
   margin-bottom: 40px;
 `;
@@ -82,6 +86,8 @@ const LinkAddButtonWrapper = styled.div`
 `;
 
 const ConfirmTitleWrapper = styled.div`
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -93,6 +99,8 @@ const ConfirmTitleWrapper = styled.div`
 `;
 
 const ConfirmCardWrapper = styled.div`
+  position: relative;
+  z-index: 1;
   display: flex;
   justify-content: center;
   margin-bottom: 32vh;
@@ -104,7 +112,32 @@ const ConfirmButtonWrapper = styled.div`
   gap: 8px;
 `;
 
+const BackgroundCardWrapper = styled.div`
+  padding: 80px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  width: 100%;
+  position: absolute;
+  top: 10vh;
+  opacity: 0.9;
+  left: 0;
+  opacity: 0.8;
+  z-index: 0;
+  filter: blur(10px);
+  -webkit-filter: blur(10px);
+  // 데스크탑
+  @media screen and (min-width: 768px) {
+    border: 8px solid black;
+  }
+`;
+
+const CardScaleWrapper = styled.div`
+  transform: scale(2);
+`;
+
 export default {
+  GenerationPageWrapper,
   GenerationHeader,
   GenerationDescription,
   ProfileImageWrapper,
@@ -122,4 +155,6 @@ export default {
   ConfirmTitleWrapper,
   ConfirmCardWrapper,
   ConfirmButtonWrapper,
+  BackgroundCardWrapper,
+  CardScaleWrapper,
 };

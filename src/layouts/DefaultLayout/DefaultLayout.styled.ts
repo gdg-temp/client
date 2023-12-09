@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const DefaultLayoutWrapper = styled.div`
+  position: relative;
   padding: 44px 28px 56px;
   background-color: ${({ theme }) => theme.colorGray.black};
   min-height: 100vh;

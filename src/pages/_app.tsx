@@ -41,7 +41,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
             <ToastProvider>
               <RecoilRoot>
                 <QueryClientProvider client={queryClient}>
-                  <DefaultLayout pageProps={...pageProps}>
+                  <DefaultLayout pageProps={pageProps}>
                     {getLayout(<Component {...pageProps} />)}
                   </DefaultLayout>
                 </QueryClientProvider>

@@ -17,6 +17,17 @@ const ConfirmTemplate = ({
 }: ConfirmTemplateProps) => {
   return (
     <div>
+      <S.BackgroundCardWrapper>
+        <S.CardScaleWrapper>
+          <Card
+            name={''}
+            email={''}
+            disableProfile
+            styleTemplate={cardInfo.styleTemplate}
+            designTemplate={cardInfo.designTemplate}
+          />
+        </S.CardScaleWrapper>
+      </S.BackgroundCardWrapper>
       <S.ConfirmCardWrapper>
         <Card
           name={cardInfo.name}
