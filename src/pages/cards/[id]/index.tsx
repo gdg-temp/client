@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { InferGetServerSidePropsType } from 'next';
 import { useModal, useToast } from '@hooks';
 import { Button, Card, Chip, NavBar, Typography } from '@components';
-import S from './styled';
+import S from 'src/templates/card/Card.styled';
 import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
