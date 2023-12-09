@@ -116,24 +116,21 @@ const BackgroundCardWrapper = styled.div`
   padding: 80px;
   display: flex;
   justify-content: center;
+  align-items: center;
   overflow: hidden;
+  height: 50vh;
   width: 100%;
   position: absolute;
-  top: 10vh;
-  opacity: 0.9;
+  top: 40px;
   left: 0;
   opacity: 0.8;
   z-index: 0;
-  filter: blur(10px);
-  -webkit-filter: blur(10px);
-  // 데스크탑
-  @media screen and (min-width: 768px) {
-    border: 8px solid black;
-  }
 `;
 
 const CardScaleWrapper = styled.div`
-  transform: scale(2);
+  transform: scale(1.5);
+  filter: blur(10px);
+  -webkit-filter: blur(10px);
 `;
 
 export default {
