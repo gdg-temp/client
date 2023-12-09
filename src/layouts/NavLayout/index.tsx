@@ -8,23 +8,20 @@ import { useRecoilState } from 'recoil';
 import { getCards, getCollection } from '@api';
 import { KEY } from '@static';
 import { useQuery } from '@tanstack/react-query';
+import { Card, Collection } from '@types';
 
-const ContentLayout = styled.div`
-  margin-top: 64px;
-`;
-
-const NavLayout = ({ children }: { children: ReactElement }) => {
+const NavLayout = ({ onClickSearch }: { onClickSearch?: () => void }) => {
   const [userState, setUserState] = useRecoilState(userAtom);
   const [isSidebarOpen, setisSidebarOpen] = useState(false);
   const router = useRouter();
-  const cardsData = useQuery({
+  const { data: cardsData } = useQuery<{ data: { data: Card[] } }, unknown>({
     queryKey: [KEY.CARDS],
-    queryFn: () => getCards(),
+    queryFn: getCards,
   });
 
-  const collectionData = useQuery({
+  const { data: collectionData } = useQuery<{ data: Collection[] }, unknown>({
     queryKey: [KEY.COLLECTION],
-    queryFn: () => getCollection(),
+    queryFn: getCollection,
   });
 
   const { pathname } = useRouter();
@@ -38,8 +35,9 @@ const NavLayout = ({ children }: { children: ReactElement }) => {
       <NavBar
         leadingButton="menu"
         trailingButton={pathname === '/cards' ? 'add' : undefined}
-        showSearchBar={true}
+        showSearchBar={pathname === '/cards' ? false : true}
         onClickLeft={() => setisSidebarOpen(!isSidebarOpen)}
+        onClickRight={() => router.push('/generation')}
       />
       {isSidebarOpen &&
         (userState.name ? (
@@ -47,8 +45,8 @@ const NavLayout = ({ children }: { children: ReactElement }) => {
             isLogined={true}
             name={userState.name}
             loginIcon={userState.oauthServerType}
-            myCardCnt={cardsData.data?.data.length}
-            collectCardCnt={collectionData.data?.data.length}
+            myCardCnt={cardsData?.data.data.length}
+            collectCardCnt={collectionData?.data.length}
             onClose={() => setisSidebarOpen(!isSidebarOpen)}
             onClickLogout={() => {}}
           />
@@ -59,7 +57,6 @@ const NavLayout = ({ children }: { children: ReactElement }) => {
             onClose={() => setisSidebarOpen(!isSidebarOpen)}
           />
         ))}
-      <ContentLayout>{children}</ContentLayout>
     </>
   );
 };
