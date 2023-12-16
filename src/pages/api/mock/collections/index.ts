@@ -9,7 +9,7 @@ const mockCards: ResponseData<Collection[]> = {
     {
       cardId: 10,
       encodeId: 'encodeId-1',
-      name: '해리2',
+      name: '해리1',
       email: 'string',
       position: 'STUDENT',
       companyName: 'string',
@@ -51,7 +51,7 @@ const mockCards: ResponseData<Collection[]> = {
     {
       cardId: 10,
       encodeId: 'encodeId-1',
-      name: '해리2',
+      name: '해리3',
       email: 'string',
       position: 'STUDENT',
       companyName: 'string',
