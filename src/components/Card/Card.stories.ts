@@ -16,7 +16,7 @@ export const Default: Story = {
     company: 'default',
     position: 'FE개발자',
     email: 'heyroocoke@gmail.com',
-    profileUrl: '',
+    profileUrl: 'icons/default_profile.svg',
     linkInfo: 'default',
     reasons: 'default',
     isFront: true,

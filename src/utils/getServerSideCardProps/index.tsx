@@ -17,12 +17,15 @@ const getServerSideCardProps: GetServerSideProps<{
   let card = {} as Card;
   try {
     const cardResponse = await getCard(ctx.query.id as string, config);
-    const userResponse = await getUser(config);
     card = cardResponse.data;
+  } catch (error) {
+    console.log('CARD ERROR');
+  }
+  try {
+    const userResponse = await getUser(config);
     user = userResponse.data;
   } catch (error) {
-    // TODO: 예외처리 필요
-    return { props: { card, user } };
+    console.log('USER ERROR');
   }
 
   return {

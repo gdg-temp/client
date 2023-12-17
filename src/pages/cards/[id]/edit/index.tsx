@@ -102,7 +102,7 @@ export default function GenerationPage({
           mutateAddLink({ ...cardLink, encodedId: cardData?.data.encodeId as string });
         }
       });
-      push(`/cards/${id}`);
+      setCurrentStep('resultEdit');
     } catch (error) {
       showToast('명함 수정 중 오류가 발생하였습니다.');
     }
