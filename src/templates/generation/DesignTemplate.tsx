@@ -22,7 +22,7 @@ const DesignTemplate = ({ cardInfo, changeCardInfo, onNext, onPrev }: DesignTemp
     if (newIndex === -1) newIndex = len - 1;
     if (newIndex >= len) newIndex = newIndex - len;
     setDesignIndex(newIndex);
-    changeCardInfo({ designTemplate: newIndex + 1 });
+    changeCardInfo({ designTemplate: String(newIndex + 1) });
   };
 
   return (

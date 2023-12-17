@@ -62,7 +62,7 @@ export default function GenerationPage({
     position: '',
     profileImage: '',
     styleTemplate: 'default' as const,
-    designTemplate: 1,
+    designTemplate: '1',
   });
   const router = useRouter();
 

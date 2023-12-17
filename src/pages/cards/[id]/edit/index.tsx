@@ -78,7 +78,7 @@ export default function GenerationPage({
     position: '',
     profileImage: '',
     styleTemplate: 'default' as const,
-    designTemplate: 1,
+    designTemplate: '1',
   });
 
   // cardData 로딩이 끝나면 초깃값 셋팅

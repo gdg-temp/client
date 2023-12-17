@@ -17,7 +17,7 @@ export type DefaultCardInfo = {
   email: string;
   introduction: string;
   styleTemplate: StyleType;
-  designTemplate: number;
+  designTemplate: string;
   companyName: string;
   position: string;
 };
