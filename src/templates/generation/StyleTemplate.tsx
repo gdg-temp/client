@@ -22,7 +22,7 @@ const StyleTemplate = ({ cardInfo, changeCardInfo, onNext, onPrev }: StyleTempla
     if (newIndex === -1) newIndex = len - 1;
     if (newIndex >= len) newIndex = newIndex - len;
     setStyleIndex(newIndex);
-    changeCardInfo({ styleTemplate: styleArr[newIndex], designTemplate: 1 });
+    changeCardInfo({ styleTemplate: styleArr[newIndex], designTemplate: '1' });
   };
   return (
     <div>

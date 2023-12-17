@@ -8,7 +8,7 @@ const mockData: Card = {
   email: 'haesoo9410@naver.com',
   position: 'FE Developer',
   companyName: 'kakao enterprise',
-  designTemplate: 3,
+  designTemplate: '3',
   styleTemplate: 'default',
   introduction: '윤해수입니다.',
   isMine: true,
