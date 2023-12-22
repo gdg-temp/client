@@ -10,13 +10,22 @@ const NavBar = ({
   onClickLeft,
   onClickRight,
   showSearchBar,
+  searchText = '',
+  onSearchTextChange = () => {},
+  onShowTextChange = () => {},
   ...args
 }: NavbarProps) => {
   return (
     <>
       <S.Navbar>
         <S.NavItemLeft leadingButton={leadingButton} onClick={onClickLeft} {...args} />
-        {showSearchBar && <SearchBar />}
+        {showSearchBar && (
+          <SearchBar
+            searchText={searchText}
+            onSearchTextChange={onSearchTextChange}
+            onShowTextChange={onShowTextChange}
+          />
+        )}
         {!showSearchBar && (
           <>
             <S.Title>

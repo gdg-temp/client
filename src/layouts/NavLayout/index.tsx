@@ -10,7 +10,17 @@ import { KEY } from '@static';
 import { useQuery } from '@tanstack/react-query';
 import { Card, Collection } from '@types';
 
-const NavLayout = ({ onClickSearch }: { onClickSearch?: () => void }) => {
+interface NavLayoutProps {
+  searchText?: string;
+  onSearchTextChange?: React.Dispatch<React.SetStateAction<string>>;
+  onShowTextChange?: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const NavLayout: React.FC<NavLayoutProps> = ({
+  searchText,
+  onSearchTextChange,
+  onShowTextChange,
+}) => {
   const [userState, setUserState] = useRecoilState(userAtom);
   const [isSidebarOpen, setisSidebarOpen] = useState(false);
   const router = useRouter();
@@ -38,6 +48,9 @@ const NavLayout = ({ onClickSearch }: { onClickSearch?: () => void }) => {
         showSearchBar={pathname === '/cards' ? false : true}
         onClickLeft={() => setisSidebarOpen(!isSidebarOpen)}
         onClickRight={() => router.push('/generation')}
+        searchText={searchText}
+        onSearchTextChange={onSearchTextChange}
+        onShowTextChange={onShowTextChange}
       />
       {isSidebarOpen &&
         (userState.name ? (
