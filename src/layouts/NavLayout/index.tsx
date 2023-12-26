@@ -1,14 +1,14 @@
 import { NavBar, SideBar } from '@components';
 import { userAtom } from '@stores';
 import { useRouter } from 'next/router';
-import styled from 'styled-components';
 
-import { ReactElement, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import { getCards, getCollection } from '@api';
+import { getCards, getCollection, postLogout } from '@api';
 import { KEY } from '@static';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { Card, Collection } from '@types';
+import { AxiosError } from 'axios';
 
 interface NavLayoutProps {
   searchText?: string;
@@ -40,6 +40,18 @@ const NavLayout: React.FC<NavLayoutProps> = ({
     setisSidebarOpen(false);
   }, [router.pathname]);
 
+  const { mutate } = useMutation<void, AxiosError>({
+    mutationFn: postLogout,
+  });
+
+  const handleLogout = () => {
+    mutate(undefined, {
+      onSuccess: () => {
+        router.push('/');
+      },
+    });
+  };
+
   return (
     <>
       <NavBar
@@ -61,7 +73,7 @@ const NavLayout: React.FC<NavLayoutProps> = ({
             myCardCnt={cardsData?.data.data.length}
             collectCardCnt={collectionData?.data.length}
             onClose={() => setisSidebarOpen(!isSidebarOpen)}
-            onClickLogout={() => {}}
+            onClickLogout={handleLogout}
           />
         ) : (
           <SideBar
