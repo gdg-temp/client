@@ -12,7 +12,6 @@ const RIGHT_ICON: Record<Required<NavbarProps>['trailingButton'], string> = {
 };
 
 const Navbar = styled.div`
-  width: 375px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

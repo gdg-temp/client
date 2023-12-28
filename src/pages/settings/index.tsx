@@ -89,7 +89,13 @@ export default function SettingsPage() {
 
   const handleSecessionBtn = () => {
     open({
-      content: '정말 탈퇴하시겠어요? 모든 명함과 정보가 삭제됩니다.',
+      content: (
+        <div style={{ textAlign: 'center' }}>
+          정말 탈퇴하시겠어요?
+          <br />
+          모든 명함과 정보가 삭제됩니다.
+        </div>
+      ),
       buttonType: 'twoButton',
       buttonTitle: '탈퇴',
       onClick: setSecession,
