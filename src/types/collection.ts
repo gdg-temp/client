@@ -1,4 +1,5 @@
 import { CardLink } from './link';
+import { DefaultCardInfo } from './card';
 
 export type Collection = CollectionInfo & {
   LinkInfoVOList: CardLink[];
@@ -6,15 +7,8 @@ export type Collection = CollectionInfo & {
 
 export type CollectionInfo = {
   cardId: number;
+  encodeId: string;
   isMine: true;
-  name: string;
-  profileImage: string;
-  email: string;
-  introduction: string;
-  styleTemplate: string;
-  designTemplate: string;
-  companyName: string;
-  position: string;
-};
+} & DefaultCardInfo;
 
 export type UpdateCollectionInfoReq = Omit<CollectionInfo, 'cardId' | 'isMine'>;

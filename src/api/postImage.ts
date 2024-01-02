@@ -4,10 +4,10 @@ import type { AxiosRequestConfig } from 'axios';
 import type { PostImageRequest, ResponseData } from './types';
 
 const postImage = async <T = ResponseData<{ imageUrl: string }>>(
-  imageParams: PostImageRequest,
+  imageData: PostImageRequest,
   config?: AxiosRequestConfig,
 ): Promise<T> => {
-  const { data } = await axiosInstance.post<T>(`/images`, imageParams, {
+  const { data } = await axiosInstance.post<T>(`/images`, imageData, {
     ...config,
     headers: {
       ...config?.headers,

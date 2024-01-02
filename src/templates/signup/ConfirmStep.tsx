@@ -8,6 +8,7 @@ import { AxiosError } from 'axios';
 import { useRouter } from 'next/router';
 import { useRecoilState } from 'recoil';
 import { PostSignupRequest } from 'src/api/types';
+import S from './Signup.styled';
 
 interface ConfirmStepProps {
   agreements: boolean[];
@@ -40,38 +41,44 @@ const ConfirmStep = ({ agreements }: ConfirmStepProps) => {
   return (
     <>
       <NavBar onClickLeft={() => router.back()} />
-      <Typography grayColor="white" type="title2">
-        가입을 진행하고
-        <br />
-        명함 만들기를 이어갈까요?
-      </Typography>
-      <Typography grayColor="blueGray300" type="body7">
-        기타 정보는 추가할 수 있어요.
-      </Typography>
-      <div>
-        <div>
+      <S.AgreementsHeaderWrapper>
+        <Typography grayColor="white" type="title2">
+          가입을 진행하고
+          <br />
+          명함 만들기를 이어갈까요?
+        </Typography>
+      </S.AgreementsHeaderWrapper>
+      <S.AgreementsDescriptionWrapper>
+        <Typography grayColor="blueGray300" type="body7">
+          기타 정보는 추가할 수 있어요.
+        </Typography>
+      </S.AgreementsDescriptionWrapper>
+      <S.AgreementsTextsWrapper>
+        <S.AgreementsItemWrapper>
           <Typography grayColor="blueGray300" type="body4">
             이름
           </Typography>
           <Typography grayColor="white" type="body5">
             {userState.name}
           </Typography>
-        </div>
-        <div>
+        </S.AgreementsItemWrapper>
+        <S.AgreementsItemWrapper>
           <Typography grayColor="blueGray300" type="body4">
             이메일
           </Typography>
           <Typography grayColor="white" type="body5">
             {userState.email}
           </Typography>
-        </div>
-      </div>
-      <Button color="primary" size="large" onClick={() => handleSignup(true)}>
-        네, 명함도 만들래요
-      </Button>
-      <Button color="secondary" size="large" onClick={() => handleSignup(false)}>
-        아니요, 가입만 할게요
-      </Button>
+        </S.AgreementsItemWrapper>
+      </S.AgreementsTextsWrapper>
+      <S.ConfirmStepButtonWrapper>
+        <Button color="primary" size="large" onClick={() => handleSignup(true)}>
+          네, 명함도 만들래요
+        </Button>
+        <Button color="secondary" size="large" onClick={() => handleSignup(false)}>
+          아니요, 가입만 할게요
+        </Button>
+      </S.ConfirmStepButtonWrapper>
     </>
   );
 };

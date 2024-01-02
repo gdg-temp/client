@@ -1,8 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { Card } from '@types';
+import { Collection } from '@types';
 import { ResponseData } from 'src/api/types';
 
-const mockCards: ResponseData<Card[]> = {
+const mockCards: ResponseData<Collection[]> = {
   success: true,
   status: 200,
   data: [
@@ -18,7 +18,6 @@ const mockCards: ResponseData<Card[]> = {
       introduction: '',
       isMine: true,
       profileImage: '',
-      reasonTexts: [],
       LinkInfoVOList: [
         {
           id: 0,
@@ -40,7 +39,6 @@ const mockCards: ResponseData<Card[]> = {
       introduction: '',
       isMine: true,
       profileImage: '',
-      reasonTexts: [],
       LinkInfoVOList: [
         {
           id: 0,
@@ -62,7 +60,6 @@ const mockCards: ResponseData<Card[]> = {
       introduction: '',
       isMine: true,
       profileImage: '',
-      reasonTexts: [],
       LinkInfoVOList: [
         {
           id: 0,
@@ -79,7 +76,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const delay = (s: number) => new Promise((resolve) => setTimeout(resolve, s));
     await delay(500);
 
-    res.status(200).json({ data: mockCards });
+    res.status(200).json(mockCards);
   }
 };
 

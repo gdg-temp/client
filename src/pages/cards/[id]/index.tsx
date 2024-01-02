@@ -13,7 +13,6 @@ import { DeleteCardRequest } from 'src/api/types';
 import ReactCardFlip from 'react-card-flip';
 
 export default function CardDetailPage({
-  user,
   card,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const { open, close } = useModal();
@@ -128,12 +127,10 @@ export default function CardDetailPage({
               {card.LinkInfoVOList
                 ? card.LinkInfoVOList.map((el) => {
                     return (
-                      <>
-                        <S.LinkItem key={el.id} href={el.linkUrl}>
-                          <img src={`/icons/${el.linkType}.svg`} />
-                          {el.linkText}
-                        </S.LinkItem>
-                      </>
+                      <S.LinkItem key={el.id} href={el.linkUrl}>
+                        <img src={`/icons/${el.linkType}.svg`} />
+                        {el.linkText}
+                      </S.LinkItem>
                     );
                   })
                 : null}

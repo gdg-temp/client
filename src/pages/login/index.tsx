@@ -69,7 +69,7 @@ export default function LoginPage() {
     } else if (target === 'naver') {
       return `https://nid.naver.com/oauth2.0/authorize?client_id=${process.env.NEXT_PUBLIC_CLIENT_ID_NAVER}&response_type=code&redirect_uri=${process.env.NEXT_PUBLIC_REDIRECT_URI}/naver&state=LYL`;
     } else if (target === 'google') {
-      return `https://accounts.google.com/o/oauth2/v2/auth?client_id=${process.env.NEXT_PUBLIC_CLIENT_ID_GOOGLE}&redirect_uri=${process.env.NEXT_PUBLIC_REDIRECT_URI}/google&response_type=code&scope=email profile`;
+      return `https://accounts.google.com/o/oauth2/v2/auth?client_id=${process.env.NEXT_PUBLIC_CLIENT_ID_GOOGLE}&redirect_uri=${process.env.NEXT_PUBLIC_REDIRECT_URI}/oauth2/code/google&response_type=code&scope=email profile`;
     }
   };
   return (

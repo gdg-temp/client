@@ -21,6 +21,7 @@ import { postGeneration, postLink } from '@api';
 import { KEY } from '@static';
 import { REASON_TEXT } from 'src/static/reason';
 import { useToast } from '@hooks';
+import GenerationStyled from 'src/templates/generation/Generation.styled';
 
 type GenerateStep = 'default' | 'reason' | 'style' | 'design' | 'confirm';
 
@@ -61,7 +62,7 @@ export default function GenerationPage({
     position: '',
     profileImage: '',
     styleTemplate: 'default' as const,
-    designTemplate: 1,
+    designTemplate: '1',
   });
   const router = useRouter();
 
@@ -131,16 +132,16 @@ export default function GenerationPage({
     }
     if (generateStep === 'confirm') {
       return (
-        <>
+        <GenerationStyled.ConfirmTitleWrapper>
           <Typography grayColor="blueGray100" type="caption1">
             새로운 명함이 탄생했어요!
           </Typography>
-          <Typography grayColor="white" type="title2">
+          <Typography grayColor="white" type="title1">
             이 명함으로
             <br />
             시작해볼까요?
           </Typography>
-        </>
+        </GenerationStyled.ConfirmTitleWrapper>
       );
     }
   };
@@ -249,11 +250,11 @@ export default function GenerationPage({
     }
   };
   return (
-    <>
+    <GenerationStyled.GenerationPageWrapper>
       <NavBar onClickLeft={handleClickBack} />
       {getHeaderText()}
       {getTemplate()}
-    </>
+    </GenerationStyled.GenerationPageWrapper>
   );
 }
 

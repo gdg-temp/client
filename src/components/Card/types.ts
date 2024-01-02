@@ -41,9 +41,13 @@ export interface CardProps {
   /**
    * 명함의 디자인를 정합니다.
    */
-  designTemplate: number;
+  designTemplate: string;
   /**
    * 명함의 스타일를 정합니다.
    */
   styleTemplate: StyleType;
+  /**
+   * 프로필 사진 칸을 사용하지 않습니다.
+   */
+  disableProfile?: boolean;
 }
