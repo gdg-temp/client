@@ -104,13 +104,13 @@ export default function CardDetailPage({
         />
         <title>{card.name}</title>
       </Head>
+      <NavBar
+        leadingButton={'back'}
+        trailingButton={'flip'}
+        onClickLeft={handleBackButton}
+        onClickRight={handleFlipButton}
+      />
       <S.Container>
-        <NavBar
-          leadingButton={'back'}
-          trailingButton={'flip'}
-          onClickLeft={handleBackButton}
-          onClickRight={handleFlipButton}
-        />
         <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
           <S.CardWrapper>
             <Card

@@ -8,8 +8,10 @@ const LOGIN_ICON: Record<Required<SideBarProps>['loginIcon'], string> = {
 };
 
 const SidebarBackground = styled.div`
-  position: fixed;
-  width: 375px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 440px;
   height: 100vh;
   z-index: 30;
   background-color: rgba(0, 0, 0, 0.8);
@@ -17,12 +19,11 @@ const SidebarBackground = styled.div`
 `;
 
 const SidebarWrapper = styled.div`
-  height: 812px;
-  position: absolute;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  padding: 40px 0px;
+  justify-content: space-between;
+  padding: 70px 0px;
   background: ${({ theme }) => theme.colorGray.black};
 `;
 
@@ -33,7 +34,6 @@ const SidebarContainer = styled.div`
 `;
 
 const CloseButton = styled.div`
-  position: fixed;
   width: 24px;
   height: 24px;
   background: url('/icons/Delete_simple.svg') no-repeat;

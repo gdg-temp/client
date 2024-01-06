@@ -12,13 +12,13 @@ const RIGHT_ICON: Record<Required<NavbarProps>['trailingButton'], string> = {
 };
 
 const Navbar = styled.div`
-  width: 375px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   height: 64px;
   padding: 18px 0;
+  margin-bottom: 24px;
 `;
 
 const NavItemLeft = styled.div<NavbarProps>`

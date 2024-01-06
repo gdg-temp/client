@@ -43,6 +43,33 @@ const DeleteIcon = styled.div<Pick<SearchBarProps, 'onClick'>>`
   width: 24px;
   height: 24px;
   background: url('/icons/Delete_gray.svg') 50% 50% no-repeat;
+  cursor: pointer;
 `;
 
-export default { SearchBar, SearchBarInput, SearchIcon, DeleteIcon };
+const SearchDropdownWrapper = styled.div`
+  position: absolute;
+  width: 264px;
+  left: 140px;
+  top: 105px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  background-color: ${({ theme }) => theme.colorGray.blueGray700};
+  z-index: 100;
+`;
+
+const DropdownProfile = styled.img`
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  object-fit: cover;
+`;
+
+export default {
+  SearchBar,
+  SearchBarInput,
+  SearchIcon,
+  DeleteIcon,
+  SearchDropdownWrapper,
+  DropdownProfile,
+};
