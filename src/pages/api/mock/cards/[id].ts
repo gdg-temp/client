@@ -36,6 +36,7 @@ const mockData: Card = {
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { id } = req.query;
+  console.log('GET CARD', id);
   const delay = (s: number) => new Promise((resolve) => setTimeout(resolve, s));
   await delay(500);
   switch (req.method) {

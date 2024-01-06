@@ -1,26 +1,32 @@
 import { GetServerSideProps } from 'next';
-import { getUser } from '@api';
 
 import type { User } from '@types';
+import axios from 'axios';
+import { ResponseData } from 'src/api/types';
 
 const getServerSideUserProps: GetServerSideProps<{
   user?: User;
 }> = async (ctx) => {
   const cookies = ctx.req.headers.cookie;
   const path = ctx.resolvedUrl;
+  const config = {
+    headers: {
+      cookie: cookies,
+    },
+  };
   const isOnlyLoggedInPage =
     path === '/collections' || path === '/settings' || path.includes('edit');
 
   let user = {} as User;
   try {
-    const userResponse = await getUser({
-      headers: {
-        cookie: cookies,
-      },
-    });
+    const { data: userResponse } = await axios.get<ResponseData<User>>(
+      `${process.env.NEXT_PUBLIC_API_URL}/user`,
+      config,
+    );
     user = userResponse.data;
   } catch (error) {
     // 에러 및 로그인 X
+    console.log('USER ERROR');
     if (isOnlyLoggedInPage) {
       return {
         redirect: {

@@ -1,7 +1,8 @@
 import { GetServerSideProps } from 'next';
-import { getUser, getCard } from '@api';
 
 import type { User, Card } from '@types';
+import axios from 'axios';
+import { ResponseData } from 'src/api/types';
 
 const getServerSideCardProps: GetServerSideProps<{
   user?: User;
@@ -16,14 +17,24 @@ const getServerSideCardProps: GetServerSideProps<{
   let user = {} as User;
   let card = {} as Card;
   try {
-    const cardResponse = await getCard(ctx.query.id as string, config);
+    console.log(`${process.env.NEXT_PUBLIC_API_URL}/cards/${ctx.query.id}`);
+    const { data: cardResponse } = await axios.get<ResponseData<Card>>(
+      `${process.env.NEXT_PUBLIC_API_URL}/cards/${ctx.query.id}`,
+      config,
+    );
+    console.log(cardResponse);
     card = cardResponse.data;
   } catch (error) {
-    console.log('CARD ERROR');
+    console.log('CARD ERROR', ctx.query.id);
   }
   try {
-    const userResponse = await getUser(config);
+    const { data: userResponse } = await axios.get<ResponseData<User>>(
+      `${process.env.NEXT_PUBLIC_API_URL}/user`,
+      config,
+    );
+
     user = userResponse.data;
+    console.log(user);
   } catch (error) {
     console.log('USER ERROR');
   }
