@@ -28,6 +28,7 @@ const StackedCard = styled(Card)<{
     props.offset !== undefined &&
     css`
       top: ${props.offset}px;
+      transition: top 0.5s ease;
     `}
   left: 8px;
   z-index: ${(props) => props.zIndex};
