@@ -1,7 +1,6 @@
 import { NextPageContext } from 'next';
 import { Typography } from '@components';
 import styled from 'styled-components';
-import { NavLayout } from '@layouts';
 
 const ErrorWrapper404 = styled.div`
   text-align: center;
@@ -21,7 +20,7 @@ const Error404 = styled.div`
   font-weight: bold;
   display: flex;
   justify-content: space-around;
-  margin: 50% auto;
+  margin: 60% auto;
   @media screen and (min-width: 768px) {
     font-size: 90px;
   }
@@ -57,7 +56,6 @@ const ErrorImage500 = styled.div`
 const Error = ({ statusCode }: { statusCode: number }) => {
   return (
     <>
-      <NavLayout />
       {statusCode === 404 ? (
         <>
           <Error404>

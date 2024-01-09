@@ -19,10 +19,14 @@ const NavLayout = ({ onClickSearch }: { onClickSearch?: () => void }) => {
     queryFn: getCards,
   });
 
-  const { data: collectionData } = useQuery<{ data: Collection[] }, unknown>({
+  const { data: collectionData, isError } = useQuery<{ data: Collection[] }, unknown>({
     queryKey: [KEY.COLLECTION],
     queryFn: getCollection,
   });
+
+  if (isError) {
+    throw new Error('데이터를 가져오는데 실패하였습니다.');
+  }
 
   const { pathname } = useRouter();
 
