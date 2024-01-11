@@ -3,13 +3,15 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 
-import Cookies from 'js-cookie';
 import { useModal } from '@hooks';
 import { getServerSideUserProps } from '@utils';
 import { Typography } from '@components';
 import { NavBar } from '@components';
 import { useRecoilState } from 'recoil';
 import { userAtom } from '@stores';
+import { useMutation } from '@tanstack/react-query';
+import { postWithdraw } from '@api';
+import { AxiosError } from 'axios';
 
 const InfoContainer = styled.div`
   display: flex;
@@ -81,9 +83,16 @@ export default function SettingsPage() {
     }
   };
 
+  const { mutate } = useMutation<void, AxiosError>({
+    mutationFn: postWithdraw,
+    onSuccess: () => {
+      router.push('/');
+    },
+  });
+
   const { open, close } = useModal();
   const setSecession = () => {
-    Cookies.remove('LYL_TOKEN');
+    mutate();
     close();
   };
 
