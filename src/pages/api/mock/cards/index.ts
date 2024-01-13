@@ -9,7 +9,7 @@ const mockCards: ResponseData<Card[]> = {
     {
       cardId: 10,
       encodeId: 'encodeId-1',
-      name: '해리2',
+      name: '해리1',
       email: 'string',
       position: 'STUDENT',
       companyName: 'string',
@@ -53,12 +53,78 @@ const mockCards: ResponseData<Card[]> = {
     {
       cardId: 10,
       encodeId: 'encodeId-1',
-      name: '해리2',
+      name: '해리3',
       email: 'string',
       position: 'STUDENT',
       companyName: 'string',
       designTemplate: '2',
       styleTemplate: 'city',
+      introduction: '',
+      isMine: true,
+      profileImage: '',
+      reasonTexts: [],
+      LinkInfoVOList: [
+        {
+          id: 0,
+          linkType: 'youtube',
+          linkUrl: 'string',
+          linkText: 'string',
+        },
+      ],
+    },
+    {
+      cardId: 10,
+      encodeId: 'encodeId-1',
+      name: '해리4',
+      email: 'string',
+      position: 'STUDENT',
+      companyName: 'string',
+      designTemplate: '3',
+      styleTemplate: 'future',
+      introduction: '',
+      isMine: true,
+      profileImage: '',
+      reasonTexts: [],
+      LinkInfoVOList: [
+        {
+          id: 0,
+          linkType: 'youtube',
+          linkUrl: 'string',
+          linkText: 'string',
+        },
+      ],
+    },
+    {
+      cardId: 10,
+      encodeId: 'encodeId-1',
+      name: '해리5',
+      email: 'string',
+      position: 'STUDENT',
+      companyName: 'string',
+      designTemplate: '4',
+      styleTemplate: 'future',
+      introduction: '',
+      isMine: true,
+      profileImage: '',
+      reasonTexts: [],
+      LinkInfoVOList: [
+        {
+          id: 0,
+          linkType: 'youtube',
+          linkUrl: 'string',
+          linkText: 'string',
+        },
+      ],
+    },
+    {
+      cardId: 10,
+      encodeId: 'encodeId-1',
+      name: '해리6',
+      email: 'string',
+      position: 'STUDENT',
+      companyName: 'string',
+      designTemplate: '1',
+      styleTemplate: 'future',
       introduction: '',
       isMine: true,
       profileImage: '',
@@ -79,7 +145,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const delay = (s: number) => new Promise((resolve) => setTimeout(resolve, s));
     await delay(500);
 
-    res.status(200).json({ data: mockCards });
+    res.status(200).json(mockCards);
   }
 };
 

@@ -1,17 +1,16 @@
 import type { InputHTMLAttributes } from 'react';
 
 export interface SearchBarProps extends InputHTMLAttributes<HTMLInputElement> {
-  placeholder: string;
   /**
-   * 삭제 아이콘을 클릭했을 때 실행될 함수입니다.
+   * 검색바에 전달할 검색어입니다.
    */
-  onClickDelete: () => void;
+  searchText: string;
   /**
-   * 검색 아이콘을 클릭했을 때 실행될 함수입니다.
+   * 검색어 입력 시 검색 결과 상태를 업데이트합니다.
    */
-  onClickSearch: () => void;
+  onSearchTextChange: React.Dispatch<React.SetStateAction<string>>;
   /**
-   * 검색바에 내용 입력시 나타나는 Delete 버튼입니다.
+   * 검색 아이콘 클릭 시 검색 결과의 개수 상태를 업데이트합니다.
    */
-  isWrite: boolean;
+  onShowTextChange: React.Dispatch<React.SetStateAction<boolean>>;
 }
