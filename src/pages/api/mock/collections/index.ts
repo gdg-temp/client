@@ -18,7 +18,7 @@ const mockCards: ResponseData<Collection[]> = {
       introduction: '',
       isMine: true,
       profileImage: '',
-      LinkInfoVOList: [
+      linkInfoVOList: [
         {
           id: 0,
           linkType: 'instagram',
@@ -39,7 +39,7 @@ const mockCards: ResponseData<Collection[]> = {
       introduction: '',
       isMine: true,
       profileImage: '',
-      LinkInfoVOList: [
+      linkInfoVOList: [
         {
           id: 0,
           linkType: 'custom',
@@ -60,7 +60,7 @@ const mockCards: ResponseData<Collection[]> = {
       introduction: '',
       isMine: true,
       profileImage: '',
-      LinkInfoVOList: [
+      linkInfoVOList: [
         {
           id: 0,
           linkType: 'youtube',

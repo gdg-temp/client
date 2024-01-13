@@ -85,7 +85,7 @@ export default function GenerationPage({
   useEffect(() => {
     if (cardData) {
       setCardInfo(cardData.data);
-      setCardLinks(cardData.data.LinkInfoVOList);
+      setCardLinks(cardData.data.linkInfoVOList);
     }
   }, [cardData]);
 
