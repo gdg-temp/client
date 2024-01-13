@@ -19,7 +19,7 @@ const mockCards: ResponseData<Card[]> = {
       isMine: true,
       profileImage: '',
       reasonTexts: [],
-      LinkInfoVOList: [
+      linkInfoVOList: [
         {
           id: 0,
           linkType: 'instagram',
@@ -41,7 +41,7 @@ const mockCards: ResponseData<Card[]> = {
       isMine: true,
       profileImage: '',
       reasonTexts: [],
-      LinkInfoVOList: [
+      linkInfoVOList: [
         {
           id: 0,
           linkType: 'custom',
@@ -63,7 +63,7 @@ const mockCards: ResponseData<Card[]> = {
       isMine: true,
       profileImage: '',
       reasonTexts: [],
-      LinkInfoVOList: [
+      linkInfoVOList: [
         {
           id: 0,
           linkType: 'youtube',
@@ -85,7 +85,7 @@ const mockCards: ResponseData<Card[]> = {
       isMine: true,
       profileImage: '',
       reasonTexts: [],
-      LinkInfoVOList: [
+      linkInfoVOList: [
         {
           id: 0,
           linkType: 'youtube',
@@ -107,7 +107,7 @@ const mockCards: ResponseData<Card[]> = {
       isMine: true,
       profileImage: '',
       reasonTexts: [],
-      LinkInfoVOList: [
+      linkInfoVOList: [
         {
           id: 0,
           linkType: 'youtube',
@@ -129,7 +129,7 @@ const mockCards: ResponseData<Card[]> = {
       isMine: true,
       profileImage: '',
       reasonTexts: [],
-      LinkInfoVOList: [
+      linkInfoVOList: [
         {
           id: 0,
           linkType: 'youtube',

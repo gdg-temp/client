@@ -124,8 +124,8 @@ export default function CardDetailPage({
               styleTemplate={card.styleTemplate}
             />
             <S.LinkWrapper>
-              {card.LinkInfoVOList
-                ? card.LinkInfoVOList.map((el) => {
+              {card.linkInfoVOList
+                ? card.linkInfoVOList.map((el) => {
                     return (
                       <S.LinkItem key={el.id} href={el.linkUrl}>
                         <img src={`/icons/${el.linkType}.svg`} />
