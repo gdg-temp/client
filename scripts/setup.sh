@@ -4,5 +4,8 @@ yarn husky install
 
 # 깃 정책 셋업
 echo "\033[45;1;37m GIT \033[47;30m pull 설정을 rebase=false로 변경합니다... \033[0m"
+echo "\033[45;1;37m GIT \033[47;30m case 설정을 core.ignorecase=false로 변경합니다... \033[0m"
 echo "git config pull.rebase false"
+echo "git config core.ignorecase false"
+git config core.ignorecase false
 git config pull.rebase false

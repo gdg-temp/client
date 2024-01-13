@@ -5,7 +5,7 @@ import { InferGetServerSidePropsType } from 'next';
 import { useModal, useToast } from '@hooks';
 import { Button, Card, Chip, NavBar, Typography } from '@components';
 import S from 'src/templates/card/Card.styled';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import deleteCard from 'src/api/deleteCard';
@@ -20,6 +20,12 @@ export default function CardDetailPage({
     query: { id },
     push,
   } = useRouter();
+
+  useEffect(() => {
+    // TODO: 추후 삭제되어야 할 로직
+    const cookies = document.cookie;
+    if (!cookies?.includes('QA_TEST_TOKEN=TEST')) throw new Error('점검중');
+  }, []);
 
   const { showToast } = useToast();
   const [isFlipped, setIsFlipped] = useState(false);
@@ -104,13 +110,13 @@ export default function CardDetailPage({
         />
         <title>{card.name}</title>
       </Head>
+      <NavBar
+        leadingButton={'back'}
+        trailingButton={'flip'}
+        onClickLeft={handleBackButton}
+        onClickRight={handleFlipButton}
+      />
       <S.Container>
-        <NavBar
-          leadingButton={'back'}
-          trailingButton={'flip'}
-          onClickLeft={handleBackButton}
-          onClickRight={handleFlipButton}
-        />
         <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
           <S.CardWrapper>
             <Card
@@ -124,8 +130,8 @@ export default function CardDetailPage({
               styleTemplate={card.styleTemplate}
             />
             <S.LinkWrapper>
-              {card.LinkInfoVOList
-                ? card.LinkInfoVOList.map((el) => {
+              {card.linkInfoVOList
+                ? card.linkInfoVOList.map((el) => {
                     return (
                       <S.LinkItem key={el.id} href={el.linkUrl}>
                         <img src={`/icons/${el.linkType}.svg`} />

@@ -14,16 +14,7 @@ type Story = StoryObj<typeof SearchBar>;
 export const Default: Story = {
   args: {
     placeholder: '명함 이름을 입력해주세요.',
-    onClickDelete: () => action('onClick Triggered')('Delete'),
-    onClickSearch: () => action('onClick Triggered')('Search'),
-  },
-};
-
-export const Write: Story = {
-  args: {
-    placeholder: '명함 이름을 입력해주세요.',
-    isWrite: true,
-    onClickDelete: () => action('onClick Triggered')('Delete'),
-    onClickSearch: () => action('onClick Triggered')('Search'),
+    onSearchTextChange: () => action('Search Text')('SearchText'),
+    onShowTextChange: () => action('onClick Triggered')('SearchIcon'),
   },
 };

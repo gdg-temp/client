@@ -8,6 +8,7 @@ import S from './Generation.styled';
 interface DefaultTemplateProps {
   cardInfo: DefaultCardInfo;
   cardLinks: CardLink[];
+  additionalInfo?: boolean; // 추가정보를 받을지 여부
   changeCardInfo: (info: Partial<DefaultCardInfo>) => void;
   removeCardLinkByIndex: (index: number) => void;
   addCardLink: () => void;
@@ -21,6 +22,7 @@ const DefaultTemplate = ({
   changeCardInfo,
   changeCardLink,
   removeCardLinkByIndex,
+  additionalInfo = false,
 }: DefaultTemplateProps) => {
   const [imageUrl, setImageUrl] = useState('');
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -90,12 +92,12 @@ const DefaultTemplate = ({
           onChange={(e) => changeCardInfo({ introduction: e.target.value })}
         />
       </S.InputWrapper>
-      <S.InputWrapper>
+      <S.InputHeaderWrapper direction="column">
         <Typography type="body2">링크</Typography>
         <Typography type="caption1" systemColor="main">
           *최대 5개 까지 생성할 수 있어요.
         </Typography>
-      </S.InputWrapper>
+      </S.InputHeaderWrapper>
       {cardLinks.map((cardLink, i) => (
         <S.InputWrapper key={i}>
           <LinkForm
@@ -111,6 +113,36 @@ const DefaultTemplate = ({
           링크추가
         </Button>
       </S.LinkAddButtonWrapper>
+      {additionalInfo && (
+        <>
+          <S.InputHeaderWrapper direction="row">
+            <Typography type="body2">추가 정보</Typography>
+            <Typography type="caption1" systemColor="main">
+              (선택)
+            </Typography>
+          </S.InputHeaderWrapper>
+          <S.InputWrapper>
+            <Input
+              id="companyName"
+              type="text"
+              placeholder="회사명을 입력해주세요"
+              label="회사명"
+              value={cardInfo.companyName}
+              onChange={(e) => changeCardInfo({ companyName: e.target.value })}
+            />
+          </S.InputWrapper>
+          <S.InputWrapper>
+            <Input
+              id="position"
+              type="text"
+              placeholder="직무를 입력해주세요"
+              label="직무"
+              value={cardInfo.position}
+              onChange={(e) => changeCardInfo({ position: e.target.value })}
+            />
+          </S.InputWrapper>
+        </>
+      )}
     </>
   );
 };

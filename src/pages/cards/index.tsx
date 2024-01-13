@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
 import { useQuery } from '@tanstack/react-query';
 import styled, { css } from 'styled-components';
@@ -12,48 +12,51 @@ import { Loading, Card } from '@components';
 import { Card as CardType } from '@types';
 
 const CardListContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
   max-height: 100vh;
-  overflow-y: hidden;
+  position: relative;
 `;
 
-const StackedCard = styled(Card)<{ offset?: number; zIndex?: number }>`
-  position: relative;
+const StackedCard = styled(Card)<{
+  offset?: number;
+  zIndex?: number;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+}>`
+  position: absolute;
   max-height: 100vh;
   ${(props) =>
     props.offset !== undefined &&
     css`
-      transform: translateY(${props.offset}px);
+      top: ${props.offset}px;
+      transition: top 0.5s ease;
     `}
+  left: 8px;
   z-index: ${(props) => props.zIndex};
-  transition: transform 0.2s ease;
+  @media screen and (min-width: 768px) {
+    left: 30px;
+  }
 `;
 
 export default function CardsListPage() {
-  const { data, isLoading, isError } = useQuery<{ data: { data: CardType[] } }, unknown>({
+  const {
+    data: cardsData,
+    isLoading,
+    isError,
+  } = useQuery<{ data: CardType[]; error?: { status: number } }, unknown>({
     queryKey: [KEY.CARDS],
     queryFn: getCards,
   });
-  const [scrollY, setScrollY] = useState(0);
 
-  const isStacked = data ? data.data.data.length > 3 : false;
+  const isStacked = cardsData ? cardsData.data.length > 3 : false;
+  const [hoveredIndex, setHoveredIndex] = useState(10);
 
-  const handleScroll = () => {
-    setScrollY(window.scrollY);
+  const handleCardHover = (index: number) => {
+    setHoveredIndex(index);
   };
 
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  //console.log(data);
+  const handleCardLeave = () => {
+    setHoveredIndex(10);
+  };
 
   return (
     <>
@@ -61,21 +64,25 @@ export default function CardsListPage() {
         <title>Card List</title>
       </Head>
       {isError ? (
-        <div>ERROR</div>
-      ) : isLoading ? (
+        <div>Error</div>
+      ) : //<ErrorTemplate status={data?.data.error?.status} />
+      isLoading ? (
         <Loading />
       ) : (
         <>
           <NavLayout />
           <CardListContainer>
-            {Array.isArray(data?.data?.data) &&
-              data.data?.data.map((card: CardType, index: number) => {
-                // 카드가 4장 이상이고 스크롤이 0일 때만 겹치도록
-                const offset = isStacked ? Math.max(0, index * 30 - scrollY / 3) : 0;
-                const zIndex = isStacked ? data.data?.data.length - index : 0;
+            {Array.isArray(cardsData?.data) &&
+              cardsData.data.map((card: CardType, index: number) => {
+                const offset = isStacked
+                  ? index > hoveredIndex
+                    ? index * (500 / (cardsData?.data.length - 1)) + 100
+                    : index * (500 / (cardsData?.data.length - 1))
+                  : index * 200;
+                const zIndex = isStacked ? index : 0;
 
                 return (
-                  <Link href={`/cards/[id]`} as={`/cards/${card.cardId}`} key={card.encodeId}>
+                  <Link href={`/cards/${card.encodeId}`} key={card.encodeId}>
                     <StackedCard
                       key={card.encodeId}
                       name={card.name}
@@ -84,6 +91,8 @@ export default function CardsListPage() {
                       designTemplate={card.designTemplate}
                       offset={offset}
                       zIndex={zIndex}
+                      onMouseEnter={() => handleCardHover(index)}
+                      onMouseLeave={() => handleCardLeave()}
                     />
                   </Link>
                 );
