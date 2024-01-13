@@ -204,6 +204,7 @@ export default function GenerationPage({
               removeCardLinkByIndex={removeCardLinkByIndex}
               addCardLink={addCardLink}
               changeCardLink={changeCardLink}
+              additionalInfo
             />
             <DefaultFooter
               confirmText={'수정완료'}
