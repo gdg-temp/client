@@ -79,7 +79,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const delay = (s: number) => new Promise((resolve) => setTimeout(resolve, s));
     await delay(500);
 
-    res.status(200).json({ data: mockCards });
+    res.status(200).json(mockCards);
   }
 };
 

@@ -33,13 +33,17 @@ const StackedCard = styled(Card)<{ offset?: number; zIndex?: number }>`
 `;
 
 export default function CardsListPage() {
-  const { data, isLoading, isError } = useQuery<{ data: { data: CardType[] } }, unknown>({
+  const {
+    data: cardsData,
+    isLoading,
+    isError,
+  } = useQuery<{ data: CardType[] }, unknown>({
     queryKey: [KEY.CARDS],
     queryFn: getCards,
   });
   const [scrollY, setScrollY] = useState(0);
 
-  const isStacked = data ? data.data.data.length > 3 : false;
+  const isStacked = cardsData ? cardsData.data.length > 3 : false;
 
   const handleScroll = () => {
     setScrollY(window.scrollY);
@@ -68,11 +72,11 @@ export default function CardsListPage() {
         <>
           <NavLayout />
           <CardListContainer>
-            {Array.isArray(data?.data?.data) &&
-              data.data?.data.map((card: CardType, index: number) => {
+            {Array.isArray(cardsData?.data) &&
+              cardsData.data?.map((card: CardType, index: number) => {
                 // 카드가 4장 이상이고 스크롤이 0일 때만 겹치도록
                 const offset = isStacked ? Math.max(0, index * 30 - scrollY / 3) : 0;
-                const zIndex = isStacked ? data.data?.data.length - index : 0;
+                const zIndex = isStacked ? cardsData.data?.length - index : 0;
 
                 return (
                   <Link href={`/cards/[id]`} as={`/cards/${card.cardId}`} key={card.encodeId}>
