@@ -12,6 +12,7 @@ import { userAtom } from '@stores';
 import { useMutation } from '@tanstack/react-query';
 import { postWithdraw } from '@api';
 import { AxiosError } from 'axios';
+import { LYL_VERSION } from '@static';
 
 const InfoContainer = styled.div`
   display: flex;
@@ -178,14 +179,14 @@ export default function SettingsPage() {
                   버전
                 </Typography>
                 <Typography type="body4" grayColor="white">
-                  Ver_2.0
+                  Ver_{LYL_VERSION}
                 </Typography>
               </ServiceInfoContent>
             </ServiceInfoContainer>
           </InfoContainer>
           <RightContainer>
             <Typography type="body7" grayColor="blueGray400">
-              @2023, Link Your Link. All right reserved.
+              @2024, Link Your Link. All right reserved.
             </Typography>
           </RightContainer>
         </>
