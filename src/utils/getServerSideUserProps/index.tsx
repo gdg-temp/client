@@ -7,7 +7,7 @@ const getServerSideUserProps: GetServerSideProps<{
   user?: User;
 }> = async (ctx) => {
   const cookies = ctx.req.headers.cookie;
-  if (!cookies?.includes('QA_TEST_TOKEN=TEST;')) throw new Error('점검중');
+  if (!cookies?.includes('QA_TEST_TOKEN=TEST')) throw new Error('점검중');
   const path = ctx.resolvedUrl;
   const isOnlyLoggedInPage =
     path === '/collections' || path === '/cards' || path === '/settings' || path.includes('edit');
