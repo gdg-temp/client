@@ -2,14 +2,14 @@ import Cookies from 'js-cookie';
 import { useModal, useToast } from '@hooks';
 import { Button } from '@components';
 
-const TempPage = () => {
+const QATestPage = () => {
   const { open, close } = useModal();
   const { showToast } = useToast();
   const setTempCookie = () => {
-    if (Cookies.get('LYL_TOKEN')) {
-      Cookies.remove('LYL_TOKEN');
+    if (Cookies.get('QA_TEST_TOKEN')) {
+      Cookies.remove('QA_TEST_TOKEN');
     } else {
-      Cookies.set('LYL_TOKEN', 'TEST');
+      Cookies.set('QA_TEST_TOKEN', 'TEST');
     }
     showToast('쿠키 작업 완료.');
     close();
@@ -27,10 +27,10 @@ const TempPage = () => {
   return (
     <div>
       <Button color={'primary'} size="medium" onClick={handleButton}>
-        임시 토큰 설정
+        QA용 토큰 설정
       </Button>
     </div>
   );
 };
 
-export default TempPage;
+export default QATestPage;

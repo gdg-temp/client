@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
 import { useQuery } from '@tanstack/react-query';
 import styled, { css } from 'styled-components';
@@ -38,15 +38,16 @@ const StackedCard = styled(Card)<{
 `;
 
 export default function CardsListPage() {
-  const { data, isLoading, isError } = useQuery<
-    { data: { data: CardType[]; error?: { status: number } } },
-    unknown
-  >({
+  const {
+    data: cardsData,
+    isLoading,
+    isError,
+  } = useQuery<{ data: CardType[]; error?: { status: number } }, unknown>({
     queryKey: [KEY.CARDS],
     queryFn: getCards,
   });
 
-  const isStacked = data ? data.data.data.length > 3 : false;
+  const isStacked = cardsData ? cardsData.data.length > 3 : false;
   const [hoveredIndex, setHoveredIndex] = useState(10);
 
   const handleCardHover = (index: number) => {
@@ -71,12 +72,12 @@ export default function CardsListPage() {
         <>
           <NavLayout />
           <CardListContainer>
-            {Array.isArray(data?.data.data) &&
-              data.data?.data.map((card: CardType, index: number) => {
+            {Array.isArray(cardsData?.data) &&
+              cardsData.data.map((card: CardType, index: number) => {
                 const offset = isStacked
                   ? index > hoveredIndex
-                    ? index * (500 / (data?.data.data.length - 1)) + 100
-                    : index * (500 / (data?.data.data.length - 1))
+                    ? index * (500 / (cardsData?.data.length - 1)) + 100
+                    : index * (500 / (cardsData?.data.length - 1))
                   : index * 200;
                 const zIndex = isStacked ? index : 0;
 

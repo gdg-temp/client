@@ -24,7 +24,7 @@ const NavLayout: React.FC<NavLayoutProps> = ({
   const [userState, setUserState] = useRecoilState(userAtom);
   const [isSidebarOpen, setisSidebarOpen] = useState(false);
   const router = useRouter();
-  const { data: cardsData } = useQuery<{ data: { data: Card[] } }, unknown>({
+  const { data: cardsData } = useQuery<{ data: Card[] }, unknown>({
     queryKey: [KEY.CARDS],
     queryFn: getCards,
   });
@@ -70,7 +70,7 @@ const NavLayout: React.FC<NavLayoutProps> = ({
             isLogined={true}
             name={userState.name}
             loginIcon={userState.oauthServerType}
-            myCardCnt={cardsData?.data.data.length}
+            myCardCnt={cardsData?.data.length}
             collectCardCnt={collectionData?.data.length}
             onClose={() => setisSidebarOpen(!isSidebarOpen)}
             onClickLogout={handleLogout}
