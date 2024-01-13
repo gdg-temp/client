@@ -8,6 +8,7 @@ const getServerSideCardProps: GetServerSideProps<{
   card: Card;
 }> = async (ctx) => {
   const cookies = ctx.req.headers.cookie;
+  if (!cookies?.includes('QA_TEST_TOKEN=TEST;')) throw new Error('점검중');
   const config = {
     headers: {
       cookie: cookies,
