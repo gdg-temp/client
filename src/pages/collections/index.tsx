@@ -71,7 +71,7 @@ export default function CollectionsPage() {
             {searchText ? (
               filteredCards.length > 0 ? (
                 filteredCards.map((card) => (
-                  <Link href={`/cards/${card.cardId}`} key={card.encodeId}>
+                  <Link href={`/cards/${card.encodeId}`} key={card.encodeId}>
                     <Card
                       key={card.encodeId}
                       name={card.name}
@@ -92,7 +92,7 @@ export default function CollectionsPage() {
               )
             ) : (
               data.data.map((card) => (
-                <Link href={`/cards/${card.cardId}`} key={card.encodeId}>
+                <Link href={`/cards/${card.encodeId}`} key={card.encodeId}>
                   <Card
                     key={card.encodeId}
                     name={card.name}
