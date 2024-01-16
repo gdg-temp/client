@@ -74,7 +74,7 @@ const Error = ({ statusCode }: { statusCode: number }) => {
           <ErrorWrapper500>
             <ErrorImage500 />
             <Typography type="body2" grayColor="blueGray300">
-              서버에 접속할 수 없습니다.
+              알 수 없는 오류가 발생하였습니다.
             </Typography>
           </ErrorWrapper500>
         </>
