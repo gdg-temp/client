@@ -12,7 +12,7 @@ const ErrorImage = styled.div`
   width: 90px;
   height: 81px;
   background-image: url('/error/maintenance.png');
-  background-size: contain;
+  background-size: cover;
   margin: 30px auto;
 `;
 
