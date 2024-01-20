@@ -44,11 +44,13 @@ export default function CollectionsPage() {
     setFilteredCards(filteredData);
   }, [searchText, data]);
 
+  if (isError) {
+    throw new Error('데이터를 가져오는데 실패하였습니다.');
+  }
+
   return (
     <>
-      {isError ? (
-        <div>ERROR</div>
-      ) : isLoading ? (
+      {isLoading ? (
         <Loading />
       ) : (
         <>
