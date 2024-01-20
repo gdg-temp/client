@@ -11,8 +11,8 @@ const SidebarBackground = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 440px;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   z-index: 30;
   background-color: rgba(0, 0, 0, 0.8);
   display: flex;
@@ -22,7 +22,7 @@ const SidebarWrapper = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding: 70px 0px;
   background: ${({ theme }) => theme.colorGray.black};
 `;
@@ -30,7 +30,6 @@ const SidebarWrapper = styled.div`
 const SidebarContainer = styled.div`
   width: 221px;
   margin-bottom: 335px;
-  margin-top: 33px;
 `;
 
 const CloseButton = styled.div`
