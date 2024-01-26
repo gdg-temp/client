@@ -93,7 +93,7 @@ const SideBar = ({
                     ))}
                   </S.ContentContainer>
                 </S.SidebarContainer>
-                <S.LogoutButton onClick={onClickLogout}>{'로그아웃'}</S.LogoutButton>
+                <S.LogoutButton onClick={onClickLogout}>로그아웃</S.LogoutButton>
               </>
             ) : (
               <>

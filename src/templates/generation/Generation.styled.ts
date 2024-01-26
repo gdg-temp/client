@@ -50,6 +50,12 @@ const InputWrapper = styled.div`
   margin-bottom: 28px;
 `;
 
+const InputHeaderWrapper = styled.div<{ direction: 'row' | 'column' }>`
+  display: flex;
+  flex-direction: ${({ direction }) => direction};
+  margin-bottom: 28px;
+`;
+
 const StepsWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -154,4 +160,5 @@ export default {
   ConfirmButtonWrapper,
   BackgroundCardWrapper,
   CardScaleWrapper,
+  InputHeaderWrapper,
 };

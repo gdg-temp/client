@@ -85,7 +85,7 @@ export default function GenerationPage({
   useEffect(() => {
     if (cardData) {
       setCardInfo(cardData.data);
-      setCardLinks(cardData.data.LinkInfoVOList);
+      setCardLinks(cardData.data.linkInfoVOList);
     }
   }, [cardData]);
 
@@ -204,6 +204,7 @@ export default function GenerationPage({
               removeCardLinkByIndex={removeCardLinkByIndex}
               addCardLink={addCardLink}
               changeCardLink={changeCardLink}
+              additionalInfo
             />
             <DefaultFooter
               confirmText={'수정완료'}
@@ -246,7 +247,7 @@ export default function GenerationPage({
           <>
             <ConfirmTemplate
               cardInfo={cardInfo}
-              onReset={() => setCurrentStep('designEdit')}
+              onReset={() => setCurrentStep('infoEdit')}
               onConfirm={() => push('/cards')}
               mode="edit"
             />

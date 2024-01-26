@@ -18,7 +18,7 @@ const mockData: Card = {
     '그냥 나라는 사람을 자랑하고 싶어요',
     '다양한 업계 사람들과 소통하고 싶어요',
   ],
-  LinkInfoVOList: [
+  linkInfoVOList: [
     {
       id: 0,
       linkType: 'instagram',
