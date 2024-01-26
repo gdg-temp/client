@@ -77,6 +77,7 @@ export default function CardsListPage() {
                 return (
                   <Link href={`/cards/[id]`} as={`/cards/${card.cardId}`} key={card.encodeId}>
                     <StackedCard
+                      id={'card'}
                       key={card.encodeId}
                       name={card.name}
                       email={card.email}

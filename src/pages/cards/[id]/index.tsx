@@ -9,7 +9,8 @@ import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import deleteCard from 'src/api/deleteCard';
-import { DeleteCardRequest } from 'src/api/types';
+import saveCard from 'src/api/postSaveCard';
+import { DeleteCardRequest, SaveCardRequest } from 'src/api/types';
 import ReactCardFlip from 'react-card-flip';
 
 export default function CardDetailPage({
@@ -25,6 +26,9 @@ export default function CardDetailPage({
   const [isFlipped, setIsFlipped] = useState(false);
   const { mutateAsync: mutateDeleteCard } = useMutation<null, AxiosError, DeleteCardRequest>({
     mutationFn: deleteCard,
+  });
+  const { mutateAsync: mutateSaveCard } = useMutation<null, AxiosError, SaveCardRequest>({
+    mutationFn: saveCard,
   });
 
   const handleEditButton = () => {
@@ -55,6 +59,7 @@ export default function CardDetailPage({
   const deleteRequest = async () => {
     try {
       await mutateDeleteCard({ encodedId: id as string });
+      close();
       showToast('명함을 삭제하였습니다.');
       push(`/cards/`);
     } catch (err) {
@@ -91,6 +96,18 @@ export default function CardDetailPage({
     }
   };
 
+  const handleSaveButton = async () => {
+    if (!card) {
+      push(`/`);
+    }
+    try {
+      await mutateSaveCard({ encodedId: id as string });
+      showToast('명함을 저장하였습니다.');
+    } catch (err) {
+      showToast('명함 저장에 실패하였습니다.');
+    }
+  };
+
   return (
     <>
       <Head>
@@ -98,9 +115,13 @@ export default function CardDetailPage({
         <meta property="og:title" content={card.name} />
         <meta property="og:type" content="website" />
         <meta property="og:description" content={card.introduction} />
-        <meta
+        {/* <meta
           property="og:image"
           content={`${process.env.NEXT_PUBLIC_API_URL}/card_design/${card.styleTemplate}/${card.designTemplate}.png`}
+        /> */}
+        <meta
+          property="og:image"
+          content={`https://dev-linkyourlink.vercel.app/card_design/${card.styleTemplate}/${card.designTemplate}.png`}
         />
         <title>{card.name}</title>
       </Head>
@@ -114,6 +135,7 @@ export default function CardDetailPage({
         <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
           <S.CardWrapper>
             <Card
+              id={'card'}
               name={card.name}
               company={card.companyName}
               position={card.position}
@@ -142,7 +164,7 @@ export default function CardDetailPage({
               <Typography type={'title2'}>{card.introduction}</Typography>
             </S.CardDetailIntro>
             <S.CardDetailReasons>
-              {card.reasonTexts.map((el, index) => {
+              {card.reasonTexts?.map((el, index) => {
                 return <Chip key={index} isClicked={false} value={el}></Chip>;
               })}
             </S.CardDetailReasons>
@@ -161,13 +183,19 @@ export default function CardDetailPage({
         </ReactCardFlip>
         <S.ButtonWrapper>
           {card.isMine ? (
-            <Button size={'large'} color={'primary'} onClick={() => handleShareButton()}>
-              링크 공유하기
+            <>
+              <Button size={'large'} color={'primary'} onClick={() => handleShareButton()}>
+                링크 공유하기
+              </Button>
+              <Button size={'large'} color={'secondary'} onClick={handleEditButton}>
+                수정하기
+              </Button>
+            </>
+          ) : (
+            <Button size={'large'} color={'primary'} onClick={() => handleSaveButton()}>
+              명함 저장하기
             </Button>
-          ) : null}
-          <Button size={'large'} color={'secondary'} onClick={handleEditButton}>
-            수정하기
-          </Button>
+          )}
         </S.ButtonWrapper>
         {card.isMine ? (
           <S.DeleteButtonWrapper>
