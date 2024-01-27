@@ -13,6 +13,7 @@ import { useMutation } from '@tanstack/react-query';
 import { postWithdraw } from '@api';
 import { AxiosError } from 'axios';
 import { LYL_VERSION } from '@static';
+import { useToast } from '@hooks';
 
 const InfoContainer = styled.div`
   display: flex;
@@ -71,6 +72,7 @@ export default function SettingsPage() {
   const router = useRouter();
   const [userState, setUserState] = useRecoilState(userAtom);
   const [selectedInfo, setSelectedInfo] = useState('');
+  const { showToast } = useToast();
 
   const handleInfoBtn = (infoName: string) => {
     setSelectedInfo(infoName);
@@ -88,6 +90,9 @@ export default function SettingsPage() {
     mutationFn: postWithdraw,
     onSuccess: () => {
       router.push('/');
+    },
+    onError: () => {
+      showToast('탈퇴 중 에러가 발생하였습니다.');
     },
   });
 

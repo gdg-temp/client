@@ -59,6 +59,9 @@ export default function GenerationPage({
       queryClient.invalidateQueries({ queryKey: [KEY.CARD] });
       queryClient.invalidateQueries({ queryKey: [KEY.CARDS] });
     },
+    onError: () => {
+      showToast('수정 중 에러가 발생하였습니다.');
+    },
   });
   const { mutateAsync: mutateAddLink } = useMutation<CardLink, AxiosError, PostLinkRequest>({
     mutationFn: postLink,

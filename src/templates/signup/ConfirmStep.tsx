@@ -34,12 +34,11 @@ const ConfirmStep = ({ agreements }: ConfirmStepProps) => {
       },
       {
         onSuccess: () => {
-          try {
-            if (isCardGenarate) router.push('/generation');
-            else router.push('/');
-          } catch (error) {
-            showToast('가입 중 오류가 발생하였습니다.');
-          }
+          if (isCardGenarate) router.push('/generation');
+          else router.push('/');
+        },
+        onError: () => {
+          showToast('가입 중 오류가 발생하였습니다.');
         },
       },
     );

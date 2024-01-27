@@ -9,6 +9,7 @@ import { KEY } from '@static';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { Card, Collection } from '@types';
 import { AxiosError } from 'axios';
+import { useToast } from '@hooks';
 
 interface NavLayoutProps {
   searchText?: string;
@@ -33,6 +34,7 @@ const NavLayout: React.FC<NavLayoutProps> = ({
     queryKey: [KEY.COLLECTION],
     queryFn: getCollection,
   });
+  const { showToast } = useToast();
 
   if (isError) {
     throw new Error('데이터를 가져오는데 실패하였습니다.');
@@ -52,6 +54,9 @@ const NavLayout: React.FC<NavLayoutProps> = ({
     mutate(undefined, {
       onSuccess: () => {
         router.push('/');
+      },
+      onError: () => {
+        showToast('로그아웃 중 에러가 발생하였습니다.');
       },
     });
   };
