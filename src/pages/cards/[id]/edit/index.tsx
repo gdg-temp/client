@@ -92,14 +92,14 @@ export default function GenerationPage({
   const handleConfirm = async () => {
     try {
       await mutateCard({
-        encodedId: cardData?.data.encodeId ?? '',
+        encodeId: cardData?.data.encodeId ?? '',
         ...cardInfo,
       });
       cardLinks.forEach((cardLink) => {
         if (cardLink.id !== undefined) {
           mutateUpdateLink({ linkId: cardLink.id, ...cardLink });
         } else {
-          mutateAddLink({ ...cardLink, encodedId: cardData?.data.encodeId as string });
+          mutateAddLink({ ...cardLink, encodeId: cardData?.data.encodeId as string });
         }
       });
       setCurrentStep('resultEdit');

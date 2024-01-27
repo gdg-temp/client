@@ -30,7 +30,11 @@ export default function GenerationPage({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const { showToast } = useToast();
   const queryClient = useQueryClient();
-  const { mutateAsync: mutateGeneration } = useMutation<Card, AxiosError, PostGenerationRequest>({
+  const { mutateAsync: mutateGeneration } = useMutation<
+    { data: Card },
+    AxiosError,
+    PostGenerationRequest
+  >({
     mutationFn: postGeneration,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [KEY.CARD] });
@@ -75,10 +79,11 @@ export default function GenerationPage({
         ...cardInfo,
         reasonTexts: trueKeys.map((key) => REASON_TEXT[key]),
       });
+
+      for await (const cardLink of cardLinks) {
+        await mutateLink({ ...cardLink, encodeId: cardResult.data.encodeId });
+      }
       showToast('새로운 명함이 추가되었습니다.');
-      cardLinks.forEach((cardLink) => {
-        mutateLink({ ...cardLink, encodedId: cardResult.encodeId });
-      });
       router.push('/cards');
     } catch (error) {
       showToast('명함 생성 중 오류가 발생하였습니다.');

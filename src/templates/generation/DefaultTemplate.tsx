@@ -33,7 +33,9 @@ const DefaultTemplate = ({
 
     try {
       const response = await postImage(formData);
-      setImageUrl(response.data.imageUrl);
+      const imageUrl = response.data.imageUrl;
+      setImageUrl(imageUrl);
+      changeCardInfo({ profileImage: imageUrl });
     } catch (error) {
       console.error('Image upload failed:', error);
     }
