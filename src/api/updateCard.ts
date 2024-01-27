@@ -8,8 +8,8 @@ const updateCard = async <T = ResponseData<Card>>(
   updateParams: UpdateCardRequest,
   config?: AxiosRequestConfig,
 ): Promise<T> => {
-  const { encodedId, ...params } = updateParams;
-  const { data } = await axiosInstance.put<T>(`cards/${encodedId}`, params, config);
+  const { encodeId, ...params } = updateParams;
+  const { data } = await axiosInstance.put<T>(`cards/${encodeId}`, params, config);
   return data;
 };
 

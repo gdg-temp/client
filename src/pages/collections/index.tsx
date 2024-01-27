@@ -73,6 +73,7 @@ export default function CollectionsPage() {
                 filteredCards.map((card) => (
                   <Link href={`/cards/${card.encodeId}`} key={card.encodeId}>
                     <Card
+                      id={'card'}
                       key={card.encodeId}
                       name={card.name}
                       email={card.email}
@@ -94,6 +95,7 @@ export default function CollectionsPage() {
               data.data.map((card) => (
                 <Link href={`/cards/${card.encodeId}`} key={card.encodeId}>
                   <Card
+                    id={'card'}
                     key={card.encodeId}
                     name={card.name}
                     email={card.email}

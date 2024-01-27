@@ -20,7 +20,7 @@ const ReasonTemplate = ({
   return (
     <div>
       <Typography grayColor="blueGray300" type="body7">
-        명함 뒷면에 선택한 문장이 노출됩니다.
+        명함 뒷면에 선택한 문장이 노출됩니다. (최대 3개)
       </Typography>
       <S.ReasonItemsWrapper>
         {(Object.keys(reasonTexts) as ReasonType[]).map((reasonKey, index) => (

@@ -20,6 +20,7 @@ const ConfirmTemplate = ({
       <S.BackgroundCardWrapper>
         <S.CardScaleWrapper>
           <Card
+            id={'card'}
             name={''}
             email={''}
             disableProfile
@@ -30,6 +31,7 @@ const ConfirmTemplate = ({
       </S.BackgroundCardWrapper>
       <S.ConfirmCardWrapper>
         <Card
+          id={'card'}
           name={cardInfo.name}
           email={cardInfo.email}
           profileUrl={cardInfo.profileImage}
