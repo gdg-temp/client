@@ -8,10 +8,11 @@ const QATestPage = () => {
   const setTempCookie = () => {
     if (Cookies.get('QA_TEST_TOKEN')) {
       Cookies.remove('QA_TEST_TOKEN');
+      showToast('쿠키 삭제 완료.');
     } else {
       Cookies.set('QA_TEST_TOKEN', 'TEST');
+      showToast('쿠키 추가 완료.');
     }
-    showToast('쿠키 작업 완료.');
     close();
   };
   const handleButton = () => {
