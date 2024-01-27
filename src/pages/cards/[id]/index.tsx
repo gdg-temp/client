@@ -121,13 +121,9 @@ export default function CardDetailPage({
         <meta property="og:title" content={card.name} />
         <meta property="og:type" content="website" />
         <meta property="og:description" content={card.introduction} />
-        {/* <meta
-          property="og:image"
-          content={`${process.env.NEXT_PUBLIC_API_URL}/card_design/${card.styleTemplate}/${card.designTemplate}.png`}
-        /> */}
         <meta
           property="og:image"
-          content={`https://dev-linkyourlink.vercel.app/card_design/${card.styleTemplate}/${card.designTemplate}.png`}
+          content={`/card_design/${card.styleTemplate}/${card.designTemplate}.png`}
         />
         <title>{card.name}</title>
       </Head>
