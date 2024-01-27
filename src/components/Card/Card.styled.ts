@@ -23,12 +23,12 @@ const CardFront = styled.div`
 const CardFrontTop = styled.div`
   display: flex;
   justify-content: space-between;
-  :first-child {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    height: 28px;
-  }
+`;
+const CardTitle = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 28px;
 `;
 const CardFrontName = styled.div`
   display: flex;
@@ -81,4 +81,5 @@ export default {
   CardFrontPosition,
   CardLinkWrapper,
   CardBack,
+  CardTitle,
 };
