@@ -2,6 +2,7 @@ import { StyleType } from '@types';
 import { ReactNode } from 'react';
 
 export interface CardProps {
+  id: string;
   /**
    * 명함 속 이름 입니다.
    */

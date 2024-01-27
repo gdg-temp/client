@@ -29,6 +29,7 @@ const DesignTemplate = ({ cardInfo, changeCardInfo, onNext, onPrev }: DesignTemp
     <div>
       <S.CardWrapper>
         <Card
+          id={'card'}
           name={cardInfo.name}
           email={cardInfo.email}
           profileUrl={cardInfo.profileImage}

@@ -17,6 +17,7 @@ const ShowCardTemplate = ({ cardInfo, onClickEdit }: ShowCardTemplateProps) => {
       </S.TextWrapper>
       <S.CardWrapper>
         <Card
+          id={'card'}
           name={cardInfo.name}
           email={cardInfo.email}
           profileUrl={cardInfo.profileImage}
