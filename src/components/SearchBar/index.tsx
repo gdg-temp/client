@@ -1,5 +1,5 @@
 import S from './Searchbar.styled';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, KeyboardEvent } from 'react';
 import Link from 'next/link';
 import { useQuery } from '@tanstack/react-query';
 
@@ -24,8 +24,14 @@ const SearchBar = ({ searchText, onSearchTextChange, onShowTextChange }: SearchB
     setFilteredCards(filteredData);
   }, [searchText, data]);
 
+  const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
   const handleSearch = () => {
-    setDropdownVisible(true);
+    setDropdownVisible(false);
     onShowTextChange(true);
   };
 
@@ -60,6 +66,7 @@ const SearchBar = ({ searchText, onSearchTextChange, onShowTextChange }: SearchB
           placeholder="검색어를 입력해주세요."
           onChange={(event) => handleChange(event.target.value)}
           value={searchText}
+          onKeyDown={handleKeyDown}
         />
         {searchText && <S.DeleteIcon onClick={handleDelete} />}
         <S.SearchIcon onClick={handleSearch} />
