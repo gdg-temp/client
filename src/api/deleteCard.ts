@@ -7,8 +7,8 @@ const deleteCard = async <T = null>(
   idParams: DeleteCardRequest,
   config?: AxiosRequestConfig,
 ): Promise<T> => {
-  const { encodedId } = idParams;
-  const { data } = await axiosInstance.delete<T>(`/cards/${encodedId}`, config);
+  const { encodeId } = idParams;
+  const { data } = await axiosInstance.delete<T>(`/cards/${encodeId}`, config);
   return data;
 };
 

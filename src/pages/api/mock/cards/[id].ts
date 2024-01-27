@@ -57,7 +57,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         data: {
           ...mockData,
           ...req.body,
-          encodedId: id,
+          encodeId: id,
         },
       });
       break;

@@ -64,7 +64,7 @@ export default function CardDetailPage({
 
   const deleteRequest = async () => {
     try {
-      await mutateDeleteCard({ encodedId: id as string });
+      await mutateDeleteCard({ encodeId: id as string });
       close();
       showToast('명함을 삭제하였습니다.');
       push(`/cards/`);
@@ -107,7 +107,7 @@ export default function CardDetailPage({
       push(`/`);
     }
     try {
-      await mutateSaveCard({ encodedId: id as string });
+      await mutateSaveCard({ encodeId: id as string });
       showToast('명함을 저장하였습니다.');
     } catch (err) {
       showToast('명함 저장에 실패하였습니다.');
