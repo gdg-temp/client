@@ -90,6 +90,7 @@ export default function CardsListPage() {
                       email={card.email}
                       styleTemplate={card.styleTemplate}
                       designTemplate={card.designTemplate}
+                      profileUrl={card.profileImage}
                       offset={offset}
                       zIndex={zIndex}
                       onMouseEnter={() => handleCardHover(index)}

@@ -41,10 +41,10 @@ const Card = ({
               style={{ background: `url('/card_design/${styleTemplate}/${designTemplate}.png')` }}
             >
               <S.CardFrontTop>
-                <div>
+                <S.CardTitle>
                   <S.CardFrontName>{name}</S.CardFrontName>
                   <S.CardFrontPosition>{position}</S.CardFrontPosition>
-                </div>
+                </S.CardTitle>
                 {!disableProfile && styleTemplate !== 'character' ? (
                   <Profile size="small" src={profileUrl} />
                 ) : (
