@@ -19,6 +19,7 @@ const getServerSideCardProps: GetServerSideProps<{
   try {
     const { data: cardResponse } = await axios.get<ResponseData<Card>>(
       `${process.env.NEXT_PUBLIC_API_URL}/cards/${ctx.query.id}`,
+      config,
     );
     card = cardResponse.data;
   } catch (error) {
