@@ -5,7 +5,7 @@ const EmptyWrapper = styled.div`
   text-align: center;
   display: flex;
   flex-direction: column;
-  margin: 70% auto;
+  margin: 100% auto;
   gap: 12px;
 `;
 
