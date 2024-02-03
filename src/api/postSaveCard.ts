@@ -7,8 +7,8 @@ const saveCard = async <T = null>(
   idParams: SaveCardRequest,
   config?: AxiosRequestConfig,
 ): Promise<T> => {
-  const { encodedId } = idParams;
-  const { data } = await axiosInstance.post<T>(`/collections/${encodedId}`, config);
+  const { encodeId } = idParams;
+  const { data } = await axiosInstance.post<T>(`/collections/${encodeId}`, config);
   return data;
 };
 

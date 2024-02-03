@@ -26,7 +26,7 @@ const AgreementsTextsWrapper = styled.div`
 `;
 
 const AgreementsStepButtonWrapper = styled.div`
-  margin-top: calc(100vh - 650px);
+  margin-top: calc(100vh - 680px);
 `;
 
 const ConfirmStepButtonWrapper = styled.div`
