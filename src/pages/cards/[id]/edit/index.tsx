@@ -4,7 +4,7 @@ import { userAtom } from '@stores';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { Card, CardLink, DefaultCardInfo } from '@types';
-import { NavBar, Typography } from '@components';
+import { NavBar, Typography, Loading } from '@components';
 import {
   ConfirmTemplate,
   DefaultFooter,
@@ -48,6 +48,9 @@ export default function GenerationPage({
     queryKey: [KEY.CARD, id],
     queryFn: () => getCard(id as string),
   });
+  if (isError) {
+    throw new Error('데이터를 가져오는데 실패하였습니다.');
+  }
   const { showToast } = useToast();
   const queryClient = useQueryClient();
   const { mutateAsync: mutateCard } = useMutation<Card, AxiosError, UpdateCardRequest>({
@@ -55,6 +58,9 @@ export default function GenerationPage({
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [KEY.CARD] });
       queryClient.invalidateQueries({ queryKey: [KEY.CARDS] });
+    },
+    onError: () => {
+      showToast('수정 중 에러가 발생하였습니다.');
     },
   });
   const { mutateAsync: mutateAddLink } = useMutation<CardLink, AxiosError, PostLinkRequest>({
@@ -259,9 +265,15 @@ export default function GenerationPage({
   };
   return (
     <>
-      <NavBar onClickLeft={handleClickBack} title="명함 수정하기" />
-      {getHeaderText()}
-      {getTemplate()}
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <NavBar onClickLeft={handleClickBack} title="명함 수정하기" />
+          {getHeaderText()}
+          {getTemplate()}
+        </>
+      )}
     </>
   );
 }

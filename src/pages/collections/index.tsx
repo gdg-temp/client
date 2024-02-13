@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { useState, useEffect } from 'react';
 
 import { getServerSideUserProps } from '@utils';
@@ -16,7 +16,7 @@ const CollectionContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  max-height: 100vh;
+  position: relative;
 `;
 
 const FoundWrapper = styled.div`
@@ -29,26 +29,68 @@ const NotFoundWrapper = styled.div`
   padding: 90% 0;
 `;
 
+const StackedCard = styled(Card)<{
+  offset?: number;
+  zIndex?: number;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+}>`
+  position: absolute;
+  max-height: 100vh;
+  ${(props) =>
+    props.offset !== undefined &&
+    css`
+      top: ${props.offset}px;
+      transition: top 0.5s ease;
+    `}
+  left: 8px;
+  z-index: ${(props) => props.zIndex};
+  @media screen and (min-width: 768px) {
+    left: 30px;
+  }
+`;
+
 export default function CollectionsPage() {
   const [searchText, setSearchText] = useState('');
   const [filteredCards, setFilteredCards] = useState<Collection[]>([]);
   const [showText, setShowText] = useState(false);
 
-  const { data, isError, isLoading } = useQuery({
+  const {
+    data: collectionData,
+    isError,
+    isLoading,
+  } = useQuery({
     queryKey: [KEY.COLLECTION],
     queryFn: getCollection,
   });
 
   useEffect(() => {
-    const filteredData = getFilteredCardList(searchText, data?.data || []);
+    const filteredData = getFilteredCardList(searchText, collectionData?.data || []);
     setFilteredCards(filteredData);
-  }, [searchText, data]);
+  }, [searchText, collectionData]);
+
+  const isStacked = collectionData ? collectionData.data.length > 3 : false;
+  const [hoveredIndex, setHoveredIndex] = useState(10);
+
+  const handleCardHover = (index: number) => {
+    setHoveredIndex(index);
+  };
+
+  const handleCardLeave = () => {
+    setHoveredIndex(10);
+  };
+
+  if (isError) {
+    throw new Error('데이터를 가져오는데 실패하였습니다.');
+  }
+
+  if (isError) {
+    throw new Error('데이터를 가져오는데 실패하였습니다.');
+  }
 
   return (
     <>
-      {isError ? (
-        <div>ERROR</div>
-      ) : isLoading ? (
+      {isLoading ? (
         <Loading />
       ) : (
         <>
@@ -92,18 +134,31 @@ export default function CollectionsPage() {
                 </NotFoundWrapper>
               )
             ) : (
-              data.data.map((card) => (
-                <Link href={`/cards/${card.encodeId}`} key={card.encodeId}>
-                  <Card
-                    id={'card'}
-                    key={card.encodeId}
-                    name={card.name}
-                    email={card.email}
-                    styleTemplate={card.styleTemplate}
-                    designTemplate={card.designTemplate}
-                  />
-                </Link>
-              ))
+              collectionData.data.map((card: Collection, index: number) => {
+                const offset = isStacked
+                  ? index > hoveredIndex
+                    ? index * (500 / (collectionData?.data.length - 1)) + 100
+                    : index * (500 / (collectionData?.data.length - 1))
+                  : index * 200;
+                const zIndex = isStacked ? index : 0;
+
+                return (
+                  <Link href={`/cards/${card.encodeId}`} key={card.encodeId}>
+                    <StackedCard
+                      id={'card'}
+                      key={card.encodeId}
+                      name={card.name}
+                      email={card.email}
+                      styleTemplate={card.styleTemplate}
+                      designTemplate={card.designTemplate}
+                      offset={offset}
+                      zIndex={zIndex}
+                      onMouseEnter={() => handleCardHover(index)}
+                      onMouseLeave={() => handleCardLeave()}
+                    />
+                  </Link>
+                );
+              })
             )}
           </CollectionContainer>
         </>

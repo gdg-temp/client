@@ -42,7 +42,7 @@ export default function CardsListPage() {
     data: cardsData,
     isLoading,
     isError,
-  } = useQuery<{ data: CardType[]; error?: { status: number } }, unknown>({
+  } = useQuery<{ data: CardType[] }, unknown>({
     queryKey: [KEY.CARDS],
     queryFn: getCards,
   });
@@ -58,15 +58,16 @@ export default function CardsListPage() {
     setHoveredIndex(10);
   };
 
+  if (isError) {
+    throw new Error('데이터를 가져오는데 실패하였습니다.');
+  }
+
   return (
     <>
       <Head>
         <title>Card List</title>
       </Head>
-      {isError ? (
-        <div>Error</div>
-      ) : //<ErrorTemplate status={data?.data.error?.status} />
-      isLoading ? (
+      {isLoading ? (
         <Loading />
       ) : (
         <>
