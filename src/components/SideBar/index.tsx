@@ -62,26 +62,32 @@ const SideBar = ({
             {isLogined ? (
               <>
                 <S.SidebarContainer>
-                  <S.UserInfoContainer>
-                    <Typography type="title2" grayColor="white">
-                      {name}
-                    </Typography>
-                    <S.LoginIcon loginIcon={loginIcon} />
-                  </S.UserInfoContainer>
-                  <S.UserInfoContainer>
-                    <Typography systemColor="main" type="caption1">
-                      {myCardCnt}
-                    </Typography>
-                    <Typography grayColor="blueGray300" type="caption1">
-                      내 명함
-                    </Typography>
-                    <Typography systemColor="main" type="caption1">
-                      {collectCardCnt}
-                    </Typography>
-                    <Typography grayColor="blueGray300" type="caption1">
-                      수집 명함
-                    </Typography>
-                  </S.UserInfoContainer>
+                  <S.UserContainer>
+                    <S.UserInfoContainer>
+                      <Typography type="title2" grayColor="white">
+                        {name}
+                      </Typography>
+                      <S.LoginIcon loginIcon={loginIcon} />
+                    </S.UserInfoContainer>
+                    <S.UserCardContainer>
+                      <S.UserInfoContainer>
+                        <Typography systemColor="main" type="caption1">
+                          {myCardCnt}
+                        </Typography>
+                        <Typography grayColor="blueGray300" type="caption1">
+                          내 명함
+                        </Typography>
+                      </S.UserInfoContainer>
+                      <S.UserInfoContainer>
+                        <Typography systemColor="main" type="caption1">
+                          {collectCardCnt}
+                        </Typography>
+                        <Typography grayColor="blueGray300" type="caption1">
+                          수집 명함
+                        </Typography>
+                      </S.UserInfoContainer>
+                    </S.UserCardContainer>
+                  </S.UserContainer>
                   <S.ContentContainer>
                     {menuItems.map((menuItem) => (
                       <S.ContentItems key={menuItem.id} onClick={menuItem.handlerouter}>
