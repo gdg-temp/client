@@ -134,27 +134,16 @@ export default function CollectionsPage() {
                   </NotFoundWrapper>
                 )
               ) : (
-                collectionData.data.map((card: Collection, index: number) => {
-                  const offset = isStacked
-                    ? index > hoveredIndex
-                      ? index * (500 / (collectionData?.data.length - 1)) + 100
-                      : index * (500 / (collectionData?.data.length - 1))
-                    : index * 200;
-                  const zIndex = isStacked ? index : 0;
-
+                collectionData.data.map((card: Collection) => {
                   return (
                     <Link href={`/cards/${card.encodeId}`} key={card.encodeId}>
-                      <StackedCard
+                      <Card
                         id={'card'}
                         key={card.encodeId}
                         name={card.name}
                         email={card.email}
                         styleTemplate={card.styleTemplate}
                         designTemplate={card.designTemplate}
-                        offset={offset}
-                        zIndex={zIndex}
-                        onMouseEnter={() => handleCardHover(index)}
-                        onMouseLeave={() => handleCardLeave()}
                       />
                     </Link>
                   );
