@@ -46,10 +46,9 @@ const HomeWrapper = styled.div`
 const Logo = styled.img`
   width: 181px;
   height: auto;
-  margin-bottom: 300px;
+  margin-bottom: 50px;
   @media screen and (min-width: 768px) {
     width: 120px;
-    margin-bottom: 260px;
   }
 `;
 
@@ -83,11 +82,12 @@ const slide = keyframes`
 `;
 
 const SlideContainer = styled.div`
-  position: absolute;
+  position: fix;
   top: 54%;
   display: flex;
   width: 100%;
   animation: ${slide} 10s linear infinite;
+  margin-bottom: 30px;
   @media screen and (min-width: 768px) {
     top: 50%;
     animation: ${slide} 30s linear infinite;
@@ -101,6 +101,13 @@ const CardImageWrapper = styled.img`
   @media screen and (min-width: 768px) {
     width: 319px;
     height: 178px;
+  }
+`;
+
+const ButtonWrapper = styled.div`
+  width: 100%;
+  @media screen and (min-width: 768px) {
+    width: 20%;
   }
 `;
 
@@ -149,9 +156,11 @@ export default function HomePage() {
             />
           ))}
         </SlideContainer>
-        <Button color="primary" size="large" onClick={() => router.push('/login')}>
-          로그인
-        </Button>
+        <ButtonWrapper>
+          <Button color="primary" size="large" onClick={() => router.push('/login')}>
+            로그인
+          </Button>
+        </ButtonWrapper>
       </HomeWrapper>
     </>
   );

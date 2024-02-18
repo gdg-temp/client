@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { useState, useEffect } from 'react';
 
 import { getServerSideUserProps } from '@utils';
@@ -10,13 +10,14 @@ import Link from 'next/link';
 import { Collection } from '@types';
 import { NavLayout } from '@layouts';
 import { getFilteredCardList } from '@utils';
+import { EmptyTemplate } from '@templates';
 
 const CollectionContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  max-height: 100vh;
+  position: relative;
 `;
 
 const FoundWrapper = styled.div`
@@ -29,26 +30,64 @@ const NotFoundWrapper = styled.div`
   padding: 90% 0;
 `;
 
+const StackedCard = styled(Card)<{
+  offset?: number;
+  zIndex?: number;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+}>`
+  position: absolute;
+  max-height: 100vh;
+  ${(props) =>
+    props.offset !== undefined &&
+    css`
+      top: ${props.offset}px;
+      transition: top 0.5s ease;
+    `}
+  left: 8px;
+  z-index: ${(props) => props.zIndex};
+  @media screen and (min-width: 768px) {
+    left: 30px;
+  }
+`;
+
 export default function CollectionsPage() {
   const [searchText, setSearchText] = useState('');
   const [filteredCards, setFilteredCards] = useState<Collection[]>([]);
   const [showText, setShowText] = useState(false);
 
-  const { data, isError, isLoading } = useQuery({
+  const {
+    data: collectionData,
+    isError,
+    isLoading,
+  } = useQuery({
     queryKey: [KEY.COLLECTION],
     queryFn: getCollection,
   });
 
   useEffect(() => {
-    const filteredData = getFilteredCardList(searchText, data?.data || []);
+    const filteredData = getFilteredCardList(searchText, collectionData?.data || []);
     setFilteredCards(filteredData);
-  }, [searchText, data]);
+  }, [searchText, collectionData]);
+
+  const isStacked = collectionData ? collectionData.data.length > 3 : false;
+  const [hoveredIndex, setHoveredIndex] = useState(10);
+
+  const handleCardHover = (index: number) => {
+    setHoveredIndex(index);
+  };
+
+  const handleCardLeave = () => {
+    setHoveredIndex(10);
+  };
+
+  if (isError) {
+    throw new Error('데이터를 가져오는데 실패하였습니다.');
+  }
 
   return (
     <>
-      {isError ? (
-        <div>ERROR</div>
-      ) : isLoading ? (
+      {isLoading ? (
         <Loading />
       ) : (
         <>
@@ -67,45 +106,51 @@ export default function CollectionsPage() {
               </Typography>
             </FoundWrapper>
           )}
-          <CollectionContainer>
-            {searchText ? (
-              filteredCards.length > 0 ? (
-                filteredCards.map((card) => (
-                  <Link href={`/cards/${card.encodeId}`} key={card.encodeId}>
-                    <Card
-                      id={'card'}
-                      key={card.encodeId}
-                      name={card.name}
-                      email={card.email}
-                      styleTemplate={card.styleTemplate}
-                      designTemplate={card.designTemplate}
-                    />
-                  </Link>
-                ))
+          {!collectionData.data.length ? (
+            <EmptyTemplate pageName="collections" />
+          ) : (
+            <CollectionContainer>
+              {searchText ? (
+                filteredCards.length > 0 ? (
+                  filteredCards.map((card) => (
+                    <Link href={`/cards/${card.encodeId}`} key={card.encodeId}>
+                      <Card
+                        id={'card'}
+                        key={card.encodeId}
+                        name={card.name}
+                        email={card.email}
+                        styleTemplate={card.styleTemplate}
+                        designTemplate={card.designTemplate}
+                      />
+                    </Link>
+                  ))
+                ) : (
+                  <NotFoundWrapper>
+                    <Typography type="title2" grayColor="blueGray400">
+                      찾으시는 명함이
+                      <br />
+                      존재하지 않습니다.
+                    </Typography>
+                  </NotFoundWrapper>
+                )
               ) : (
-                <NotFoundWrapper>
-                  <Typography type="title2" grayColor="blueGray400">
-                    찾으시는 명함이
-                    <br />
-                    존재하지 않습니다.
-                  </Typography>
-                </NotFoundWrapper>
-              )
-            ) : (
-              data.data.map((card) => (
-                <Link href={`/cards/${card.encodeId}`} key={card.encodeId}>
-                  <Card
-                    id={'card'}
-                    key={card.encodeId}
-                    name={card.name}
-                    email={card.email}
-                    styleTemplate={card.styleTemplate}
-                    designTemplate={card.designTemplate}
-                  />
-                </Link>
-              ))
-            )}
-          </CollectionContainer>
+                collectionData.data.map((card: Collection) => {
+                  return (
+                    <Link href={`/cards/${card.encodeId}`} key={card.encodeId}>
+                      <Card
+                        id={'card'}
+                        key={card.encodeId}
+                        name={card.name}
+                        email={card.email}
+                        styleTemplate={card.styleTemplate}
+                        designTemplate={card.designTemplate}
+                      />
+                    </Link>
+                  );
+                })
+              )}
+            </CollectionContainer>
+          )}
         </>
       )}
     </>

@@ -8,6 +8,7 @@ import { AxiosError } from 'axios';
 import { useRouter } from 'next/router';
 import { useRecoilState } from 'recoil';
 import { PostSignupRequest } from 'src/api/types';
+import { useToast } from '@hooks';
 import S from './Signup.styled';
 
 interface ConfirmStepProps {
@@ -17,6 +18,7 @@ interface ConfirmStepProps {
 const ConfirmStep = ({ agreements }: ConfirmStepProps) => {
   const router = useRouter();
   const [userState, setUserState] = useRecoilState(userAtom);
+  const { showToast } = useToast();
   const { mutate } = useMutation<User, AxiosError, PostSignupRequest>({
     mutationFn: postSignup,
   });
@@ -34,6 +36,9 @@ const ConfirmStep = ({ agreements }: ConfirmStepProps) => {
         onSuccess: () => {
           if (isCardGenarate) router.push('/generation');
           else router.push('/');
+        },
+        onError: () => {
+          showToast('가입 중 오류가 발생하였습니다.');
         },
       },
     );

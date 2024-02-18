@@ -7,6 +7,7 @@ import { ModalProvider, ToastProvider } from '@stores';
 import { AppPropsWithLayout, DefaultLayout } from '@layouts';
 import { GlobalStyles, theme } from '@styles';
 import { ThemeProvider } from 'styled-components';
+import MaintenaceTemplate from 'src/templates/maintenance/MaintenanceTemplate';
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
   const [queryClient] = useState(
@@ -21,6 +22,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
       }),
   );
   const getLayout = Component.getLayout ?? ((page) => page);
+  const status = process.env.NEXT_PUBLIC_STATUS;
 
   return (
     <>
@@ -38,7 +40,11 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
               <RecoilRoot>
                 <QueryClientProvider client={queryClient}>
                   <DefaultLayout pageProps={pageProps}>
-                    {getLayout(<Component {...pageProps} />)}
+                    {status === 'maintenance' ? (
+                      <MaintenaceTemplate />
+                    ) : (
+                      getLayout(<Component {...pageProps} />)
+                    )}
                   </DefaultLayout>
                 </QueryClientProvider>
               </RecoilRoot>

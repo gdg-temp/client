@@ -14,6 +14,9 @@ const NaverRedirect = () => {
     queryKey: [KEY.USER],
     queryFn: () => loginUser({ oauthServerType: 'NAVER', code: router.query.code as string }),
   });
+  if (isError) {
+    throw new Error('데이터를 가져오는데 실패하였습니다.');
+  }
   useEffect(() => {
     if (!router.query.code) {
       router.replace('/login');
