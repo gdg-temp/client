@@ -10,6 +10,7 @@ import Link from 'next/link';
 import { Collection } from '@types';
 import { NavLayout } from '@layouts';
 import { getFilteredCardList } from '@utils';
+import { EmptyTemplate } from '@templates';
 
 const CollectionContainer = styled.div`
   display: flex;
@@ -84,10 +85,6 @@ export default function CollectionsPage() {
     throw new Error('데이터를 가져오는데 실패하였습니다.');
   }
 
-  if (isError) {
-    throw new Error('데이터를 가져오는데 실패하였습니다.');
-  }
-
   return (
     <>
       {isLoading ? (
@@ -109,58 +106,51 @@ export default function CollectionsPage() {
               </Typography>
             </FoundWrapper>
           )}
-          <CollectionContainer>
-            {searchText ? (
-              filteredCards.length > 0 ? (
-                filteredCards.map((card) => (
-                  <Link href={`/cards/${card.encodeId}`} key={card.encodeId}>
-                    <Card
-                      id={'card'}
-                      key={card.encodeId}
-                      name={card.name}
-                      email={card.email}
-                      styleTemplate={card.styleTemplate}
-                      designTemplate={card.designTemplate}
-                    />
-                  </Link>
-                ))
+          {!collectionData.data.length ? (
+            <EmptyTemplate pageName="collections" />
+          ) : (
+            <CollectionContainer>
+              {searchText ? (
+                filteredCards.length > 0 ? (
+                  filteredCards.map((card) => (
+                    <Link href={`/cards/${card.encodeId}`} key={card.encodeId}>
+                      <Card
+                        id={'card'}
+                        key={card.encodeId}
+                        name={card.name}
+                        email={card.email}
+                        styleTemplate={card.styleTemplate}
+                        designTemplate={card.designTemplate}
+                      />
+                    </Link>
+                  ))
+                ) : (
+                  <NotFoundWrapper>
+                    <Typography type="title2" grayColor="blueGray400">
+                      찾으시는 명함이
+                      <br />
+                      존재하지 않습니다.
+                    </Typography>
+                  </NotFoundWrapper>
+                )
               ) : (
-                <NotFoundWrapper>
-                  <Typography type="title2" grayColor="blueGray400">
-                    찾으시는 명함이
-                    <br />
-                    존재하지 않습니다.
-                  </Typography>
-                </NotFoundWrapper>
-              )
-            ) : (
-              collectionData.data.map((card: Collection, index: number) => {
-                const offset = isStacked
-                  ? index > hoveredIndex
-                    ? index * (500 / (collectionData?.data.length - 1)) + 100
-                    : index * (500 / (collectionData?.data.length - 1))
-                  : index * 200;
-                const zIndex = isStacked ? index : 0;
-
-                return (
-                  <Link href={`/cards/${card.encodeId}`} key={card.encodeId}>
-                    <StackedCard
-                      id={'card'}
-                      key={card.encodeId}
-                      name={card.name}
-                      email={card.email}
-                      styleTemplate={card.styleTemplate}
-                      designTemplate={card.designTemplate}
-                      offset={offset}
-                      zIndex={zIndex}
-                      onMouseEnter={() => handleCardHover(index)}
-                      onMouseLeave={() => handleCardLeave()}
-                    />
-                  </Link>
-                );
-              })
-            )}
-          </CollectionContainer>
+                collectionData.data.map((card: Collection) => {
+                  return (
+                    <Link href={`/cards/${card.encodeId}`} key={card.encodeId}>
+                      <Card
+                        id={'card'}
+                        key={card.encodeId}
+                        name={card.name}
+                        email={card.email}
+                        styleTemplate={card.styleTemplate}
+                        designTemplate={card.designTemplate}
+                      />
+                    </Link>
+                  );
+                })
+              )}
+            </CollectionContainer>
+          )}
         </>
       )}
     </>

@@ -172,14 +172,18 @@ export default function CardDetailPage({
             </S.CardDetailReasons>
 
             <S.CardDetailInfo>
-              <S.CardDetailInfoItem>
-                <img src="/icons/Map_pin.svg" />
-                <div>{card.companyName}</div>
-              </S.CardDetailInfoItem>
-              <S.CardDetailInfoItem>
-                <img src="/icons/Setting.svg" />
-                <div>{card.position}</div>
-              </S.CardDetailInfoItem>
+              {card.companyName && (
+                <S.CardDetailInfoItem>
+                  <img src="/icons/Map_pin.svg" />
+                  <div>{card.companyName}</div>
+                </S.CardDetailInfoItem>
+              )}
+              {card.position && (
+                <S.CardDetailInfoItem>
+                  <img src="/icons/Setting.svg" />
+                  <div>{card.position}</div>
+                </S.CardDetailInfoItem>
+              )}
             </S.CardDetailInfo>
           </S.CardDetailBack>
         </ReactCardFlip>

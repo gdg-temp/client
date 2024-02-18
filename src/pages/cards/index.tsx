@@ -10,6 +10,7 @@ import { KEY } from '@static';
 import { getCards } from '@api';
 import { Loading, Card } from '@components';
 import { Card as CardType } from '@types';
+import { EmptyTemplate } from '@templates';
 
 const CardListContainer = styled.div`
   max-height: 100vh;
@@ -72,35 +73,39 @@ export default function CardsListPage() {
       ) : (
         <>
           <NavLayout />
-          <CardListContainer>
-            {Array.isArray(cardsData?.data) &&
-              cardsData.data.map((card: CardType, index: number) => {
-                const offset = isStacked
-                  ? index > hoveredIndex
-                    ? index * (500 / (cardsData?.data.length - 1)) + 100
-                    : index * (500 / (cardsData?.data.length - 1))
-                  : index * 200;
-                const zIndex = isStacked ? index : 0;
+          {!cardsData.data.length ? (
+            <EmptyTemplate pageName="cards" />
+          ) : (
+            <CardListContainer>
+              {Array.isArray(cardsData?.data) &&
+                cardsData.data.map((card: CardType, index: number) => {
+                  const offset = isStacked
+                    ? index > hoveredIndex
+                      ? index * (500 / (cardsData?.data.length - 1)) + 100
+                      : index * (500 / (cardsData?.data.length - 1))
+                    : index * 200;
+                  const zIndex = isStacked ? index : 0;
 
-                return (
-                  <Link href={`/cards/${card.encodeId}`} key={card.encodeId}>
-                    <StackedCard
-                      id={'card'}
-                      key={card.encodeId}
-                      name={card.name}
-                      email={card.email}
-                      styleTemplate={card.styleTemplate}
-                      designTemplate={card.designTemplate}
-                      profileUrl={card.profileImage}
-                      offset={offset}
-                      zIndex={zIndex}
-                      onMouseEnter={() => handleCardHover(index)}
-                      onMouseLeave={() => handleCardLeave()}
-                    />
-                  </Link>
-                );
-              })}
-          </CardListContainer>
+                  return (
+                    <Link href={`/cards/${card.encodeId}`} key={card.encodeId}>
+                      <StackedCard
+                        id={'card'}
+                        key={card.encodeId}
+                        name={card.name}
+                        email={card.email}
+                        styleTemplate={card.styleTemplate}
+                        designTemplate={card.designTemplate}
+                        profileUrl={card.profileImage}
+                        offset={offset}
+                        zIndex={zIndex}
+                        onMouseEnter={() => handleCardHover(index)}
+                        onMouseLeave={() => handleCardLeave()}
+                      />
+                    </Link>
+                  );
+                })}
+            </CardListContainer>
+          )}
         </>
       )}
     </>
