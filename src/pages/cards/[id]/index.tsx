@@ -165,11 +165,6 @@ export default function CardDetailPage({
             <S.CardDetailIntro>
               <Typography type={'title2'}>{card.introduction}</Typography>
             </S.CardDetailIntro>
-            <S.CardDetailReasons>
-              {card.reasonTexts?.map((el, index) => {
-                return <Chip key={index} isClicked={false} value={el}></Chip>;
-              })}
-            </S.CardDetailReasons>
 
             <S.CardDetailInfo>
               {card.companyName && (

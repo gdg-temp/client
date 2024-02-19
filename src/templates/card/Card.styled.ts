@@ -54,15 +54,9 @@ const CardDetailIntro = styled.div`
   width: 100%;
   height: 120px;
   padding: 32px 20px 20px;
+  margin-bottom: 200px;
 `;
-const CardDetailReasons = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-  margin-bottom: 64px;
-  padding: 0 20px 0;
-`;
+
 const CardDetailInfo = styled.div`
   border-top: 1px solid ${({ theme }) => theme.colorGray.blueGray600};
   padding: 24px 20px 0;
@@ -97,7 +91,6 @@ export default {
   LinkItem,
   CardDetailBack,
   CardDetailIntro,
-  CardDetailReasons,
   CardDetailInfo,
   CardDetailInfoItem,
   DeleteButtonWrapper,
