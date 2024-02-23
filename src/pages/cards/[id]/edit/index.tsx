@@ -186,17 +186,6 @@ export default function GenerationPage({
         </Typography>
       );
     }
-    if (currentStep === 'resultEdit') {
-      return (
-        <>
-          <Typography grayColor="white" type="title2">
-            내 명함이
-            <br />
-            새롭게 바뀌었어요!
-          </Typography>
-        </>
-      );
-    }
   };
   const getTemplate = () => {
     switch (currentStep) {

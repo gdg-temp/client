@@ -108,8 +108,16 @@ const ConfirmCardWrapper = styled.div`
   position: relative;
   z-index: 1;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  margin-bottom: 32vh;
+  margin-bottom: 28vh;
+  text-align: center;
+  align-items: center;
+  gap: 54px;
+  padding-top: 28px;
+  @media screen and (min-width: 768px) {
+    padding-top: 52px;
+  }
 `;
 
 const ConfirmButtonWrapper = styled.div`
