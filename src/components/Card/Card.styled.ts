@@ -26,13 +26,12 @@ const CardFrontTop = styled.div`
 `;
 const CardTitle = styled.div`
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 8px;
   height: 28px;
 `;
 const CardFrontName = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
   color: ${({ theme }) => theme.colorGray.black};
   font-size: 20px;
@@ -42,7 +41,6 @@ const CardFrontName = styled.div`
 const CardFrontPosition = styled.div`
   height: 20px;
   display: flex;
-  justify-content: center;
   align-items: center;
   color: ${({ theme }) => theme.colorGray.blueGray200};
   font-size: ${({ theme }) => theme.fontSize.body3};
