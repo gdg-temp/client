@@ -106,6 +106,7 @@ const CardImageWrapper = styled.img`
 
 const ButtonWrapper = styled.div`
   width: 100%;
+  z-index: 100;
   @media screen and (min-width: 768px) {
     width: 20%;
   }
