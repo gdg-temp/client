@@ -31,6 +31,15 @@ const GlobalStyles = createGlobalStyle`
   a { color: #fff; text-decoration: none; outline: none; font-family: 'Pretendard'; }
   button{ outline: none; background: none; border: none; cursor: pointer; font-family: 'Pretendard';};
   input { border: none; outline:  none; font-family: 'Pretendard';};
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-transition: background-color 9999s ease-out;
+    -webkit-box-shadow: 0 0 0px 1000px rgba(0,0,0,0) inset !important;
+    -webkit-text-fill-color: #fff !important;
+  }
 `;
 
 export default GlobalStyles;
