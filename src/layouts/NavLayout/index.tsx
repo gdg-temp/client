@@ -9,18 +9,20 @@ import { KEY } from '@static';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { Card, Collection } from '@types';
 import { AxiosError } from 'axios';
-import { useToast } from '@hooks';
+import { useToast, useModal } from '@hooks';
 
 interface NavLayoutProps {
   searchText?: string;
   onSearchTextChange?: React.Dispatch<React.SetStateAction<string>>;
   onShowTextChange?: React.Dispatch<React.SetStateAction<boolean>>;
+  cardLength?: number;
 }
 
 const NavLayout: React.FC<NavLayoutProps> = ({
   searchText,
   onSearchTextChange,
   onShowTextChange,
+  cardLength,
 }) => {
   const [userState, setUserState] = useRecoilState(userAtom);
   const [isSidebarOpen, setisSidebarOpen] = useState(false);
@@ -35,6 +37,7 @@ const NavLayout: React.FC<NavLayoutProps> = ({
     queryFn: getCollection,
   });
   const { showToast } = useToast();
+  const { open, close } = useModal();
 
   if (isError) {
     throw new Error('데이터를 가져오는데 실패하였습니다.');
@@ -61,6 +64,20 @@ const NavLayout: React.FC<NavLayoutProps> = ({
     });
   };
 
+  const handleGeneration = (cardLength?: number) => {
+    if (cardLength && cardLength > 4) {
+      open({
+        content: '5개 이상 명함을 생성할 수 없습니다.',
+        buttonType: 'oneButton',
+        buttonTitle: '확인',
+        onClick: close,
+        onClose: close,
+      });
+    } else {
+      router.push('/generation');
+    }
+  };
+
   return (
     <>
       <NavBar
@@ -68,7 +85,7 @@ const NavLayout: React.FC<NavLayoutProps> = ({
         trailingButton={pathname === '/cards' ? 'add' : undefined}
         showSearchBar={pathname === '/cards' ? false : true}
         onClickLeft={() => setisSidebarOpen(!isSidebarOpen)}
-        onClickRight={() => router.push('/generation')}
+        onClickRight={() => handleGeneration(cardLength)}
         searchText={searchText}
         onSearchTextChange={onSearchTextChange}
         onShowTextChange={onShowTextChange}
