@@ -62,5 +62,12 @@
     "jackspeak": "2.1.1"
   },
   "readme": "ERROR: No README data found!",
-  "_id": "gdg-client@0.1.0"
+  "_id": "gdg-client@0.1.0",
+  "browserslist": [
+    "> 0.5%",
+    "not dead",
+    "ios >= 10",
+    "chrome >= 49",
+    "not ie <= 11"
+  ]
 }

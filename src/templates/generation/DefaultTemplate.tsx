@@ -62,7 +62,11 @@ const DefaultTemplate = ({
           onChange={handleFileChange}
           style={{ display: 'none' }}
         />
-        <Profile src={imageUrl} cameraBtn onClick={() => fileInputRef.current?.click()} />
+        <Profile
+          src={imageUrl || cardInfo.profileImage}
+          cameraBtn
+          onClick={() => fileInputRef.current?.click()}
+        />
       </S.ProfileImageWrapper>
       <S.InputWrapper>
         <Input

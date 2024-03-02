@@ -57,7 +57,8 @@ const LogoTextWrapper = styled.div`
   text-align: center;
   margin-bottom: 24px;
   font-weight: ${({ theme }) => theme.fontWeight.bold};
-  color: ${({ theme }) => theme.colorGray.white} @media screen and (min-width: 768px) {
+  color: ${({ theme }) => theme.colorGray.white};
+  @media screen and (min-width: 768px) {
     font-size: 32px;
   }
 `;
