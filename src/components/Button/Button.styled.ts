@@ -77,6 +77,7 @@ const Button = styled.button<ButtonProps>`
     size === 'addLinkItem' ? '0' : size === 'small' ? '40px' : '8px'};
   font-size: ${({ size }) => (size === 'small' || size === 'addLinkItem' ? '14px' : '16px')};
   font-weight: 700;
+  word-break: keep-all;
   background-color: ${({ disabled, color }) => (disabled ? '#6e6f73' : BACKGROUND_COLOR[color])};
   color: ${({ disabled, color }) => (disabled ? '#A2A5AA' : FONT_COLOR[color])};
   &:hover {

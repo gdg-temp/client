@@ -3,7 +3,8 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyles = createGlobalStyle`
     @font-face {
         font-family: 'Pretendard';
-        src: url('/fonts/PretendardVariable.woff2') format('woff2');
+        src: url('/fonts/PretendardVariable.woff2') format('woff2'),
+            url('/fonts/PretendardVariable.ttf') format("truetype");
         font-display: swap;
     }
   * {
@@ -13,7 +14,10 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
     font-family: 'Pretendard';
+    font-weight: 400;
     color: ${({ theme }) => theme.colorGray.white};
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
     @media screen and (min-width: 768px) {
       display: flex;
       justify-content: center;
