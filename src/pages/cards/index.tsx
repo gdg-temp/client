@@ -72,7 +72,7 @@ export default function CardsListPage() {
         <Loading />
       ) : (
         <>
-          <NavLayout />
+          <NavLayout cardLength={cardsData.data.length} />
           {!cardsData.data.length ? (
             <EmptyTemplate pageName="cards" />
           ) : (

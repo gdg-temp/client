@@ -57,7 +57,8 @@ const LogoTextWrapper = styled.div`
   text-align: center;
   margin-bottom: 24px;
   font-weight: ${({ theme }) => theme.fontWeight.bold};
-  color: ${({ theme }) => theme.colorGray.white} @media screen and (min-width: 768px) {
+  color: ${({ theme }) => theme.colorGray.white};
+  @media screen and (min-width: 768px) {
     font-size: 32px;
   }
 `;
@@ -106,6 +107,7 @@ const CardImageWrapper = styled.img`
 
 const ButtonWrapper = styled.div`
   width: 100%;
+  z-index: 100;
   @media screen and (min-width: 768px) {
     width: 20%;
   }

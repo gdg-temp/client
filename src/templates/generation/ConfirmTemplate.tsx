@@ -1,4 +1,4 @@
-import { Button, Card } from '@components';
+import { Button, Card, Typography } from '@components';
 import { DefaultCardInfo } from '@types';
 import S from './Generation.styled';
 
@@ -30,6 +30,16 @@ const ConfirmTemplate = ({
         </S.CardScaleWrapper>
       </S.BackgroundCardWrapper>
       <S.ConfirmCardWrapper>
+        {mode === 'edit' ? (
+          <Typography grayColor="white" type="title1">
+            내 명함이
+            <br />
+            새롭게 바뀌었어요!
+          </Typography>
+        ) : (
+          <></>
+        )}
+
         <Card
           id={'card'}
           name={cardInfo.name}

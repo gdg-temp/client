@@ -22,7 +22,7 @@ const SidebarWrapper = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
   padding: 70px 0px;
   background: #1e1e1e;
 `;
