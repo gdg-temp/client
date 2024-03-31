@@ -118,7 +118,7 @@ export default function CardDetailPage({
   return (
     <>
       <Head>
-        <meta property="og:url" content="LinkYourLink" />
+        <meta property="og:url" content={`${SERVICE_ORIGIN}/cards/${card.encodeId}`} />
         <meta property="og:title" content={card.name} />
         <meta property="og:type" content="website" />
         <meta property="og:description" content={card.introduction} />
