@@ -10,7 +10,6 @@ import {
   DefaultFooter,
   DefaultTemplate,
   DesignTemplate,
-  ReasonTemplate,
   StyleTemplate,
 } from '@templates';
 import { InferGetServerSidePropsType } from 'next';
@@ -19,7 +18,6 @@ import { AxiosError } from 'axios';
 import { PostGenerationRequest, PostLinkRequest } from 'src/api/types';
 import { postGeneration, postLink } from '@api';
 import { KEY } from '@static';
-import { REASON_TEXT } from 'src/static/reason';
 import { useToast } from '@hooks';
 import GenerationStyled from 'src/templates/generation/Generation.styled';
 
