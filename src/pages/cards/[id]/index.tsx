@@ -12,6 +12,7 @@ import deleteCard from 'src/api/deleteCard';
 import saveCard from 'src/api/postSaveCard';
 import { DeleteCardRequest, SaveCardRequest } from 'src/api/types';
 import ReactCardFlip from 'react-card-flip';
+import { SERVICE_ORIGIN } from '@static';
 
 export default function CardDetailPage({
   card,
@@ -123,7 +124,7 @@ export default function CardDetailPage({
         <meta property="og:description" content={card.introduction} />
         <meta
           property="og:image"
-          content={`/card_design/${card.styleTemplate}/${card.designTemplate}.png`}
+          content={`${SERVICE_ORIGIN}/card_design/${card.styleTemplate}/${card.designTemplate}.png`}
         />
         <title>{card.name}</title>
       </Head>
