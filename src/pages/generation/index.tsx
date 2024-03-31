@@ -23,7 +23,7 @@ import { REASON_TEXT } from 'src/static/reason';
 import { useToast } from '@hooks';
 import GenerationStyled from 'src/templates/generation/Generation.styled';
 
-type GenerateStep = 'default' | 'reason' | 'style' | 'design' | 'confirm';
+type GenerateStep = 'default' | 'style' | 'design' | 'confirm';
 
 export default function GenerationPage({
   user,
@@ -52,15 +52,6 @@ export default function GenerationPage({
   const [cardLinks, setCardLinks] = useState<CardLink[]>([
     { linkText: '', linkType: 'custom', linkUrl: '' },
   ]);
-  const [reasonTexts, setReasonTexts] = useState<{ [key in ReasonType]: boolean }>({
-    share: false,
-    image: false,
-    contact: false,
-    introduce: false,
-    coworker: false,
-    communication: false,
-    nothing: false,
-  });
   const [cardInfo, setCardInfo] = useState<DefaultCardInfo>({
     name: userState.name,
     email: userState.email,
@@ -74,13 +65,9 @@ export default function GenerationPage({
   const router = useRouter();
 
   const handleConfirm = async () => {
-    const trueKeys = (Object.keys(reasonTexts) as ReasonType[]).filter(
-      (key) => reasonTexts[key] === true,
-    );
     try {
       const cardResult = await mutateGeneration({
         ...cardInfo,
-        reasonTexts: trueKeys.map((key) => REASON_TEXT[key]),
       });
 
       for await (const cardLink of cardLinks) {
@@ -95,8 +82,7 @@ export default function GenerationPage({
 
   const handleClickBack = () => {
     if (generateStep === 'default') router.push('/cards');
-    if (generateStep === 'reason') setGenerateStep('default');
-    if (generateStep === 'style') setGenerateStep('reason');
+    if (generateStep === 'style') setGenerateStep('default');
     if (generateStep === 'design') setGenerateStep('style');
     if (generateStep === 'confirm') setGenerateStep('design');
   };
@@ -108,15 +94,6 @@ export default function GenerationPage({
           명함에 들어갈
           <br />
           기본정보를 입력해주세요.
-        </Typography>
-      );
-    }
-    if (generateStep === 'reason') {
-      return (
-        <Typography grayColor="white" type="title2">
-          명함을 어떤 용도로
-          <br />
-          사용하고 싶으신가요?
         </Typography>
       );
     }
@@ -162,18 +139,6 @@ export default function GenerationPage({
     });
   };
 
-  const changeReasonTexts = (reasonKey: ReasonType, isActive: boolean) => {
-    const activeCount = Object.values(reasonTexts).reduce((acc, cur) => {
-      return cur ? acc + 1 : acc;
-    }, 0);
-    if (activeCount >= 3 && isActive === true) return;
-    setReasonTexts((prev) => {
-      const newObj = { ...prev };
-      newObj[reasonKey] = isActive;
-      return newObj;
-    });
-  };
-
   const removeCardLinkByIndex = (index: number) => {
     setCardLinks((prev) => [...prev.slice(0, index), ...prev.slice(index + 1)]);
   };
@@ -203,20 +168,9 @@ export default function GenerationPage({
             />
             <DefaultFooter
               confirmText={'다음'}
-              onConfirm={() => setGenerateStep('reason')}
+              onConfirm={() => setGenerateStep('style')}
               isNew={true}
               disabled={!cardInfo.name || !cardInfo.email}
-            />
-          </>
-        );
-      case 'reason':
-        return (
-          <>
-            <ReasonTemplate
-              reasonTexts={reasonTexts}
-              changeReasonTexts={changeReasonTexts}
-              onPrev={() => setGenerateStep('default')}
-              onNext={() => setGenerateStep('style')}
             />
           </>
         );
@@ -226,7 +180,7 @@ export default function GenerationPage({
             <StyleTemplate
               cardInfo={cardInfo}
               changeCardInfo={changeCardInfo}
-              onPrev={() => setGenerateStep('reason')}
+              onPrev={() => setGenerateStep('default')}
               onNext={() => setGenerateStep('design')}
             />
           </>

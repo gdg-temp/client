@@ -14,11 +14,6 @@ const mockData: Card = {
   isMine: true,
   profileImage:
     'https://img1.kakaocdn.net/thumb/R296x0@2x.q82/?fname=https%3A%2F%2Ft1.kakaocdn.net%2Ffriends%2Fprod%2Fmain_tab%2Ffeed%2Fmedia%2Fmedia_0_20220125144239.jpg',
-  reasonTexts: [
-    '프로필 링크를 공유하고 싶어요',
-    '그냥 나라는 사람을 자랑하고 싶어요',
-    '다양한 업계 사람들과 소통하고 싶어요',
-  ],
   linkInfoVOList: [
     {
       id: 0,
