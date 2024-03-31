@@ -18,7 +18,6 @@ const mockCards: ResponseData<Card[]> = {
       introduction: '',
       isMine: true,
       profileImage: '',
-      reasonTexts: [],
       linkInfoVOList: [
         {
           id: 0,
@@ -40,7 +39,6 @@ const mockCards: ResponseData<Card[]> = {
       introduction: '',
       isMine: true,
       profileImage: '',
-      reasonTexts: [],
       linkInfoVOList: [
         {
           id: 0,
@@ -62,7 +60,6 @@ const mockCards: ResponseData<Card[]> = {
       introduction: '',
       isMine: true,
       profileImage: '',
-      reasonTexts: [],
       linkInfoVOList: [
         {
           id: 0,
@@ -84,7 +81,6 @@ const mockCards: ResponseData<Card[]> = {
       introduction: '',
       isMine: true,
       profileImage: '',
-      reasonTexts: [],
       linkInfoVOList: [
         {
           id: 0,
@@ -106,7 +102,6 @@ const mockCards: ResponseData<Card[]> = {
       introduction: '',
       isMine: true,
       profileImage: '',
-      reasonTexts: [],
       linkInfoVOList: [
         {
           id: 0,
@@ -128,7 +123,6 @@ const mockCards: ResponseData<Card[]> = {
       introduction: '',
       isMine: true,
       profileImage: '',
-      reasonTexts: [],
       linkInfoVOList: [
         {
           id: 0,

@@ -13,11 +13,6 @@ const mockData: Card = {
   introduction: '윤해수입니다.',
   isMine: true,
   profileImage: '',
-  reasonTexts: [
-    '프로필 링크를 공유하고 싶어요',
-    '그냥 나라는 사람을 자랑하고 싶어요',
-    '다양한 업계 사람들과 소통하고 싶어요',
-  ],
   linkInfoVOList: [
     {
       id: 0,

@@ -12,7 +12,7 @@ const ToastWrapper = styled.div<{ duration: number }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 209px;
+  width: 244px;
   height: 44px;
   bottom: 48px;
   left: 50%;
