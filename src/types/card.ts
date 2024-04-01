@@ -1,7 +1,7 @@
 import { CardLink } from './link';
 
 export type Card = CardInfo & {
-  linkInfoVOList: CardLink[];
+  links: CardLink[];
 };
 
 export type CardInfo = {
