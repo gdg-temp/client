@@ -13,7 +13,7 @@ const mockData: Card = {
   introduction: '윤해수입니다.',
   isMine: true,
   profileImage: '',
-  linkInfoVOList: [
+  links: [
     {
       id: 0,
       linkType: 'instagram',

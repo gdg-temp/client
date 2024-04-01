@@ -10,7 +10,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         encodeId: 'encodeId',
         cardId: 0,
         isMine: true,
-        linkInfoVOList: [],
+        links: [],
         ...body,
       },
     });
