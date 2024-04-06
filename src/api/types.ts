@@ -1,13 +1,11 @@
-import { CardLink, DefaultCardInfo, ReasonTexts, User } from '@types';
+import { CardLink, DefaultCardInfo, User } from '@types';
 
 export type PostSignupRequest = User & {
   agreementRequired: boolean;
   agreementAlarm: boolean;
 };
 
-export type PostGenerationRequest = DefaultCardInfo & {
-  reasonTexts: ReasonTexts;
-};
+export type PostGenerationRequest = DefaultCardInfo;
 
 export type PostLinkRequest = Omit<CardLink, 'id'> & { encodeId: string };
 

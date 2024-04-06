@@ -12,13 +12,9 @@ const mockData: Card = {
   styleTemplate: 'default',
   introduction: '윤해수입니다.',
   isMine: true,
-  profileImage: '',
-  reasonTexts: [
-    '프로필 링크를 공유하고 싶어요',
-    '그냥 나라는 사람을 자랑하고 싶어요',
-    '다양한 업계 사람들과 소통하고 싶어요',
-  ],
-  linkInfoVOList: [
+  profileImage:
+    'https://img1.kakaocdn.net/thumb/R296x0@2x.q82/?fname=https%3A%2F%2Ft1.kakaocdn.net%2Ffriends%2Fprod%2Fmain_tab%2Ffeed%2Fmedia%2Fmedia_0_20220125144239.jpg',
+  links: [
     {
       id: 0,
       linkType: 'instagram',

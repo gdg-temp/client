@@ -91,7 +91,7 @@ export default function GenerationPage({
   useEffect(() => {
     if (cardData) {
       setCardInfo(cardData.data);
-      setCardLinks(cardData.data.linkInfoVOList);
+      setCardLinks(cardData.data.links);
     }
   }, [cardData]);
 

@@ -12,6 +12,7 @@ import deleteCard from 'src/api/deleteCard';
 import saveCard from 'src/api/postSaveCard';
 import { DeleteCardRequest, SaveCardRequest } from 'src/api/types';
 import ReactCardFlip from 'react-card-flip';
+import { SERVICE_ORIGIN } from '@static';
 
 export default function CardDetailPage({
   card,
@@ -117,13 +118,13 @@ export default function CardDetailPage({
   return (
     <>
       <Head>
-        <meta property="og:url" content="LinkYourLink" />
+        <meta property="og:url" content={`${SERVICE_ORIGIN}/cards/${card.encodeId}`} />
         <meta property="og:title" content={card.name} />
         <meta property="og:type" content="website" />
         <meta property="og:description" content={card.introduction} />
         <meta
           property="og:image"
-          content={`/card_design/${card.styleTemplate}/${card.designTemplate}.png`}
+          content={`${SERVICE_ORIGIN}/card_design/${card.styleTemplate}/${card.designTemplate}.png`}
         />
         <title>{card.name}</title>
       </Head>
@@ -148,8 +149,8 @@ export default function CardDetailPage({
               styleTemplate={card.styleTemplate}
             />
             <S.LinkWrapper>
-              {card.linkInfoVOList
-                ? card.linkInfoVOList.map((el) => {
+              {card.links
+                ? card.links.map((el) => {
                     return (
                       <S.LinkItem key={el.id} href={el.linkUrl}>
                         <img src={`/icons/${el.linkType}.svg`} />

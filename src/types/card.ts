@@ -1,14 +1,13 @@
 import { CardLink } from './link';
 
 export type Card = CardInfo & {
-  linkInfoVOList: CardLink[];
+  links: CardLink[];
 };
 
 export type CardInfo = {
   cardId: number;
   encodeId: string;
   isMine: true;
-  reasonTexts: ReasonTexts;
 } & DefaultCardInfo;
 
 export type DefaultCardInfo = {
@@ -21,8 +20,6 @@ export type DefaultCardInfo = {
   companyName: string;
   position: string;
 };
-
-export type ReasonTexts = string[];
 
 export type UpdateCardInfoReq = Omit<CardInfo, 'cardId' | 'encodeId' | 'isMine'>;
 

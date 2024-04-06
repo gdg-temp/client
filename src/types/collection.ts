@@ -2,7 +2,7 @@ import { CardLink } from './link';
 import { DefaultCardInfo } from './card';
 
 export type Collection = CollectionInfo & {
-  linkInfoVOList: CardLink[];
+  links: CardLink[];
 };
 
 export type CollectionInfo = {
