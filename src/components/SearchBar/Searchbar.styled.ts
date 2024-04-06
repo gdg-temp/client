@@ -49,23 +49,20 @@ const DeleteIcon = styled.div<Pick<SearchBarProps, 'onClick'>>`
 const SearchDropdownWrapper = styled.div`
   position: absolute;
   width: 264px;
-  left: 100px;
-  top: 105px;
+  top: 65px;
+  right: 0px;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.colorGray.blueGray700};
   z-index: 100;
-  @media screen and (min-width: 768px) {
-    left: 140px;
-  }
 `;
 
 const DropdownProfile = styled.img`
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  object-fit: cover;
+  object-fit: contain;
 `;
 
 export default {

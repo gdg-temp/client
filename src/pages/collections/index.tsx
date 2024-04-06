@@ -121,6 +121,7 @@ export default function CollectionsPage() {
                         email={card.email}
                         styleTemplate={card.styleTemplate}
                         designTemplate={card.designTemplate}
+                        profileUrl={card.profileImage}
                       />
                     </Link>
                   ))
@@ -144,6 +145,7 @@ export default function CollectionsPage() {
                         email={card.email}
                         styleTemplate={card.styleTemplate}
                         designTemplate={card.designTemplate}
+                        profileUrl={card.profileImage}
                       />
                     </Link>
                   );

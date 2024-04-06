@@ -75,9 +75,14 @@ const SearchBar = ({ searchText, onSearchTextChange, onShowTextChange }: SearchB
         <S.SearchDropdownWrapper>
           {searchText &&
             filteredCards.map((item: Collection) => (
-              <Link href={`/collections/${item.cardId}`} key={item.encodeId}>
+              <Link href={`/cards/${item.cardId}`} key={item.encodeId}>
                 <Button color="addLinkItem" size="addLinkItem">
-                  <S.DropdownProfile src={`/icons/${item.profileImage}`} alt={item.name} />
+                  {item.profileImage ? (
+                    <S.DropdownProfile src={item.profileImage} alt={item.name} />
+                  ) : (
+                    <S.DropdownProfile src={`/icons/default_profile.svg`} alt={'default_profile'} />
+                  )}
+
                   <span>{item.name}</span>
                 </Button>
               </Link>

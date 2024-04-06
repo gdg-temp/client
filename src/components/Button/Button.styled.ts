@@ -74,7 +74,7 @@ const Button = styled.button<ButtonProps>`
   border: ${({ disabled, color }) =>
     disabled || color === 'addLink' ? 'none' : BUTTON_BORDER[color]};
   border-radius: ${({ size }) =>
-    size === 'addLinkItem' ? '0' : size === 'small' ? '40px' : '8px'};
+    size === 'addLinkItem' ? '8px' : size === 'small' ? '40px' : '8px'};
   font-size: ${({ size }) => (size === 'small' || size === 'addLinkItem' ? '14px' : '16px')};
   font-weight: 700;
   word-break: keep-all;

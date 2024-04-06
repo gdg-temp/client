@@ -176,7 +176,7 @@ export default function CardDetailPage({
               )}
               {card.position && (
                 <S.CardDetailInfoItem>
-                  <img src="/icons/Setting.svg" />
+                  <img src="/icons/Settings.svg" />
                   <div>{card.position}</div>
                 </S.CardDetailInfoItem>
               )}
