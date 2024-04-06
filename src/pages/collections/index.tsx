@@ -122,6 +122,7 @@ export default function CollectionsPage() {
                         styleTemplate={card.styleTemplate}
                         designTemplate={card.designTemplate}
                         profileUrl={card.profileImage}
+                        position={card.position}
                       />
                     </Link>
                   ))
@@ -146,6 +147,7 @@ export default function CollectionsPage() {
                         styleTemplate={card.styleTemplate}
                         designTemplate={card.designTemplate}
                         profileUrl={card.profileImage}
+                        position={card.position}
                       />
                     </Link>
                   );
