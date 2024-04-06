@@ -91,6 +91,7 @@ const ContentItems = styled.div`
   height: 48px;
   padding: 16px 28px;
   color: ${({ theme }) => theme.colorGray.white};
+  align-items: center;
   cursor: pointer;
   &:hover {
     background: #343436;

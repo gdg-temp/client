@@ -18,7 +18,7 @@ const Navbar = styled.div`
   align-items: center;
   height: 64px;
   padding: 18px 0;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   position: relative;
   z-index: 100;
 `;

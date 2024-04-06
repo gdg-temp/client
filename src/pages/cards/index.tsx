@@ -13,7 +13,10 @@ import { Card as CardType } from '@types';
 import { EmptyTemplate } from '@templates';
 
 const CardListContainer = styled.div`
-  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
   position: relative;
 `;
 
@@ -81,8 +84,8 @@ export default function CardsListPage() {
                 cardsData.data.map((card: CardType, index: number) => {
                   const offset = isStacked
                     ? index > hoveredIndex
-                      ? index * (500 / (cardsData?.data.length - 1)) + 100
-                      : index * (500 / (cardsData?.data.length - 1))
+                      ? index * (340 / (cardsData?.data.length - 1)) + 100
+                      : index * (340 / (cardsData?.data.length - 1))
                     : index * 200;
                   const zIndex = isStacked ? index : 0;
 
